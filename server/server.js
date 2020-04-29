@@ -12,6 +12,4 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get("/landing-page", (req, res) => res.render("../src/html-pages/landing-page"));
-
 app.listen(process.env.PORT || 8080);

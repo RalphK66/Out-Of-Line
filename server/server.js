@@ -12,4 +12,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/home', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/src/html-pages/landing-page.html'));
+});
+
 app.listen(process.env.PORT || 8080);

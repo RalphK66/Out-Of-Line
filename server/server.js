@@ -16,4 +16,9 @@ app.get('/home', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/src/html-pages/landing-page.html'));
 });
 
+app.get('/login', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/src/html-pages/login.html'));
+});
+
+
 app.listen(process.env.PORT || 8080);

@@ -9,7 +9,7 @@ const login = () =>{
                 <input type="password" placeholder="password"></input>
                 <button type="submit">Login</button>
             </form>
-            <a href="#signup">Sign up</a>
+            <a href="/signup">Sign up</a>
         </div>
     );
 }

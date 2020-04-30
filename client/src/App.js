@@ -7,6 +7,7 @@ import {
 import Stores from "./html-pages/grocery-stores"
 import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
+import Admin from "./html-pages/store-admin"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path="/login" ><Login /></Route>
         <Route path="/stores" ><Stores /></Route>
+        <Route path="/admin" ><Admin /></Route>
         <Route exact path="/" ><Home /></Route>
       </Switch>  
     </Router>

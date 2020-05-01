@@ -8,16 +8,6 @@ import {
   CardGroup,
   CardBody,
   Container,
-  Form,
-  FormGroup,
-  Input,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
   Jumbotron,
 } from "reactstrap";
 
@@ -28,77 +18,6 @@ const LandingPage = (props) => {
 
   return (
     <Container>
-      <div>
-        <Navbar light expand="md" className="color-nav">
-          <NavbarBrand href="/">
-            <img src="/images/logo.png" className="logo"></img>
-          </NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink
-                  href="/"
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "larger",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  Home
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  href="/stores/"
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "larger",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  Stores
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  href="/admin/"
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "larger",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  Admin
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  href="/login/"
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "larger",
-                    fontWeight: "bolder",
-                  }}
-                >
-                  Login
-                </NavLink>
-              </NavItem>
-            </Nav>
-            <Form>
-              <FormGroup>
-                <Input
-                  type="search"
-                  name="search"
-                  id="exampleSearch"
-                  placeholder="Search"
-                />
-              </FormGroup>
-            </Form>
-          </Collapse>
-        </Navbar>
-      </div>
-
       <div>
         <Jumbotron>
           <h1 className="display-3">Out-of-Line</h1>
@@ -120,7 +39,7 @@ const LandingPage = (props) => {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle>Interctive Map</CardTitle>
+            <CardTitle><strong>Interctive Map</strong></CardTitle>
             <CardText>
               Find the grocery stores quickly and easily with this interactive
               map.
@@ -135,7 +54,7 @@ const LandingPage = (props) => {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle>Grocery Store Info</CardTitle>
+            <CardTitle><strong>Grocery Store Info</strong></CardTitle>
             <CardText>
               Clicking on a grocery store will display that store's relevant
               information, including:
@@ -158,7 +77,7 @@ const LandingPage = (props) => {
             alt="Card image cap"
           />
           <CardBody>
-            <CardTitle>In Line</CardTitle>
+            <CardTitle><strong>Virtual Queue</strong></CardTitle>
             <CardText>
               Track your position in line and get notifed when it is your turn
               to enter the store.
@@ -166,13 +85,6 @@ const LandingPage = (props) => {
           </CardBody>
         </Card>
       </CardGroup>
-      <div>
-        <Navbar>
-          <Container>
-            <NavbarBrand>© 2020 Copyright: out-of-line.ca</NavbarBrand>
-          </Container>
-        </Navbar>
-      </div>
     </Container>
   );
 };

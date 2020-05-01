@@ -1,0 +1,72 @@
+/* Styling for Navbar */
+
+.navbar {
+    background-color: #AAD2A9;
+    padding: 0px;
+    border-radius: 5px;
+  }
+  .navbar-light {
+    padding: 0px !important;
+  }
+
+  .nav-link {
+      font-weight: bold;
+      font-size: large;
+  }
+  .jumbotron {
+    color: #6A6A6A;
+    border: 2px solid #FFFFFF;
+  }
+  hr {
+    border-color: #FFFFFF;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+  .navbar-brand {
+    background-color: #AAD2A9;
+    padding: 5px 5px;;
+    margin-right: 0px !important;
+  }
+
+  /* Styling for cards */
+
+  .card-group-1 {
+    border: 20px solid #AADAFF;
+    padding: 10px;
+    color: #6A6A6A;
+  }
+  .card {
+    border: none;
+    margin: 0 5px 5px;
+  }
+  
+  .card-group-1 > h3 {
+    margin-bottom: 10px;
+  }
+  .card-img-top {
+    padding: 5px;
+    border: 10px solid #AAD2A9;
+  
+  }
+ 
+  /* Sticky footer */
+
+  html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  .footer {
+    margin: 20px;
+    text-align: center;
+  }
+  

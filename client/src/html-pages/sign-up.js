@@ -35,11 +35,8 @@ class SignUp extends React.Component {
                 'Accept': 'application/json'
             }
         })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(body) {  
-            console.log(body);
+        .then(response => {
+            console.log(response.json());
           })
         .catch(function(err) {
             console.error(err);

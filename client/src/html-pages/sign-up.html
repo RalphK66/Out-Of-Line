@@ -6,8 +6,8 @@
 </head>
 <body>
   <script>
-    fetch("localhost:9000/signup")
-      .then(res => res.json())
+    fetch("http://localhost:9000/signup")
+      .then(res => res.text())
       .then(data => {
         console.log(data);
       });

@@ -1,16 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require("cors");
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const mysql = require('mysql');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var signupRouter = require('./routes/signup');
-var testAPIRouter = require('./routes/testAPI');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const signupRouter = require('./routes/signup');
+const testAPIRouter = require('./routes/testAPI');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,35 +43,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-const connection = mySQL.createConnection(
-  {
-      host: "localhost",
-      user: "root", //CHANGE
-      password: "root", //CHANGE
-      database: "testoutofline"
-  }
-);
-
-try {
-  connection.connect();
-  console.log("Connection success!");
-} catch (error) {
-  throw error
-}
-
-app.post("/signup", (req, res) => {
-  let newUser = req.body;
-
-  let values = [];
-  values.push(newUser.email, newUser.phoneNumber, newUser.username, newUser.password);
-
-  connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, res) {
-    if(err) {
-      throw err;
-    }
-  });
 });
 
 module.exports = app;

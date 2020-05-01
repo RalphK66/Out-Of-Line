@@ -1,12 +1,16 @@
 /* Styling for the Landing page */
-
+#map {
+    position: absolute;
+    top: 4.5rem;
+    bottom: 0px;
+    width: 100%;
+}
 .navbar {
     background-color: #AAD2A9;
 }
 .jumbotron {
     color: #6A6A6A;
     border: 2px solid #FFFFFF;
-
 }
 hr {
     border-color: #FFFFFF;
@@ -40,7 +44,6 @@ hr {
     border: 10px solid #AAD2A9;
 
 }
-
 .footer {
     margin: 20px;
     text-align: center;

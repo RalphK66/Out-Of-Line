@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const landingPage = () => {
     return (
         <div>
@@ -49,4 +48,4 @@ const landingPage = () => {
     )
 }
 
-export default landingPage
+export default landingPage;

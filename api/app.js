@@ -7,6 +7,7 @@ var cors = require("cors");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var signupRouter = require('./routes/signup');
 var testAPIRouter = require('./routes/testAPI');
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/signup', signupRouter);
 app.use('/testAPI', testAPIRouter);
 
 // catch 404 and forward to error handler
@@ -40,6 +42,35 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+const connection = mySQL.createConnection(
+  {
+      host: "localhost",
+      user: "root", //CHANGE
+      password: "root", //CHANGE
+      database: "testoutofline"
+  }
+);
+
+try {
+  connection.connect();
+  console.log("Connection success!");
+} catch (error) {
+  throw error
+}
+
+app.post("/signup", (req, res) => {
+  let newUser = req.body;
+
+  let values = [];
+  values.push(newUser.email, newUser.phoneNumber, newUser.username, newUser.password);
+
+  connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, res) {
+    if(err) {
+      throw err;
+    }
+  });
 });
 
 module.exports = app;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -10,6 +9,7 @@ import Stores from "./html-pages/grocery-stores"
 import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
 import Admin from "./html-pages/store-admin"
+
 
 // class App extends Component {
 //   constructor(props) {

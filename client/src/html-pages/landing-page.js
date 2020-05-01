@@ -11,7 +11,7 @@ import {
   Jumbotron,
 } from "reactstrap";
 
-const LandingPage = (props) => {
+const LandingPage = () => {
 
   return (
     <Container>

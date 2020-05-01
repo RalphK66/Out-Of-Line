@@ -9,6 +9,7 @@ import Stores from "./html-pages/grocery-stores"
 import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
 import Admin from "./html-pages/store-admin"
+import SignUp from "./html-pages/sign-up"
 
 
 // class App extends Component {
@@ -58,6 +59,7 @@ function App() {
         <Route path="/login" ><Login /></Route>
         <Route path="/stores" ><Stores /></Route>
         <Route path="/admin" ><Admin /></Route>
+        <Route path="/signup"><SignUp /></Route>
         <Route exact path="/" ><Home /></Route>
       </Switch>
     </Router>

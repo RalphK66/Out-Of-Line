@@ -20,15 +20,17 @@ class SignUp extends React.Component {
 
     handleSubmission(event) {
         event.preventDefault();
+        let self = this;
 
+        console.log(self);
         // POST http://localhost:3000/signup 404 (Not Found) <- there is an error with the route here
-        fetch('/signup', {
+        fetch('http://localhost:9000/signup', {
             method: "POST",
             body: JSON.stringify({
-                email: this.emailField.current.value,
-                phoneNumber: this.phoneNumberField.current.value,
-                username: this.usernameField.current.value,
-                password: this.passwordField.current.value
+                email: self.emailField.current.value,
+                phoneNumber: self.phoneNumberField.current.value,
+                username: self.usernameField.current.value,
+                password: self.passwordField.current.value
             }),
             headers : {
                 'Content-Type': 'application/json',
@@ -46,10 +48,10 @@ class SignUp extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmission}>
-                <input  name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
-                <input  name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
-                <input  name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username"/> <br />
-                <input  name="password" type="text" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
+                <input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
+                <input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
+                <input name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username"/> <br />
+                <input name="password" type="text" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
                 <input type="submit" value="Submit"/>
             </form>
         );

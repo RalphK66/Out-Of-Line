@@ -70,3 +70,9 @@
     text-align: center;
   }
   
+/*Styling for login */
+
+.d-flex {
+    justify-content: center;
+    
+}

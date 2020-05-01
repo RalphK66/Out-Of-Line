@@ -20,15 +20,17 @@ class SignUp extends React.Component {
 
     handleSubmission(event) {
         event.preventDefault();
+        let self = this;
 
+        console.log(self);
         // POST http://localhost:3000/signup 404 (Not Found) <- there is an error with the route here
-        fetch('/signup', {
+        fetch('http://localhost:9000/signup', {
             method: "POST",
             body: JSON.stringify({
-                email: this.emailField.current.value,
-                phoneNumber: this.phoneNumberField.current.value,
-                username: this.usernameField.current.value,
-                password: this.passwordField.current.value
+                email: self.emailField.current.value,
+                phoneNumber: self.phoneNumberField.current.value,
+                username: self.usernameField.current.value,
+                password: self.passwordField.current.value
             }),
             headers : {
                 'Content-Type': 'application/json',

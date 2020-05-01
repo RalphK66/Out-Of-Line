@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
+const mySQL = require("mysql");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -53,12 +54,13 @@ const connection = mySQL.createConnection(
   }
 );
 
-try {
-  connection.connect();
-  console.log("Connection success!");
-} catch (error) {
-  throw error
-}
+connection.connect(function(err) {
+  if(err) {
+    console.log("Error connecting.");
+  } else {
+    console.log("Success!")
+  } 
+});
 
 app.post("/signup", (req, res) => {
   let newUser = req.body;

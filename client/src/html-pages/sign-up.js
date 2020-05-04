@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0 } from '../react-auth0-spa';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class SignUp extends React.Component {
 
     handleSubmission(event) {
         event.preventDefault();
+        const loginWithRedirect = useAuth0();
         let self = this;
 
         console.log(self);
@@ -40,6 +42,9 @@ class SignUp extends React.Component {
         .then(response => {
             console.log(response.json());
           })
+        .then(() => {
+            loginWithRedirect({});
+        })
         .catch(function(err) {
             console.error(err);
         });

@@ -1,8 +1,11 @@
 import React from "react";
 
 import { Form, FormGroup, Input, Container, Button } from "reactstrap";
+import { useAuth0 } from "../react-auth0-spa";
 
-const login = () => {
+const Login = () => {
+ const {isAuthenticated, loginWithRedirect} = useAuth0();
+
   return (
     <div className="d-flex p-2 bd-highlight flex-row justify-content-center align-items-center">
       <Container style={{width: "400px", marginTop: "50px"}}>
@@ -26,7 +29,7 @@ const login = () => {
             />
           </FormGroup>
           <div>
-          <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}}>Login</Button>
+          {!isAuthenticated && <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={() => loginWithRedirect({})}>Login</Button>}
           <br />
           <br />
           <a href="/signup">Sign-Up</a>
@@ -38,4 +41,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

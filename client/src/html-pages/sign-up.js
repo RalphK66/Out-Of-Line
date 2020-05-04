@@ -3,7 +3,7 @@ import React from 'react';
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {newUser:{}};
+        this.state = {};
 
         this.handleText = this.handleText.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);

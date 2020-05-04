@@ -10,12 +10,13 @@ router.get('/', (req, res, next) => { // next = next route middleware
       host: "localhost",
       user: "root", //CHANGE
       password: "root", //CHANGE
-      database: "out_of_line"
+      database: "testoutofline"
     }
   );
 
   connection.connect(err => {
     if (err) throw err;
+    console.log("Success!")
     connection.query("SELECT * FROM users", (err, results, fields) => {
       if (err) throw err;
       res.send(results);
@@ -23,6 +24,36 @@ router.get('/', (req, res, next) => { // next = next route middleware
   });
 
   // connectToDatabase().then(data => res.send(data));
+});
+
+router.post('/', (req, res, next) => {
+  const connection = mysql.createConnection(
+    {
+      host: "localhost",
+      user: "root", //CHANGE
+      password: "root", //CHANGE
+      database: "testoutofline"
+    }
+  );
+
+  let data = req.body;
+  console.log(data);
+  
+  let values = [];
+  values.push(data.email, data.phoneNumber, data.username, data.password);
+  console.log(values);
+
+  connection.connect(err => {
+    if (err) throw err;
+    console.log("Success!")
+
+    connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, res) {
+      if(err) {
+        throw err;
+      }
+    });
+  });
+  
 });
 
 // Connect to MySQL

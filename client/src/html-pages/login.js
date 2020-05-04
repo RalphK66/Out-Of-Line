@@ -29,7 +29,7 @@ const Login = () => {
             />
           </FormGroup>
           <div>
-          {!isAuthenticated && <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={() => loginWithRedirect({})}>Login</Button>}
+          {!isAuthenticated && <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={() => loginWithRedirect()}>Login</Button>}
           <br />
           <br />
           <a href="/signup">Sign-Up</a>

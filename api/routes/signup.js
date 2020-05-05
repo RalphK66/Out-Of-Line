@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => { // next = next route middleware
       host: "localhost",
       user: "root", //CHANGE
       password: "root", //CHANGE
-      database: "testoutofline"
+      database: "out_of_line"
     }
   );
 
@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
       host: "localhost",
       user: "root", //CHANGE
       password: "root", //CHANGE
-      database: "testoutofline"
+      database: "out_of_line"
     }
   );
 

@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 
 const LandingPage = (props) => {
-
   return (
     <Container>
       <div>
@@ -23,7 +22,7 @@ const LandingPage = (props) => {
           <p>
             Virtually queue at your favourite or local grocery store and take
             your social distancing to a whole new level while simultaneously
-            increasing the effeciency of getting what you need.
+            increasing the efficiency of getting what you need.
           </p>
         </Jumbotron>
       </div>
@@ -76,7 +75,7 @@ const LandingPage = (props) => {
           <CardBody>
             <CardTitle><strong>Virtual Queue</strong></CardTitle>
             <CardText>
-              Track your position in line and get notifed when it is your turn
+              Track your position in line and get notified when it is your turn
               to enter the store.
             </CardText>
           </CardBody>

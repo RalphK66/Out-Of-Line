@@ -10,8 +10,6 @@ import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
 import Admin from "./html-pages/store-admin"
 import SignUp from "./html-pages/sign-up"
-import { useAuth0 } from "./react-auth0-spa";
-
 
 // class App extends Component {
 //   constructor(props) {

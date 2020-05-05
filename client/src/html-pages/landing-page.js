@@ -16,7 +16,7 @@ const LandingPage = (props) => {
   return (
     <Container>
       <div>
-        <Jumbotron>
+        <Jumbotron className="shadow ">
           <h1 className="display-3">Out-of-Line</h1>
           <p className="lead">Need to wait in line? Do it online!</p>
           <hr className="my-2" />
@@ -27,8 +27,8 @@ const LandingPage = (props) => {
           </p>
         </Jumbotron>
       </div>
-      <CardGroup className="card-group">
-        <Card>
+      <CardGroup className="card-group shadow">
+        <Card className="shadow">
           <CardImg
             top
             width="100%"
@@ -43,7 +43,7 @@ const LandingPage = (props) => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="shadow">
           <CardImg
             top
             width="100%"
@@ -66,7 +66,7 @@ const LandingPage = (props) => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="shadow">
           <CardImg
             top
             width="100%"

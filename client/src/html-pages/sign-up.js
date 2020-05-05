@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Form, FormGroup, Input, Button, Label } from 'reactstrap'
+
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
@@ -47,13 +49,23 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmission}>
-                <input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
-                <input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
-                <input name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username"/> <br />
-                <input name="password" type="text" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
-                <input type="submit" value="Submit"/>
-            </form>
+            <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+                <Form onSubmit={this.handleSubmission}>
+                    <FormGroup>
+                        <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
+                            <Label style={{color: "#6A6A6A"}} className="display-4">SignUp</Label>
+                            <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
+                            <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
+                            <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username"/> <br />
+                            <Input name="password" type="text" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
+                            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Submit</Button>
+                        </div>
+
+                    </FormGroup>
+
+                </Form>
+            </div>
+
         );
     }
 }

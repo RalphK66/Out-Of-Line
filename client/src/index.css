@@ -21,6 +21,7 @@ code {
 .jumbotron {
     color: #6A6A6A;
     margin-top: 35px;
+    border: none;
 }
 
 
@@ -40,6 +41,7 @@ code {
 
 .mr-auto {
   color: #FFFFFF;
+  ;
 }
 
 .display-5 {
@@ -54,4 +56,10 @@ code {
 }
 .footer {
   text-align: center;
+}
+
+.mr-auto * {
+  color: #FFFFFF;
+  text-decoration-color: #FFFFFF;
+  
 }

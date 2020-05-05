@@ -1,40 +1,25 @@
 import React from "react";
 
-import { Form, FormGroup, Input, Container, Button } from "reactstrap";
+import { Form, FormGroup, Input, Button, Label } from "reactstrap";
 
 const login = () => {
   return (
-    <div className="d-flex p-2 bd-highlight flex-row justify-content-center align-items-center">
-      <Container style={{width: "400px", marginTop: "50px"}}>
-        <Form>
-          <FormGroup>
-              <Input
-              type="username"
-              name="username"
-              id="Username"
-              placeholder="username"
-              bsSize="lg"
-            />
-          </FormGroup>
-          <FormGroup>
-            <Input
-              type="password"
-              name="password"
-              id="Password"
-              placeholder="password"
-              bsSize="lg"
-            />
-          </FormGroup>
-          <div>
-          <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}}>Login</Button>
-          <br />
-          <br />
-          <a href="/signup">Sign-Up</a>
-          </div>
 
-        </Form>
-      </Container>
-    </div>
+    <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+    <Form>
+        <FormGroup>
+            <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
+                <Label style={{color: "#6A6A6A"}} className="display-4">Login</Label>
+                <Input type="username" name="username" id="Username" placeholder="username" bsSize="lg"/> <br/>
+                <Input type="password" name="password" id="Password" placeholder="password" bsSize="lg"/><br/>
+                <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Login</Button><br/>
+
+            </div>
+
+        </FormGroup>
+
+    </Form>
+</div>
   );
 };
 

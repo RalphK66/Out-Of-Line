@@ -10,6 +10,7 @@ import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
 import Admin from "./html-pages/store-admin"
 import SignUp from "./html-pages/sign-up"
+import NavBar from "./html-pages/Navbar"
 
 
 // class App extends Component {
@@ -52,9 +53,16 @@ import SignUp from "./html-pages/sign-up"
 //   }
 // }
 
-function App() {
+class App extends Component {
+  render() {
+
+  
   return (
-    <Router>
+    
+    <Router>   
+    <div>
+    <NavBar />
+    </div>
       <Switch>
         <Route path="/login" ><Login /></Route>
         <Route path="/stores" ><Stores /></Route>
@@ -63,7 +71,9 @@ function App() {
         <Route exact path="/" ><Home /></Route>
       </Switch>
     </Router>
+    
   );
+  }
 }
 
 export default App;

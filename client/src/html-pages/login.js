@@ -4,7 +4,7 @@ import { Form, FormGroup, Input, Container, Button } from "reactstrap";
 import { useAuth0 } from "../react-auth0-spa";
 
 const Login = () => {
- const {isAuthenticated, loginWithRedirect} = useAuth0();
+ const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
 
   return (
     <div className="d-flex p-2 bd-highlight flex-row justify-content-center align-items-center">
@@ -33,8 +33,10 @@ const Login = () => {
           <br />
           <br />
           <a href="/signup">Sign-Up</a>
+          <br />
+          <br />
+          {isAuthenticated && <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={() => logout()}>Logout</Button>}
           </div>
-
         </Form>
       </Container>
     </div>

@@ -35,7 +35,7 @@ const NavBar = () => {
                 <NavLink tag={RRNavLink} exact to="/about" activeClassName="active">About</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/grocery-stores" activeClassName="active">Stores</NavLink>
+                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
             </NavItem>
             <NavItem>
                 <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active">SignUp</NavLink>

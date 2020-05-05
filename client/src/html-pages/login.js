@@ -2,95 +2,26 @@ import React from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 
-import {
-  Form,
-  FormGroup,
-  Input,
-  Container,
-  Button,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon
-} from "reactstrap";
+import { Form, FormGroup, Input, Button, Label } from "reactstrap";
 
 const login = () => {
   return (
-    <div className="d-flex p-2 bd-highlight flex-row justify-content-center align-items-center">
-      <Container
-        style={{
-          width: "400px",
-          marginTop: "50px",
-          backgroundColor: "#61dafb",
-          padding: "50px 50px",
-          border: "10px solid #AAD2A9",
-          borderRadius: "5px",
-        }}
-      >
-        <Form>
-          <FormGroup>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <FaUser />
-                </InputGroupText>
-              </InputGroupAddon>
-              <Input
-                type="username"
-                name="username"
-                id="Username"
-                placeholder="username"
-                bsSize="lg"
-              />
-            </InputGroup>
-          </FormGroup>
-          <FormGroup>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <FaLock />
-                </InputGroupText>
-              </InputGroupAddon>
-              <Input
-              type="password"
-              name="password"
-              id="Password"
-              placeholder="password"
-              bsSize="lg"
-              />
-            </InputGroup>
-          </FormGroup>
 
-          <div
-            className="container"
-            style={{ display: "grid", justifyContent: "center" }}
-          >
-            <Button
-              style={{
-                backgroundColor: "#AAD2A9",
-                border: "2px solid #FFFFFF",
-                padding: "10px 50px",
-                borderRadius: "20px",
-              }}
-            >
-              Login
-            </Button>
-            <br />
+    <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+    <Form>
+        <FormGroup>
+            <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
+                <Label style={{color: "#6A6A6A"}} className="display-4">Login</Label>
+                <Input type="username" name="username" id="Username" placeholder="username" bsSize="lg"/> <br/>
+                <Input type="password" name="password" id="Password" placeholder="password" bsSize="lg"/><br/>
+                <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Login</Button><br/>
 
-            <a
-              href="/signup"
-              style={{
-                color: "#FFFFFF",
-                textAlign: "center",
-                textDecoration: "none",
-              }}
-            >
-              Sign-Up
-            </a>
-          </div>
-        </Form>
-      </Container>
-      
-    </div>
+            </div>
+
+        </FormGroup>
+
+    </Form>
+</div>
   );
 };
 

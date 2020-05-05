@@ -11,24 +11,23 @@ import {
   Jumbotron,
 } from "reactstrap";
 
-const LandingPage = () => {
-
+const LandingPage = (props) => {
   return (
     <Container>
       <div>
-        <Jumbotron>
+        <Jumbotron className="shadow ">
           <h1 className="display-3">Out-of-Line</h1>
           <p className="lead">Need to wait in line? Do it online!</p>
           <hr className="my-2" />
           <p>
             Virtually queue at your favourite or local grocery store and take
             your social distancing to a whole new level while simultaneously
-            increasing the effeciency of getting what you need.
+            increasing the efficiency of getting what you need.
           </p>
         </Jumbotron>
       </div>
-      <CardGroup className="card-group">
-        <Card>
+      <CardGroup className="card-group shadow">
+        <Card className="shadow">
           <CardImg
             top
             width="100%"
@@ -43,7 +42,7 @@ const LandingPage = () => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="shadow">
           <CardImg
             top
             width="100%"
@@ -66,7 +65,7 @@ const LandingPage = () => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="shadow">
           <CardImg
             top
             width="100%"
@@ -76,7 +75,7 @@ const LandingPage = () => {
           <CardBody>
             <CardTitle><strong>Virtual Queue</strong></CardTitle>
             <CardText>
-              Track your position in line and get notifed when it is your turn
+              Track your position in line and get notified when it is your turn
               to enter the store.
             </CardText>
           </CardBody>

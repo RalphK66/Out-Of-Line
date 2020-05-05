@@ -2,7 +2,7 @@ import React from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 
-import { Form, FormGroup, Input, Button, Label } from "reactstrap";
+import { Form, FormGroup, Input, Button, Label, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 const login = () => {
   return (
@@ -12,8 +12,20 @@ const login = () => {
         <FormGroup>
             <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
                 <Label style={{color: "#6A6A6A"}} className="display-4">Login</Label>
-                <Input type="username" name="username" id="Username" placeholder="username" bsSize="lg"/> <br/>
-                <Input type="password" name="password" id="Password" placeholder="password" bsSize="lg"/><br/>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText><FaUser/></InputGroupText>
+                  </InputGroupAddon>
+                  <Input type="username" name="username" id="Username" placeholder="username" bsSize="lg"/> <br/>
+                </InputGroup>
+                <br/>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText><FaLock/></InputGroupText>
+                  </InputGroupAddon>
+                  <Input type="password" name="password" id="Password" placeholder="password" bsSize="lg"/><br/>
+                </InputGroup>
+                <br/>
                 <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Login</Button><br/>
 
             </div>

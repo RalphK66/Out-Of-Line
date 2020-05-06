@@ -9,6 +9,7 @@
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "mapbox-gl": "^1.10.0",
+    "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
@@ -18,7 +19,7 @@
     "reactstrap": "^8.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=9000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -60,6 +60,8 @@ code {
 
 .mr-auto * {
   color: #FFFFFF;
-  text-decoration-color: #FFFFFF;
-  
+
+}
+.navbar-toggler {
+  color: #FFFFFF;
 }

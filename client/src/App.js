@@ -7,12 +7,15 @@ import Admin from "./html-pages/store-admin";
 import SignUp from "./html-pages/sign-up";
 import NavBar from "./html-pages/Navbar";
 import Stores from "./html-pages/stores";
+import About from "./html-pages/about";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: "" };
   }
+
+  
 
   render() {
     return (
@@ -23,6 +26,7 @@ class App extends Component {
         <Switch>
           <Route path="/login"><Login /></Route>
           <Route path="/admin"><Admin /></Route>
+          <Route path="/about"><About /></Route>
           <Route path="/signup"><SignUp /></Route>
           <Route path="/stores"><Stores /></Route>
           <Route exact path="/"><Home /></Route>

@@ -2,7 +2,7 @@ const connection = mySQL.createConnection(
     {
         host: "localhost",
         user: "root", //CHANGE
-        password: "root", //CHANGE
+        password: "ralph", //CHANGE
         database: "testoutofline"
     }
 );

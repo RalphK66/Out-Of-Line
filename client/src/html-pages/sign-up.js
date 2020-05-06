@@ -26,7 +26,7 @@ class SignUp extends React.Component {
         event.preventDefault();
         let self = this;
 
-        console.log(self);
+        console.log(this);
         // POST http://localhost:3000/signup 404 (Not Found) <- there is an error with the route here
         fetch('http://localhost:9000/signup', {
             method: "POST",
@@ -84,11 +84,10 @@ class SignUp extends React.Component {
                                 <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField} placeholder="Password" bsSize="lg"/> <br />
                             </InputGroup>
                             <br/>
-                            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}} size="lg">Submit</Button>
                         </div>
 
                     </FormGroup>
-
+                    <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}} size="lg">Submit</Button>
                 </Form>
             </div>
 

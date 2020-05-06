@@ -7,6 +7,5 @@ CREATE TABLE users (
     username VARCHAR(75) NOT NULL UNIQUE,
     password_salt VARCHAR(128) DEFAULT NULL,
     password_hash VARCHAR(256) DEFAULT NULL,
-    isEmployee BOOLEAN NOT NULL DEFAULT FALSE,
-    CHECK(LENGTH(password) >= 8)
+    isEmployee BOOLEAN NOT NULL DEFAULT FALSE
 );

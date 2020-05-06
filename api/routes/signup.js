@@ -1,4 +1,6 @@
 const mysql = require('mysql');
+const crypto = require('crypto');
+
 
 const express = require('express');
 const router = express.Router();
@@ -36,11 +38,22 @@ router.post('/', (req, res, next) => {
     }
   );
 
+  const saltAndHashPassword = (password) => {
+    let salt = crypto.randomBytes(16).toString('hex');
+    let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`);
+
+    return {salt: salt,
+            hash: hash
+      }
+  }
+
   let data = req.body;
   console.log(data);
   
+  let saltAndHashed = saltAndHashPassword(data.password);
+
   let values = [];
-  values.push(data.email, data.phoneNumber, data.username, data.password);
+  values.push(data.email, data.phoneNumber, data.username, saltAndHashed.salt, saltAndHashed.hash);
   
   if (data.isEmployee === "on") {
     values.push(true);
@@ -50,11 +63,22 @@ router.post('/', (req, res, next) => {
   
   console.log(values);
 
+  // const checkIfValid = (password) => {
+  //   let newHash = crypto.pbkdf2Sync(password, saltAndHashed.salt, 1000, 64, `sha512`).toString(`hex`);
+  //   if (newHash === saltAndHashed.hash) {
+  //     console.log("The same.");
+  //   } else {
+  //     console.log("Isn't the same.")
+  //   }
+  // }
+
+  // checkIfValid(data.password);
+
   connection.connect(err => {
     if (err) throw err;
     console.log("Success!")
 
-    connection.query("INSERT INTO users(email, phone_number, username, password, isEmployee) VALUES (?)", [values], function(err, res) {
+    connection.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, res) {
       if(err) {
         throw err;
       }

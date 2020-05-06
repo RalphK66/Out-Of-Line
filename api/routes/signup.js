@@ -9,8 +9,8 @@ router.get('/', (req, res, next) => { // next = next route middleware
     {
       host: "localhost",
       user: "root", //CHANGE
-      password: "root", //CHANGE
-      database: "out_of_line"
+      password: "ralph", //CHANGE
+      database: "testoutofline"
     }
   );
 
@@ -31,8 +31,8 @@ router.post('/', (req, res, next) => {
     {
       host: "localhost",
       user: "root", //CHANGE
-      password: "root", //CHANGE
-      database: "out_of_line"
+      password: "ralph", //CHANGE
+      database: "testoutofline"
     }
   );
 
@@ -62,8 +62,8 @@ function connectToDatabase() {
     {
       host: "localhost",
       user: "root", //CHANGE
-      password: "root", //CHANGE
-      database: "out_of_line"
+      password: "ralph", //CHANGE
+      database: "testoutofline"
     }
   );
 

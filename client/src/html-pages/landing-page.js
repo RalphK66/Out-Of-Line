@@ -26,7 +26,8 @@ const LandingPage = (props) => {
           </p>
         </Jumbotron>
       </div>
-      <CardGroup className="card-group shadow">
+
+      <CardGroup className="card-group shadow md">
         <Card className="shadow">
           <CardImg
             top
@@ -81,6 +82,7 @@ const LandingPage = (props) => {
           </CardBody>
         </Card>
       </CardGroup>
+  
     </Container>
   );
 };

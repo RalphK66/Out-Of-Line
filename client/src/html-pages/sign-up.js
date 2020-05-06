@@ -5,7 +5,6 @@ import { Form, FormGroup, Input, Button, Label } from 'reactstrap'
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
 
         this.handleText = this.handleText.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
@@ -22,17 +21,14 @@ class SignUp extends React.Component {
 
     handleSubmission(event) {
         event.preventDefault();
-        let self = this;
 
-        console.log(self);
-        // POST http://localhost:3000/signup 404 (Not Found) <- there is an error with the route here
         fetch('http://localhost:9000/signup', {
             method: "POST",
             body: JSON.stringify({
-                email: self.emailField.current.value,
-                phoneNumber: self.phoneNumberField.current.value,
-                username: self.usernameField.current.value,
-                password: self.passwordField.current.value
+                email: this.state.email,
+                phoneNumber: this.state.phoneNumber,
+                username: this.state.username,
+                password: this.state.password
             }),
             headers : {
                 'Content-Type': 'application/json',

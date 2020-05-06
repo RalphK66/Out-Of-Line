@@ -41,13 +41,20 @@ router.post('/', (req, res, next) => {
   
   let values = [];
   values.push(data.email, data.phoneNumber, data.username, data.password);
+  
+  if (data.isEmployee === "on") {
+    values.push(true);
+  } else {
+    values.push(false);
+  }
+  
   console.log(values);
 
   connection.connect(err => {
     if (err) throw err;
     console.log("Success!")
 
-    connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, res) {
+    connection.query("INSERT INTO users(email, phone_number, username, password, isEmployee) VALUES (?)", [values], function(err, res) {
       if(err) {
         throw err;
       }

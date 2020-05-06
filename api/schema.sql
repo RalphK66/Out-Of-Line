@@ -6,6 +6,6 @@ CREATE TABLE users (
     phone_number VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL UNIQUE,
-    isEmployee BOOLEAN NOT NULL,
+    isEmployee BOOLEAN NOT NULL DEFAULT FALSE,
     CHECK(LENGTH(password) >= 8)
 );

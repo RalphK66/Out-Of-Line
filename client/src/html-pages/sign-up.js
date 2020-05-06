@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAuth0 } from '../react-auth0-spa';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -8,31 +7,39 @@ class SignUp extends React.Component {
 
         this.handleText = this.handleText.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
+        this.handleCheckbox = this.handleCheckbox.bind(this);
 
         this.emailField = React.createRef();
         this.phoneNumberField = React.createRef();
         this.usernameField = React.createRef();
         this.passwordField = React.createRef();
+        this.isEmployeeField = React.createRef();
     }
 
     handleText(event) {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    handleCheckbox(event) {
+        if (event.target.checked) {
+            this.setState({[event.target.name]: "on"});
+        } else {
+            this.setState({[event.target.name]: "off"});
+        }
+    }
+
     handleSubmission(event) {
         event.preventDefault();
-        const loginWithRedirect = useAuth0();
-        let self = this;
 
-        console.log(self);
-        // POST http://localhost:3000/signup 404 (Not Found) <- there is an error with the route here
+        console.log(this);
         fetch('http://localhost:9000/signup', {
             method: "POST",
             body: JSON.stringify({
-                email: self.emailField.current.value,
-                phoneNumber: self.phoneNumberField.current.value,
-                username: self.usernameField.current.value,
-                password: self.passwordField.current.value
+                email: this.state.email,
+                phoneNumber: this.state.phoneNumber,
+                username: this.state.username,
+                password: this.state.password,
+                isEmployee: this.state.isEmployee
             }),
             headers : {
                 'Content-Type': 'application/json',
@@ -42,9 +49,6 @@ class SignUp extends React.Component {
         .then(response => {
             console.log(response.json());
           })
-        .then(() => {
-            loginWithRedirect({});
-        })
         .catch(function(err) {
             console.error(err);
         });
@@ -53,12 +57,14 @@ class SignUp extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmission}>
-                <input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
+                <input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
                 <input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
                 <input name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username"/> <br />
-                <input name="password" type="text" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
+                <input name="password" type="password" onChange={this.handleText} ref={this.passwordField} placeholder="Password"/> <br />
+                <input name="isEmployee" type="checkbox" defaultChecked={false} onChange={this.handleCheckbox} ref={this.isEmployeeField}/> <label for="employee">Employee</label> <br />
                 <input type="submit" value="Submit"/>
             </form>
+
         );
     }
 }

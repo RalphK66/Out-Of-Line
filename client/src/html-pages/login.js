@@ -34,6 +34,8 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password,
     };
+
+    // logs username & password to console
     console.log(userData);
     this.setState({
       username: "",

@@ -13,7 +13,7 @@ import {
 
 const LandingPage = (props) => {
   return (
-    <Container>
+    <Container fluid>
       <div>
         <Jumbotron className="shadow ">
           <h1 className="display-3">Out-of-Line</h1>
@@ -33,10 +33,10 @@ const LandingPage = (props) => {
             top
             width="100%"
             src="/images/map-1.png"
-            alt="Card image cap"
+            alt="Map"
           />
           <CardBody>
-            <CardTitle><strong>Interctive Map</strong></CardTitle>
+            <CardTitle><strong>Interactive Map</strong></CardTitle>
             <CardText>
               Find the grocery stores quickly and easily with this interactive
               map.
@@ -48,7 +48,7 @@ const LandingPage = (props) => {
             top
             width="100%"
             src="/images/map-2.png"
-            alt="Card image cap"
+            alt="Map selection"
           />
           <CardBody>
             <CardTitle><strong>Grocery Store Info</strong></CardTitle>
@@ -71,7 +71,7 @@ const LandingPage = (props) => {
             top
             width="100%"
             src="/images/map-3.png"
-            alt="Card image cap"
+            alt="Queue"
           />
           <CardBody>
             <CardTitle><strong>Virtual Queue</strong></CardTitle>

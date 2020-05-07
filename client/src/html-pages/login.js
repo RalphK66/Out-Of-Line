@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import '../css/login.css'
-
+import { useAuth } from "../context/auth";
+import { Redirect } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -14,40 +15,51 @@ import {
   InputGroupText,
 } from "reactstrap";
 
-class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      password: "",
-      errors: {},
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  onChange = (e) => {
-    this.setState({ [e.target.id]: e.target.value });
-  };
-  onSubmit = (e) => {
-    e.preventDefault();
-    const userData = {
-      username: this.state.username,
-      password: this.state.password,
-    };
 
-    // logs username & password to console
-    console.log(userData);
-    this.setState({
-      username: "",
-      password: ""
+function Login() {
+
+    const [isLoggedIn, setLoggedIn] = React.useState(false);
+    const [isError, setIsError] = React.useState(false);
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const { setAuthTokens } = useAuth();
+
+  const PostLogin = (event) => {
+    event.preventDefault();
+
+    fetch("http://localhost:9000/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(result => {
+      if (result.status === 200) {
+        console.log("Got!")
+        setAuthTokens(result.data);
+        setLoggedIn(true);
+      } else {
+        setIsError(true);
+      }
+    })
+    .catch(e => {
+      setIsError(true);
     });
-  };
-  render() {
-    const { errors } = this.state;
+  }
+
+  if (isLoggedIn) {
+    return <Redirect to="/" />;
+  }
+
 
     return (
       <div className="container col-sm-8 shadow box">
-        <Form noValidate onSubmit={this.onSubmit}>
+        <Form>
           <FormGroup>
             <div className="container shadow form-box">
               <Label className="display-4 login-label">
@@ -62,12 +74,13 @@ class Login extends Component {
                 <Input
                   type="username"
                   name="username"
-                  id="username"
+                  id="Username"
                   placeholder="username"
                   bsSize="lg"
-                  onChange={this.onChange}
-                  value={this.state.username}
-                  error={errors.username}
+                  value={username}
+                  onChange={event => {
+                    setUsername(event.target.value);
+                  }} 
                 />
                 <br />
               </InputGroup>
@@ -84,22 +97,30 @@ class Login extends Component {
                   id="password"
                   placeholder="password"
                   bsSize="lg"
-                  onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}/>
+                  value={password}
+                  onChange={event => {
+                    setPassword(event.target.value);
+                  }} 
+                  />
                 <br />
               </InputGroup>
               <br />
               <Button
                 type="submit"
-                size="lg">Login</Button>
-              <br />
-            </div>
+                size="lg" onClick={PostLogin}>Login</Button>
+                <br />
+                <br />
+                <a href="/signup">Sign-Up</a>
+                <br />
+                <br />
+                <Button size="lg">Logout</Button>
+                
+            </div> 
           </FormGroup>
         </Form>
       </div>
     );
   }
-}
+
 
 export default Login;

@@ -1,59 +1,49 @@
 import React from 'react';
 
 import { Form, FormGroup, Input, Container, Button } from "reactstrap";
+import { Redirect } from "react-router-dom";
 import { useAuth } from "../context/auth";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    
-    this.handleText = this.handleText.bind(this);
-    this.postLogin = this.postLogin.bind(this);
-    
-    this.usernameField = React.createRef();
-    this.passwordField = React.createRef();
-  }
+function Login() {
 
-  handleText(event) {
-    this.setState({[event.target.name]: event.target.value});
-  }
+    const [isLoggedIn, setLoggedIn] = React.useState(false);
+    const [isError, setIsError] = React.useState(false);
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const { setAuthTokens } = useAuth();
 
-  postLogin(event) {
+  const PostLogin = (event) => {
     event.preventDefault();
-
-    // const [isLoggedIn, setLoggedIn] = React.useState(false);
-    // const [isError, setIsError] = React.useState(false);
-    // const { setAuthTokens } = React.useState();
 
     fetch("http://localhost:9000/login", {
       method: "POST",
       body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
+        username: username,
+        password: password
       }),
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     })
-    .then(response => {
-      console.log(response.json());
+    .then(result => {
+      if (result.status === 200) {
+        console.log("Got!")
+        setAuthTokens(result.data);
+        setLoggedIn(true);
+      } else {
+        setIsError(true);
+      }
     })
-    // .then(result => {
-    //   if (result.status === 200) {
-    //     setAuthTokens(result.data);
-    //     setLoggedIn(true);
-    //   } else {
-    //     setIsError(true);
-    //   }
-    // })
-    // .catch(e => {
-    //   setIsError(true);
-    // });
+    .catch(e => {
+      setIsError(true);
+    });
   }
 
-  render() {
+  if (isLoggedIn) {
+    return <Redirect to="/" />;
+  }
+
     return (
       <div className="d-flex p-2 bd-highlight flex-row justify-content-center align-items-center">
         <Container style={{width: "400px", marginTop: "50px"}}>
@@ -65,8 +55,10 @@ class Login extends React.Component {
                 id="Username"
                 placeholder="username"
                 bsSize="lg"
-                onChange={this.handleText} 
-                ref={this.usernameField}
+                value={username}
+                onChange={event => {
+                  setUsername(event.target.value);
+                }} 
               />
             </FormGroup>
             <FormGroup>
@@ -76,12 +68,14 @@ class Login extends React.Component {
                 id="Password"
                 placeholder="password"
                 bsSize="lg"
-                onChange={this.handleText} 
-                ref={this.passwordField}
+                value={password}
+                onChange={event => {
+                  setPassword(event.target.value);
+                }} 
               />
             </FormGroup>
             <div>
-            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={this.postLogin}>Login</Button>
+            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={PostLogin}>Login</Button>
             <br />
             <br />
             <a href="/signup">Sign-Up</a>
@@ -93,8 +87,7 @@ class Login extends React.Component {
         </Container>
       </div>
     );
-  };
-  
+
 }
 
 export default Login;

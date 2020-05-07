@@ -54,7 +54,7 @@ import { AuthContext } from "./context/auth";
 // }
 
 function App(props) {
-  const existingTokens = JSON.parse(localStorage.getItem("tokens"));
+  const existingTokens = localStorage.getItem("tokens");
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
 
 

@@ -41,21 +41,33 @@ router.post('/', (req, res, next) => {
     console.log(data.username);
 
     // ATotallyNewPass!
-    connection.query("SELECT password_salt, password_hash FROM users WHERE username = (?)", data.username, function(err, result) {
+    connection.query("SELECT password_salt, password_hash, isEmployee FROM users WHERE username = (?)", data.username, function(err, result) {
         console.log(result);
-        console.log(result[0].password_salt);
-        console.log(result[0].password_hash);
-
+        
         const checkIfValid = (password) => {
             let newHash = crypto.pbkdf2Sync(password, result[0].password_salt, 1000, 64, `sha512`).toString(`hex`);
             if (newHash === result[0].password_hash) {
               console.log("The same.");
+              return true;
             } else {
-              console.log("Isn't the same.")
+              console.log("Isn't the same.");
+              return false;
             }
           }
         
-          checkIfValid(data.password);
+          if (checkIfValid(data.password)) {
+            console.log("I get in here. 200")
+            res.sendStatus(200);
+
+            let values = [];
+            values.push(data.username, data.password, result[0].isEmployee);
+            console.log(values);
+
+            res.end(JSON.stringify(values));
+          } else {
+            console.log("I get in here. 401");
+            res.sendStatus(401);
+          }
     });
 });
 

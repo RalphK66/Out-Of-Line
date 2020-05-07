@@ -6,13 +6,13 @@ function PrivateRoute(
     { comp: Component, 
         ...rest }) {
 
-    const isAuthenticated = useAuth();
+    const { authTokens } = useAuth();
 
     return (
         <Route
           {...rest}
           render={props =>
-            isAuthenticated ? (
+            authTokens ? (
               <Component {...props} />
             ) : (
               <Redirect to="/" />

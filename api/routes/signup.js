@@ -33,8 +33,9 @@ router.post('/', (req, res, next) => {
   
   const values = [req.body.email, req.body.phoneNumber, req.body.username, req.body.password];
   console.log(values);
-  connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, res) {
+  connection.query("INSERT INTO users(email, phone_number, username, password) VALUES (?)", [values], function(err, result) {
     if(err) throw err;
+    res.send("Updated!");
   });
 });
 

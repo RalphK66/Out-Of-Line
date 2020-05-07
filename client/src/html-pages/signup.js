@@ -21,10 +21,10 @@ class Signup extends React.Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    fetch('http://localhost:9000/signup', {
+    fetch('/signup', {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.email,
+        email: this.state.email, // handle empty fields
         phoneNumber: this.state.phoneNumber,
         username: this.state.username,
         password: this.state.password
@@ -34,12 +34,8 @@ class Signup extends React.Component {
         'Accept': 'application/json'
       }
     })
-      .then(response => {
-        console.log(response.json());
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+      // .then(res => res.text())
+      // .then(text => console.log(text));
   }
 
   render() {

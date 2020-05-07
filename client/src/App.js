@@ -10,6 +10,8 @@ import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
 import Admin from "./html-pages/store-admin"
 import SignUp from "./html-pages/sign-up"
+import PrivateRoute from './routes/private-route';
+import { AuthContext } from "./context/auth";
 
 // class App extends Component {
 //   constructor(props) {
@@ -51,17 +53,28 @@ import SignUp from "./html-pages/sign-up"
 //   }
 // }
 
-function App() {
+function App(props) {
+  const existingTokens = JSON.parse(localStorage.getItem("tokens"));
+  const [authTokens, setAuthTokens] = React.useState(existingTokens);
+
+
+  const setTokens = (data) => {
+    localStorage.setItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  }
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/login" ><Login /></Route>
-        <Route path="/stores" ><Stores /></Route>
-        <Route path="/admin" ><Admin /></Route>
-        <Route path="/signup"><SignUp /></Route>
-        <Route exact path="/" ><Home /></Route>
-      </Switch>
-    </Router>
+    <AuthContext.Provider value={{authTokens, setAuthTokens: setTokens}}>
+      <Router>
+        <Switch>
+          <Route path="/login" ><Login /></Route>
+          <Route path="/stores" ><Stores /></Route>
+          <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
+          <Route path="/signup"><SignUp /></Route>
+          <Route exact path="/" ><Home /></Route>
+        </Switch>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

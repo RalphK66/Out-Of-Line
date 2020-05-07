@@ -50,12 +50,12 @@ function Login() {
     .catch(e => {
       setIsError(true);
     });
+    setUsername('')
+    setPassword('')
   }
-
   if (isLoggedIn) {
     return <Redirect to="/" />;
   }
-
 
     return (
       <div className="container col-sm-8 shadow box">

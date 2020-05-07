@@ -43,6 +43,9 @@ const NavBar = () => {
             <NavItem>
                 <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
+            </NavItem>
           </Nav>
           <Form>
             <Input type="search" name="search" id="mySearch" placeholder="Search"/>

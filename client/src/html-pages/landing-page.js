@@ -9,6 +9,8 @@ import {
   CardBody,
   Container,
   Jumbotron,
+  ListGroup,
+  ListGroupItem,
 } from "reactstrap";
 
 const LandingPage = (props) => {
@@ -29,14 +31,11 @@ const LandingPage = (props) => {
 
       <CardGroup className="card-group shadow md">
         <Card className="shadow">
-          <CardImg
-            top
-            width="100%"
-            src="/images/map-1.png"
-            alt="Map"
-          />
+          <CardImg top width="100%" src="/images/map-1.png" alt="Map" />
           <CardBody>
-            <CardTitle><strong>Interactive Map</strong></CardTitle>
+            <CardTitle>
+              <strong>Interactive Map</strong>
+            </CardTitle>
             <CardText>
               Find the grocery stores quickly and easily with this interactive
               map.
@@ -51,30 +50,35 @@ const LandingPage = (props) => {
             alt="Map selection"
           />
           <CardBody>
-            <CardTitle><strong>Grocery Store Info</strong></CardTitle>
-            <CardText>
-              Clicking on a grocery store will display that store's relevant
-              information, including:
-              <ul>
-                <li>Estimated wait times</li>
-                <li>Number of people currently in line</li>
-                <li>Health & Safety Information</li>
-                <li>Contact Information & Directions</li>
-              </ul>
-              Place yourself in line at the store you choose by hitting the{" "}
-              <strong>"Queue"</strong> button.
-            </CardText>
+            <CardTitle>
+              <strong>Grocery Store Info</strong>
+            </CardTitle>
+            <div>
+              <CardText>
+                Clicking on a grocery store will display that store's relevant
+                information, including:
+              </CardText>
+              <ListGroup flush>
+                <ListGroupItem>Estimated wait times</ListGroupItem>
+                <ListGroupItem>
+                  Number of people currently in line
+                </ListGroupItem>
+                <ListGroupItem>Health & Safety Information</ListGroupItem>
+                <ListGroupItem>Contact Information & Directions</ListGroupItem>
+              </ListGroup>
+              <CardText>
+                Place yourself in line at the store you choose by hitting the{" "}
+                <strong>"Queue"</strong> button.
+              </CardText>
+            </div>
           </CardBody>
         </Card>
         <Card className="shadow">
-          <CardImg
-            top
-            width="100%"
-            src="/images/map-3.png"
-            alt="Queue"
-          />
+          <CardImg top width="100%" src="/images/map-3.png" alt="Queue" />
           <CardBody>
-            <CardTitle><strong>Virtual Queue</strong></CardTitle>
+            <CardTitle>
+              <strong>Virtual Queue</strong>
+            </CardTitle>
             <CardText>
               Track your position in line and get notified when it is your turn
               to enter the store.
@@ -82,7 +86,6 @@ const LandingPage = (props) => {
           </CardBody>
         </Card>
       </CardGroup>
-  
     </Container>
   );
 };

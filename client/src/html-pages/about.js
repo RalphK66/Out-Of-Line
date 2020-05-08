@@ -42,7 +42,7 @@ const about = () => {
             <br />
             <span className="OoF">Out-of-Line</span> will improve the effectiveness of
             social distancing by implementing an effecient well-managed queueing
-            system, design to minimize waiting times and limit the extent of
+            system, designed to minimize waiting times and limit the extent of
             physical proximity necessary to get the necessities you need.
             <br />
             <br />

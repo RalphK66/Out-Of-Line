@@ -5,8 +5,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const router = express.Router();
 
+// for cookies.
 router.use(cookieParser());
 
+// string to add onto jwt token.
 const jwtSecret = "addingOntoSecret";
 
 router.get('/', (req, res, next) => { // next = next route middleware
@@ -31,7 +33,7 @@ router.get('/', (req, res, next) => { // next = next route middleware
     // connectToDatabase().then(data => res.send(data));
   });
 
-
+// sends a token to the backend through post.
 router.post('/', (req, res, next) => {
     const connection = mysql.createConnection(
         {
@@ -46,6 +48,7 @@ router.post('/', (req, res, next) => {
     console.log(data.username);
 
     // ATotallyNewPass!
+    // Queries data from the database 
     connection.query("SELECT password_salt, password_hash, isEmployee FROM users WHERE username = (?)", data.username, function(err, result) {
         console.log(result);
         

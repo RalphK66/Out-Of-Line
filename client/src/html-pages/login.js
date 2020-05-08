@@ -26,7 +26,7 @@ function Login() {
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:9000/login", {
+    fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({
         username: username,

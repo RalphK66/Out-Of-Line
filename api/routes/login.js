@@ -1,8 +1,13 @@
 const mysql = require('mysql');
 const crypto = require('crypto');
-
+const jwt = require('jsonwebtoken');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const router = express.Router();
+
+router.use(cookieParser());
+
+const jwtSecret = "addingOntoSecret";
 
 router.get('/', (req, res, next) => { // next = next route middleware
     const connection = mysql.createConnection(
@@ -57,13 +62,13 @@ router.post('/', (req, res, next) => {
         
           if (checkIfValid(data.password)) {
             console.log("I get in here. 200")
-            res.sendStatus(200);
+            
+            const payload = {username: data.username, isEmployee: result[0].isEmployee};
 
-            let values = [];
-            values.push(data.username, data.password, result[0].isEmployee);
-            console.log(values);
+            const token = jwt.sign(payload, jwtSecret, {expiresIn: '8h'});
+            console.log(token);
 
-            res.end(JSON.stringify(values));
+            res.cookie("token", token, {httpOnly: false}).send(res.cookies);       
           } else {
             console.log("I get in here. 401");
             res.sendStatus(401);

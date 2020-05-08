@@ -8,10 +8,10 @@ import {
 import Stores from "./html-pages/grocery-stores"
 import Login from "./html-pages/login"
 import Home from "./html-pages/landing-page"
-import Admin from "./html-pages/store-admin"
 import SignUp from "./html-pages/sign-up"
 import PrivateRoute from './routes/private-route';
 import { AuthContext } from "./context/auth";
+import Tags from './html-pages/store-admin';
 
 // class App extends Component {
 //   constructor(props) {
@@ -53,7 +53,7 @@ import { AuthContext } from "./context/auth";
 //   }
 // }
 
-function App(props) {
+function App() {
   const existingTokens = localStorage.getItem("tokens");
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
 
@@ -69,7 +69,7 @@ function App(props) {
         <Switch>
           <Route path="/login" ><Login /></Route>
           <Route path="/stores" ><Stores /></Route>
-          <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
+          <PrivateRoute path="/store-admin" component={Tags}></PrivateRoute>
           <Route path="/signup"><SignUp /></Route>
           <Route exact path="/" ><Home /></Route>
         </Switch>

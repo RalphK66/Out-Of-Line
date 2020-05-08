@@ -24,12 +24,13 @@ function Login() {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
     .then(result => {
       if (result.status === 200) {
-        console.log("Got!")
-        setAuthTokens(result.data);
+        console.log(document.cookie);
+        setAuthTokens(document.cookie);
         setLoggedIn(true);
       } else {
         setIsError(true);
@@ -38,6 +39,11 @@ function Login() {
     .catch(e => {
       setIsError(true);
     });
+  }
+
+  const Logout = () => {
+    localStorage.clear();
+    return <Redirect to="/" />;
   }
 
   if (isLoggedIn) {
@@ -81,7 +87,7 @@ function Login() {
             <a href="/signup">Sign-Up</a>
             <br />
             <br />
-            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}}>Logout</Button>
+            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={Logout}>Logout</Button>
             </div>
           </Form>
         </Container>

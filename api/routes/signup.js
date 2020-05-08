@@ -63,17 +63,6 @@ router.post('/', (req, res, next) => {
   
   console.log(values);
 
-  // const checkIfValid = (password) => {
-  //   let newHash = crypto.pbkdf2Sync(password, saltAndHashed.salt, 1000, 64, `sha512`).toString(`hex`);
-  //   if (newHash === saltAndHashed.hash) {
-  //     console.log("The same.");
-  //   } else {
-  //     console.log("Isn't the same.")
-  //   }
-  // }
-
-  // checkIfValid(data.password);
-
   connection.connect(err => {
     if (err) throw err;
     console.log("Success!")

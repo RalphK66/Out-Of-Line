@@ -8,12 +8,14 @@ import {
   CardBody,
   Container,
   Jumbotron,
+  ListGroup,
+  ListGroupItem,
 } from "reactstrap";
 
 class LandingPage extends React.Component {
   render() {
     return (
-      <Container>
+      <Container fluid>
         <div>
           <Jumbotron className="shadow ">
             <h1 className="display-3">Out-of-Line</h1>
@@ -54,12 +56,14 @@ class LandingPage extends React.Component {
               <CardText>
                 Clicking on a grocery store will display that store's relevant
                 information, including:
-                <ul>
-                  <li>Estimated wait times</li>
-                  <li>Number of people currently in line</li>
-                  <li>Health & Safety Information</li>
-                  <li>Contact Information & Directions</li>
-                </ul>
+                <ListGroup flush>
+                  <ListGroupItem>Estimated wait times</ListGroupItem>
+                  <ListGroupItem>
+                    Number of people currently in line
+                  </ListGroupItem>
+                  <ListGroupItem>Health & Safety Information</ListGroupItem>
+                  <ListGroupItem>Contact Information & Directions</ListGroupItem>
+                </ListGroup>
                 Place yourself in line at the store you choose by hitting the{" "}
                 <strong>"Queue"</strong> button.
               </CardText>

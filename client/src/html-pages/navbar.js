@@ -22,11 +22,11 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar expand="md shadow">
+      <Navbar dark expand="md" className="shadow" >
         <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar style={{textDecoration: 'none'}}>
+        <Collapse isOpen={isOpen} navbar >
+          <Nav className="mr-auto" navbar >
             <NavItem>
                 <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
             </NavItem>
@@ -41,6 +41,9 @@ const NavBar = () => {
             </NavItem>
             <NavItem>
                 <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
             </NavItem>
           </Nav>
           <Form>

@@ -1,29 +1,50 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./html-pages/login";
-import Home from "./html-pages/landing-page";
-import Admin from "./html-pages/store-admin";
-import Stores from "./html-pages/stores";
-import Signup from "./html-pages/signup";
 import NavBar from "./html-pages/navbar";
+import Home from "./html-pages/landing-page";
+import About from "./html-pages/about"
+import Stores from "./html-pages/stores";
+import SignUp from "./html-pages/signup";
+import Admin from "./html-pages/store-admin";
+import PrivateRoute from './routes/private-route';
+import { AuthContext } from "./context/auth";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    const existingTokens = localStorage.getItem("tokens");
+    const [authTokens, setAuthTokens] = React.useState(existingTokens);
+
+    // const setTokens = (data) => {
+    //
+    // }
+  }
+
+  setTokens(data) {
+    localStorage.setItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  }
+
   render() {
     return (
-      <Router>
-        <div>
-          <NavBar />
-        </div>
-        <Switch>
-          <Route path="/login"><Login /></Route>
-          <Route path="/admin"><Admin /></Route>
-          <Route path="/stores"><Stores /></Route>
-          <Route path="/signup"><Signup /></Route>
-          <Route exact path="/"><Home /></Route>
-        </Switch>
-      </Router>
+      <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+        <Router>
+          <Route> <NavBar/> </Route>
+          <Switch>
+            <Route path="/login"><Login/></Route>
+            <Route path="/stores"><Stores/></Route>
+            <Route path="/about"><About/></Route>
+            <PrivateRoute path="/admin" comp={Admin}/>
+            <Route path="/signup"><Signup/></Route>
+            <Route exact path="/"><Home/></Route>
+          </Switch>
+        </Router>
+      </AuthContext.Provider>
     );
   }
 }
+
 export default App;

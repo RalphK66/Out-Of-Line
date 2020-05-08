@@ -6,6 +6,7 @@ import '../css/sign-up.css'
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
+    this.state ={};
 
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
@@ -33,13 +34,16 @@ class SignUp extends React.Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    fetch('/api/signup', {
+    console.log(this.state);
+
+    fetch('http://localhost:9000/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields
         phoneNumber: this.state.phoneNumber,
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        isEmployee: this.state.isEmployee
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +58,7 @@ class SignUp extends React.Component {
         <Form onSubmit={this.handleSubmission}>
           <FormGroup>
             <div className="container shadow form-box">
-              <Label className="display-4 form-label">SignUp</Label>
+              <Label className="display-4 form-label">Sign Up</Label>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaEnvelope/></InputGroupText>

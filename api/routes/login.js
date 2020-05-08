@@ -1,44 +1,15 @@
-const mysql = require('mysql');
 const crypto = require('crypto');
+const db = require('../db');
 
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res, next) => { // next = next route middleware
-  const connection = mysql.createConnection(
-    {
-      host: "localhost",
-      user: process.env.DB_ADMIN_USERNAME,
-      password: process.env.DB_ADMIN_PASSWORD,
-      database: process.env.DB_NAME
-    }
-  );
-
-  connection.query("SELECT * FROM users", (err, results, fields) => {
-    if (err) throw err;
-    res.send(results);
-  });
-  connection.destroy();
-});
-
 router.post('/', (req, res, next) => {
-  const connection = mysql.createConnection(
-    {
-      host: "localhost",
-      user: process.env.DB_ADMIN_USERNAME,
-      password: process.env.DB_ADMIN_PASSWORD,
-      database: process.env.DB_NAME
-    }
-  );
-
-  let data = req.body;
-  console.log(data.username);
-
-  connection.query("SELECT password_salt, password_hash, isEmployee FROM users WHERE username = (?)", data.username, function (err, result) {
+  db.query("SELECT password_salt, password_hash, isEmployee FROM users WHERE username = (?)", req.body.username, function (err, result) {
     console.log(result);
 
     const checkIfValid = (password) => {
-      let newHash = crypto.pbkdf2Sync(password, result[0].password_salt, 1000, 64, `sha512`).toString(`hex`);
+      const newHash = crypto.pbkdf2Sync(password, result[0].password_salt, 1000, 64, `sha512`).toString(`hex`);
       if (newHash === result[0].password_hash) {
         console.log("The same.");
         return true;
@@ -48,12 +19,12 @@ router.post('/', (req, res, next) => {
       }
     }
 
-    if (checkIfValid(data.password)) {
+    if (checkIfValid(req.body.password)) {
       console.log("I get in here. 200")
       res.sendStatus(200);
 
-      let values = [];
-      values.push(data.username, data.password, result[0].isEmployee);
+      const values = [];
+      values.push(req.body.username, req.body.password, result[0].isEmployee);
       console.log(values);
 
       res.end(JSON.stringify(values));
@@ -62,8 +33,6 @@ router.post('/', (req, res, next) => {
       res.sendStatus(401);
     }
   });
-
-  connection.destroy();
 });
 
 module.exports = router;

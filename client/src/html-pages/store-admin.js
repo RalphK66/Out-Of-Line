@@ -5,7 +5,7 @@ class Tags extends React.Component{
         let customers = [{"name":"Nathan"}, {"name":"Chris"}, {"name":"Armaan"}, {"name":"Patrick"}, {"name":"Amir"}];
         let tags = [];
         let table = [];
-        for (var name in customers) {
+        for (const name in customers) {
             tags.push(<td key={customers[name]["name"]}>{customers[name]["name"]}</td>);
         }
         table.push(<tr key={tags}>{tags}</tr>);

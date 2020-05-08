@@ -4,13 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
-const testAPIRouter = require('./routes/testAPI');
+const loginRouter = require('./routes/login');
 
 const app = express();
 
@@ -28,7 +29,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
-app.use('/testAPI', testAPIRouter);
+app.use('/login', loginRouter);
+
+// Connect to database
+// app.locals.connection = mysql.createConnection(
+//   {
+//     // connectionLimit: 10,
+//     host: "localhost",
+//     user: process.env.DB_ADMIN_USERNAME,
+//     password: process.env.DB_ADMIN_PASSWORD,
+//     database: process.env.DB_NAME
+//   }
+// );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

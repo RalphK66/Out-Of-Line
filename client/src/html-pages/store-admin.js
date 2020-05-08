@@ -5,6 +5,8 @@ class Tags extends React.Component{
     constructor(props) {
         super(props);
 
+        // Setup fields
+
         this.handleText = this.handleText.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
         this.removeDB = this.removeDB.bind(this);
@@ -14,6 +16,7 @@ class Tags extends React.Component{
         this.nameField = React.createRef();
     }
 
+    // Change the form input into an object where name: value
     handleText(event) {
         this.setState({[event.target.name]: event.target.value});
     }
@@ -21,6 +24,7 @@ class Tags extends React.Component{
     handleSubmission(event) {
         event.preventDefault();
 
+        // Send information to database
         fetch('http://localhost:9000/adminAdd', {
             method: "POST",
             body: JSON.stringify({
@@ -44,6 +48,7 @@ class Tags extends React.Component{
     removeDB(event) {
         event.preventDefault();
 
+        // Send information to database
         fetch('http://localhost:9000/adminRemove', {
             method: "POST",
             body: JSON.stringify({

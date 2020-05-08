@@ -26,6 +26,7 @@ router.get('/', (req, res, next) => { // next = next route middleware
   // connectToDatabase().then(data => res.send(data));
 });
 
+// Delete rows from database by name field.
 router.post('/', (req, res, next) => {
   const connection = mysql.createConnection(
     {

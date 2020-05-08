@@ -26,6 +26,7 @@ router.get('/', (req, res, next) => { // next = next route middleware
   // connectToDatabase().then(data => res.send(data));
 });
 
+// Add new row to database table.
 router.post('/', (req, res, next) => {
   const connection = mysql.createConnection(
     {

@@ -21,7 +21,7 @@ class Signup extends React.Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    fetch('/signup', {
+    fetch('/api/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields

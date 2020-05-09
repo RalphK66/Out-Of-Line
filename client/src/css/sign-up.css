@@ -1,0 +1,28 @@
+.box {
+    margin-top: 50px;
+    border: 20px solid #AAD2A9; 
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+.form-label {
+    color: #6A6A6A;
+}
+
+Button {
+    background-color: #AAD2A9;
+    font-weight: bolder;
+    border: none;
+    width: 150px;
+}
+
+.custom-checkbox-lg {
+    color: #6A6A6A;
+    font-weight: bolder;
+   
+}

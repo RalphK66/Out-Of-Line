@@ -1,0 +1,28 @@
+.box {
+    margin-top: 50px;
+    border: 20px solid #AAD2A9;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.login-label {
+    color: #6A6A6A !important;
+}
+
+Button {
+    background-color: #AAD2A9 !important;
+    border: none !important;
+    width: 150px !important;
+}
+input {
+    color: #6A6A6A !important;
+}
+.icon {
+    color: #6A6A6A !important;
+}

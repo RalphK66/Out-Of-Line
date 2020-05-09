@@ -1,9 +1,11 @@
 const mysql = require('mysql');
 const crypto = require('crypto');
-
-
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
+
+// string to add onto jwt token.
+const jwtSecret = "addingOntoSecret";
 
 /* GET home page. */
 router.get('/', (req, res, next) => { // next = next route middleware
@@ -46,16 +48,13 @@ router.post('/', (req, res, next) => {
             hash: hash
       }
   }
-
-  let data = req.body;
-  console.log(data);
   
-  let saltAndHashed = saltAndHashPassword(data.password);
+  let saltAndHashed = saltAndHashPassword(req.body.password);
 
   let values = [];
-  values.push(data.email, data.phoneNumber, data.username, saltAndHashed.salt, saltAndHashed.hash);
+  values.push(req.body.email, req.body.phoneNumber, req.body.username, saltAndHashed.salt, saltAndHashed.hash);
   
-  if (data.isEmployee === "on") {
+  if (req.body.isEmployee === "on") {
     values.push(true);
   } else {
     values.push(false);
@@ -67,10 +66,21 @@ router.post('/', (req, res, next) => {
     if (err) throw err;
     console.log("Success!")
 
-    connection.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, res) {
+    connection.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, result) {
       if(err) {
         throw err;
       }
+    });
+
+    connection.query("SELECT username, isEmployee FROM users WHERE email = (?)", req.body.email, function(err, result) {
+      console.log("I get in here. 200");
+     
+      const payload = {username: req.body.username, isEmployee: result[0].isEmployee};
+
+      const token = jwt.sign(payload, jwtSecret, {expiresIn: '8h'});
+      console.log(token);
+
+      res.cookie("token", token, {httpOnly: false}).send(res.cookies);
     });
   });
   

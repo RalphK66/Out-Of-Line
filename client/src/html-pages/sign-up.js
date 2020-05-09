@@ -4,7 +4,11 @@ import { Redirect } from 'react-router-dom'
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isEmployee: false,
+            isLoggedIn: false,
+            error: false
+        };
 
         this.handleText = this.handleText.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
@@ -45,10 +49,20 @@ class SignUp extends React.Component {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: 'include'
         })
         .then(response => {
-            console.log(response.json());
+            if (response.status == 200) {
+                localStorage.setItem(document.cookie);
+                this.isLoggedIn = true;
+
+                if (this.isLoggedIn) {
+                    return <Redirect to="/" />;
+                  }
+            } else {
+                this.error = false;
+            }
           })
         .catch(function(err) {
             console.error(err);

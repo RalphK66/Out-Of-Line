@@ -1,8 +1,12 @@
 const crypto = require('crypto');
 const db = require('../db');
 
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
+
+// string to add onto jwt token.
+const jwtSecret = "addingOntoSecret";
 
 router.post('/', (req, res, next) => {
   const saltAndHashPassword = (password) => {
@@ -19,17 +23,20 @@ router.post('/', (req, res, next) => {
   console.log(values);
 
   db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, result) {
-    if(err) throw err;
+    if (err) throw err;
     res.send("Updated!");
   });
-});
 
-// Connect to MySQL
-function connectToDatabase() {
-  return db.query("SELECT * FROM users", (err, results, fields) => {
-    if (err) throw err;
-    return results;
+  db.query("SELECT username, isEmployee FROM users WHERE email = (?)", req.body.email, function(err, result) {
+    console.log("I get in here. 200");
+
+    const payload = {username: req.body.username, isEmployee: result[0].isEmployee};
+
+    const token = jwt.sign(payload, jwtSecret, {expiresIn: '8h'});
+    console.log(token);
+
+    res.cookie("token", token, {httpOnly: false}).send(res.cookies);
   });
-}
+});
 
 module.exports = router;

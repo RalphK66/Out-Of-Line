@@ -1,12 +1,23 @@
 import React from 'react';
-import { Form, FormGroup, Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
-import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
+import {
+  Form,
+  FormGroup,
+  Input,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon,
+  Button,
+  Label,
+  CustomInput
+} from 'reactstrap'
+import {FaUser, FaLock, FaPhone, FaEnvelope} from 'react-icons/fa';
 import '../css/sign-up.css'
+import {Redirect} from "react-router-dom";
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={};
+    this.state = {};
 
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
@@ -48,8 +59,24 @@ class SignUp extends React.Component {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      }
-    });
+      },
+      credentials: 'include'
+    })
+      .then(response => {
+        if (response.status === 200) {
+          localStorage.setItem("token", document.cookie);
+          this.isLoggedIn = true;
+
+          if (this.isLoggedIn) {
+            return <Redirect to="/"/>;
+          }
+        } else {
+          this.error = false;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -63,32 +90,37 @@ class SignUp extends React.Component {
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaEnvelope/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
+                <Input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email"
+                       bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaPhone/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
+                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField}
+                       placeholder="Phone Number" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaUser/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField} placeholder="Username" bsSize="lg"/> <br />
+                <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField}
+                       placeholder="Username" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaLock/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField} placeholder="Password" bsSize="lg"/> <br />
+                <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField}
+                       placeholder="Password" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <div>
-                <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox" onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
+                <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
+                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
               </div>
               <br/>
               <Button size="lg">Submit</Button>

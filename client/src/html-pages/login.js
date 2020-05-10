@@ -18,15 +18,14 @@ import {
 
 function Login() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
-  const [isError, setIsError] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const { setAuthTokens } = useAuth();
+  const {setAuthTokens} = useAuth();
 
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("/api/login", {
+    fetch("http://localhost:9000/login", {
       method: "POST",
       body: JSON.stringify({
         username: username,
@@ -35,25 +34,28 @@ function Login() {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      }
+      },
+      credentials: 'include'
     })
-      .then(result => {
-        if (result.status === 200) {
-          console.log("Got!");
-          setAuthTokens(result.data);
+      .then(res => {
+        if (res.status === 200) {
+          console.log(document.cookie);
+          setAuthTokens(document.cookie);
           setLoggedIn(true);
         } else {
-          setIsError(true);
+          throw Error(res.statusText);
         }
-      })
-      .catch(e => {
-        setIsError(true);
       });
 
     // Clear input values
     setUsername('');
     setPassword('');
   };
+
+  const Logout = () => {
+    localStorage.clear();
+    return <Redirect to="/"/>;
+  }
 
   if (isLoggedIn) {
     return <Redirect to="/"/>;
@@ -115,7 +117,7 @@ function Login() {
             <a href="/signup">Sign-Up</a>
             <br/>
             <br/>
-            <Button size="lg">Logout</Button>
+            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={Logout}>Logout</Button>
           </div>
         </FormGroup>
       </Form>

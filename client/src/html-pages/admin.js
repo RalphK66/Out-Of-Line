@@ -1,6 +1,6 @@
 import React from "react";
 
-class Tags extends React.Component{
+class Admin extends React.Component{
     createTags = () => {
         let customers = [{"name":"Nathan"}, {"name":"Chris"}, {"name":"Armaan"}, {"name":"Patrick"}, {"name":"Amir"}];
         let tags = [];
@@ -26,4 +26,4 @@ class Tags extends React.Component{
     }
 }
 
-export default Tags;
+export default Admin;

@@ -6,6 +6,7 @@ import Home from "./html-pages/landing-page";
 import Admin from "./html-pages/store-admin";
 import SignUp from "./html-pages/sign-up";
 import NavBar from "./html-pages/Navbar";
+import AddUser from "./html-pages/admin-form";
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/admin"><Admin /></Route>
           <Route path="/signup"><SignUp /></Route>
           <Route exact path="/"><Home /></Route>
+          <Route exact path="/adduser"><AddUser /></Route>
         </Switch>
       </Router>
     );

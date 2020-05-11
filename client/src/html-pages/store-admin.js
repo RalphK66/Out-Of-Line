@@ -2,95 +2,60 @@ import React from "react";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 
 class Tags extends React.Component{
+
     constructor(props) {
         super(props);
+        this.displayQueue = this.displayQueue.bind(this);
 
-        // Setup fields
-
-        this.handleText = this.handleText.bind(this);
-        this.handleSubmission = this.handleSubmission.bind(this);
-        this.removeDB = this.removeDB.bind(this);
-
-        this.emailField = React.createRef();
-        this.phoneNumberField = React.createRef();
-        this.nameField = React.createRef();
+        this.state = {
+            loading: true,
+            result: null
+        }
     }
-
-    // Change the form input into an object where name: value
-    handleText(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    handleSubmission(event) {
-        event.preventDefault();
-
-        // Send information to database
-        fetch('http://localhost:9000/adminAdd', {
-            method: "POST",
-            body: JSON.stringify({
-                email: this.state.email,
-                phoneNumber: this.state.phoneNumber,
-                name: this.state.name
-            }),
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
+    
+    displayQueue(event) {
+        fetch("http://localhost:9000/tempUsers", {
+            method: "GET",
         })
-        .then(response => {
-            console.log(response.json());
-          })
+        .then(response => 
+            response.json())
+        .then(data => {
+            let table = [];
+            let tags = [];
+            for(let i = 0; i < data.length; i++){
+                tags.push(<tr key={data[i].id}><td>{data[i].name}</td><td>{data[i].email}</td><td>{data[i].phone_number}</td></tr>);
+            }
+            console.log(tags);
+            this.setState({
+                loading: false,
+                result: tags
+            })
+        })
         .catch(function(err) {
             console.error(err);
-        });
-    }
-
-    removeDB(event) {
-        event.preventDefault();
-
-        // Send information to database
-        fetch('http://localhost:9000/adminRemove', {
-            method: "POST",
-            body: JSON.stringify({
-                name: this.state.name
-            }),
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
         })
-        .then(response => {
-            console.log(response.json());
-          })
-        .catch(function(err) {
-            console.error(err);
-        });
-            
     }
+
+
 
     render() {
+        window.onload = this.displayQueue;
+        const {loading, result} = this.state;
         return(
             <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
-                <Form onSubmit={this.handleSubmission}>
-                    <FormGroup>
-                        <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
-                            <Label style={{color: "#6A6A6A"}} className="display-4">Add </Label>
-                            <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
-                            <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
-                            <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
-                            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Submit</Button>
-                        </div>
-                    </FormGroup>
-                </Form>
+                <a href="/adduser">
+                    <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Add to queue</Button>
+                </a>
                 <div>
-                    <FormGroup>
-                        <Form onSubmit={this.removeDB}>
-                            <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
-                            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Remove By Name</Button>
-                        </Form>
-                    </FormGroup>
-                </div>
+                    {!result &&
+                    !loading && (
+                    <div>
+                        <p>Loading list... </p>
+                    </div>
+                    )}
+                    {result && <h1>Result is: {<table><tbody>{result}</tbody></table>}</h1>}
             </div>
+        </div>
         )
     }
 }

@@ -23,26 +23,27 @@ function Login() {
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:9000/login", {
-      method: "POST",
-      body: JSON.stringify({
-        username: username,
-        password: password
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      credentials: 'include'
-    })
-      .then(res => {
-        if (res.status === 200) {
-          console.log(document.cookie);
-          setLoggedIn(true);
-        } else {
-          throw Error(res.statusText);
-        }
-      });
+    console.log(process.env.LOCALHOST_URL);
+
+    // fetch(process.env.LOCALHOSTURL + '/login', {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    //   credentials: 'include'
+    // })
+    //   .then(res => {
+    //     if (res.status === 200) {
+    //       setLoggedIn(true);
+    //     } else {
+    //       throw Error(res.statusText);
+    //     }
+    //   });
 
     // Clear input values
     setUsername('');
@@ -109,9 +110,6 @@ function Login() {
             <Button
               type="submit"
               size="lg" onClick={PostLogin}>Login</Button>
-            <br/>
-            <br/>
-            <a href="/signup">Sign-Up</a>
             <br/>
             <br/>
             <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={Logout}>Logout</Button>

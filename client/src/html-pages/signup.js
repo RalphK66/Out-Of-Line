@@ -17,7 +17,9 @@ import {Redirect} from "react-router-dom";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isEmployee: false
+    };
 
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
@@ -47,7 +49,7 @@ class SignUp extends React.Component {
 
     console.log(this.state);
 
-    fetch('/api/signup', {
+    fetch(process.env.localhostURL + '/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields

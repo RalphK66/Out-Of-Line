@@ -8,7 +8,6 @@ import Stores from "./html-pages/stores";
 import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
-import {AuthContext} from "./context/auth";
 
 // class App extends React.Component {
 //   constructor(props) {
@@ -46,16 +45,10 @@ import {AuthContext} from "./context/auth";
 //   }
 // }
 
-const App = () => {
-  const existingTokens = localStorage.getItem("token");
-  const [authTokens, setAuthTokens] = React.useState(existingTokens);
-  const setTokens = (data) => {
-    localStorage.setItem("tokens", JSON.stringify(data));
-    setAuthTokens(data);
-  };
+class App extends React.Component {
 
-  return (
-    <AuthContext.Provider value={{authTokens, setAuthTokens: setTokens}}>
+  render() {
+    return (
       <Router>
         <Route> <NavBar/> </Route>
         <Switch>
@@ -67,8 +60,8 @@ const App = () => {
           <Route exact path="/" ><Home /></Route>
         </Switch>
       </Router>
-    </AuthContext.Provider>
   );
-};
+  } 
+}
 
 export default App;

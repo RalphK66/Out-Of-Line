@@ -6,7 +6,6 @@ const express = require('express');
 const router = express.Router();
 
 // string to add onto jwt token.
-const jwtSecret = "addingOntoSecret";
 
 router.post('/', (req, res, next) => {
   const saltAndHashPassword = (password) => {
@@ -24,18 +23,17 @@ router.post('/', (req, res, next) => {
 
   db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, result) {
     if (err) throw err;
-    res.send("Updated!");
   });
 
   db.query("SELECT username, isEmployee FROM users WHERE email = (?)", req.body.email, function(err, result) {
     console.log("I get in here. 200");
 
-    const payload = {username: req.body.username, isEmployee: result[0].isEmployee};
+    const payload = {username: req.body.username, password: req.body.password, isEmployee: result[0].isEmployee};
 
-    const token = jwt.sign(payload, jwtSecret, {expiresIn: '8h'});
+    const token = jwt.sign(payload, process.env.SECRET_JWT_STRING, {expiresIn: '8h'});
     console.log(token);
 
-    res.cookie("token", token, {httpOnly: false}).send(res.cookies);
+    res.cookie("token", token, {httpOnly: true}).send();
   });
 });
 

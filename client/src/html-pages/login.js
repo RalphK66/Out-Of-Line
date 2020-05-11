@@ -2,7 +2,6 @@ import React from "react";
 import {FaUser} from "react-icons/fa";
 import {FaLock} from "react-icons/fa";
 import '../css/login.css'
-import {useAuth} from "../context/auth";
 import {Redirect} from "react-router-dom";
 import {
   Form,
@@ -14,13 +13,12 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-
+import Cookies from "js-cookie";
 
 function Login() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const {setAuthTokens} = useAuth();
 
   const PostLogin = (event) => {
     event.preventDefault();
@@ -40,7 +38,6 @@ function Login() {
       .then(res => {
         if (res.status === 200) {
           console.log(document.cookie);
-          setAuthTokens(document.cookie);
           setLoggedIn(true);
         } else {
           throw Error(res.statusText);
@@ -53,7 +50,7 @@ function Login() {
   };
 
   const Logout = () => {
-    localStorage.clear();
+    Cookies.remove('token');    
     return <Redirect to="/"/>;
   }
 

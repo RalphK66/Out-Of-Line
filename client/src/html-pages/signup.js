@@ -64,7 +64,6 @@ class SignUp extends React.Component {
     })
       .then(response => {
         if (response.status === 200) {
-          localStorage.setItem("token", document.cookie);
           this.isLoggedIn = true;
 
           if (this.isLoggedIn) {

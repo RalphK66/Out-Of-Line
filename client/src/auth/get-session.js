@@ -16,7 +16,7 @@ export const getSession = () => {
   } catch (error) {
     console.log(error)
   }
-  if (session != undefined && session.isEmployee) {
+  if (session !== undefined && session.isEmployee) {
     return session
   }
 }

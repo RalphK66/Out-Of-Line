@@ -19,6 +19,7 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedIn: false,
       isEmployee: false
     };
 
@@ -71,8 +72,7 @@ class SignUp extends React.Component {
     })
       .then(response => { // Redirects after successful sign-up 
         if (response.status === 200) {
-          this.isLoggedIn = true;
-          return <Redirect to="/"/>;
+          this.setState({isLoggedIn: true});
         } 
       })
       .catch(err => {
@@ -82,6 +82,10 @@ class SignUp extends React.Component {
 
   // Front-end component
   render() {
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      return <Redirect to="/"/>;
+    }
     return (
       <div className="container col-sm-8 shadow box">
         <Form onSubmit={this.handleSubmission}>

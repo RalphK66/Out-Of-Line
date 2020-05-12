@@ -17,7 +17,7 @@ import Cookies from "js-cookie";
 
 // Login component 
 function Login() {
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
+  const [loginRedirectState, setLoginRedirectState] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -39,8 +39,8 @@ function Login() {
       credentials: 'include'
     })
       .then(res => {
-        if (res.status === 200) {// Redirects after successful login 
-          setLoggedIn(true);
+        if (res.status === 200) {// Redirects after successful login
+          setLoginRedirectState(true);
         }
       })
       .catch(err => {
@@ -54,12 +54,12 @@ function Login() {
 
   // Logout component 
   const Logout = () => {
-    Cookies.remove('token');    
-    return <Redirect to="/"/>;
+    Cookies.remove('token');
+    setLoginRedirectState(true);
   }
 
-  // Redirects to landing page once logged in
-  if (isLoggedIn) {
+  // Redirects to landing page once logged in/out
+  if (loginRedirectState) {
     return <Redirect to="/"/>;
   }
 

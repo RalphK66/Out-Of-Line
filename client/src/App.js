@@ -3,12 +3,19 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./html-pages/login";
 import NavBar from "./html-pages/navbar";
 import Home from "./html-pages/landing-page";
+<<<<<<< HEAD
 import About from "./html-pages/about"
 import Stores from "./html-pages/stores";
 import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import {AuthContext} from "./context/auth";
+=======
+import Admin from "./html-pages/store-admin";
+import SignUp from "./html-pages/sign-up";
+import NavBar from "./html-pages/Navbar";
+import AddUser from "./html-pages/admin-form";
+>>>>>>> Kyrill-Metalnikov-addremove-user
 
 // class App extends React.Component {
 //   constructor(props) {
@@ -64,7 +71,12 @@ const App = () => {
           <Route path="/about"><About/></Route>
           <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
           <Route path="/signup"><SignUp /></Route>
+<<<<<<< HEAD
           <Route exact path="/" ><Home /></Route>
+=======
+          <Route exact path="/"><Home /></Route>
+          <Route exact path="/adduser"><AddUser /></Route>
+>>>>>>> Kyrill-Metalnikov-addremove-user
         </Switch>
       </Router>
     </AuthContext.Provider>

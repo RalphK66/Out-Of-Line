@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/about.css";
-
 import janelle from "../images/Janelle.jpg";
 import david from "../images/David.png";
 import kyrill from "../images/Kyrill.jpg";
@@ -26,8 +25,13 @@ const crew = {
   },
 };
 
+
+
+
 const about = () => {
   return (
+    <div>
+    
     <Container fluid className="box">
       <Container>
         <div className="header container ">
@@ -112,7 +116,13 @@ const about = () => {
         </Col>
         <Col sm></Col>
       </Row>
+   
+      
+
     </Container>
+
+    
+    </div>
   );
 };
 

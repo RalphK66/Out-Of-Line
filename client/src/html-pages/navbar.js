@@ -15,15 +15,34 @@ import {
 
 import logo from "../images/logo.png";
 import '../index.css'
+import "../css/navbar.css"
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  function Germ(e) {
+      e.preventDefault();
+      let gif = document.getElementById("gif")
+      let page = document.getElementById("annimation")
+      if (e.detail === 5) {
+        gif.hidden = false;
+        page.style.animationPlayState = "running";
+        gif.style.animationPlayState = "running";
+        setTimeout(() => {
+          page.style.animationPlayState = "paused";
+          gif.hidden = true;
+        }, 8000);
+      }
+
+    }
+
+
   return (
     <div>
-      <Navbar dark expand="md" className="shadow" >
-        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
+    <img id="gif" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' />
+      <Navbar dark expand="md" className="shadow" id="navbar">
+        <NavbarBrand tag={RRNavLink} exact to="/"><img onClick={Germ} src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar >
           <Nav className="mr-auto" navbar >

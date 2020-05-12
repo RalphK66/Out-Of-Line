@@ -1,6 +1,9 @@
 import React from 'react';
-import { Form, FormGroup, Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
+import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
+
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+
 import '../css/sign-up.css'
 
 class SignUp extends React.Component {
@@ -55,24 +58,29 @@ class SignUp extends React.Component {
   render() {
     return (
       <div className="container col-sm-8 shadow box">
-        <Form onSubmit={this.handleSubmission}>
-          <FormGroup>
+        <AvForm onSubmit={this.handleSubmission}>
+          <AvGroup>
             <div className="container shadow form-box">
               <Label className="display-4 form-label">Sign Up</Label>
+              <AvGroup>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaEnvelope/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
+                <AvInput name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
+                <AvFeedback>Please enter a valid email address</AvFeedback>  
               </InputGroup>
-              <br/>
-              <InputGroup>
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaPhone/></InputGroupText>
-                </InputGroupAddon>
-                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
-              </InputGroup>
-              <br/>
+              </AvGroup>
+ 
+              <AvGroup>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText><FaPhone/></InputGroupText>
+                    </InputGroupAddon>
+                  <AvInput name="phoneNumber" type="tel" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
+                  <AvFeedback>Please enter a valid 10-digit number</AvFeedback>
+                  </InputGroup>
+              </AvGroup>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><FaUser/></InputGroupText>
@@ -93,8 +101,8 @@ class SignUp extends React.Component {
               <br/>
               <Button size="lg">Submit</Button>
             </div>
-          </FormGroup>
-        </Form>
+          </AvGroup>
+        </AvForm>
       </div>
     );
   }

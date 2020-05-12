@@ -1,0 +1,16 @@
+#gif {
+    z-index: 999;
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    animation-name: covid;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    
+}
+@keyframes covid {
+    from {left: -20vw; top: -20vh}
+    to {left: 100vw; top: 70vh};
+}
+

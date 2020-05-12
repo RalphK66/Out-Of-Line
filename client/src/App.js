@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./html-pages/login";
 import NavBar from "./html-pages/navbar";
@@ -9,6 +9,8 @@ import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/store-admin";
 import PrivateRoute from './routes/private-route';
 import {AuthContext} from "./context/auth";
+import collection from 'easter-egg-collection'
+
 
 // class App extends Component {
 //   constructor(props) {
@@ -57,7 +59,8 @@ const App = () => {
   return (
     <AuthContext.Provider value={{authTokens, setAuthTokens: setTokens}}>
       <Router>
-        <Route> <NavBar/> </Route>
+      
+        <Route> <NavBar/></Route>
         <Switch>
           <Route path="/login"><Login/></Route>
           <Route path="/stores"><Stores/></Route>

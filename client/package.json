@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "availity-reactstrap-validation": "^2.6.1",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "mapbox-gl": "^1.10.0",
@@ -15,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-mapbox-gl-geocoder": "^1.1.0",
+    "react-notifications-component": "^2.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1"
@@ -40,5 +42,8 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "easter-egg-collection": "^1.4.56"
+  }
 }

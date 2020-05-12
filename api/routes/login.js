@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 const db = require('../db');
-
 const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
@@ -28,7 +27,7 @@ router.post('/', (req, res, next) => {
       const token = jwt.sign(payload, process.env.SECRET_JWT_STRING, {expiresIn: '8h'});
       console.log(token);
 
-      res.cookie("token", token, {httpOnly: true}).send();
+      res.cookie("token", token, {httpOnly: false}).send();
     } else {
       res.sendStatus(401);
     }

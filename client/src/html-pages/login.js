@@ -23,27 +23,25 @@ function Login() {
   const PostLogin = (event) => {
     event.preventDefault();
 
-    console.log(process.env.LOCALHOST_URL);
-
-    // fetch(process.env.LOCALHOSTURL + '/login', {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password
-    //   }),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   credentials: 'include'
-    // })
-    //   .then(res => {
-    //     if (res.status === 200) {
-    //       setLoggedIn(true);
-    //     } else {
-    //       throw Error(res.statusText);
-    //     }
-    //   });
+    fetch(process.env.REACT_APP_API_URL + '/login', {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      credentials: 'include'
+    })
+      .then(res => {
+        if (res.status === 200) {
+          setLoggedIn(true);
+        } else {
+          throw Error(res.statusText);
+        }
+      });
 
     // Clear input values
     setUsername('');

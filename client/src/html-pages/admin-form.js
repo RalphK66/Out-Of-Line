@@ -42,6 +42,8 @@ class Tags extends React.Component{
         .catch(function(err) {
             console.error(err);
         });
+
+        window.location.replace("http://localhost:3000/admin");
     }
 
 

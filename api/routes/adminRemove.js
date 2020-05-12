@@ -38,17 +38,14 @@ router.post('/', (req, res, next) => {
   );
 
   let data = req.body;
-  console.log(data);
-  
-  let values = [];
-  values.push(data.name);
-  console.log(values);
+  let value = data.id;
+  console.log(value);
 
   connection.connect(err => {
     if (err) throw err;
     console.log("Success!")
 
-    connection.query("DELETE FROM temp_users WHERE name = (?)", [values], function(err, res) {
+    connection.query("DELETE FROM temp_users WHERE id = (?)", [value], function(err, res) {
       if(err) {
         throw err;
       }

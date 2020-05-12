@@ -6,13 +6,18 @@ class Tags extends React.Component{
     constructor(props) {
         super(props);
         this.displayQueue = this.displayQueue.bind(this);
+        this.refresh = this.refresh.bind(this);
 
         this.state = {
             loading: true,
             result: null
         }
     }
-    
+
+    refresh(){
+        setTimeout(function(){window.location.reload();},100);
+    }
+
     displayQueue(event) {
         fetch("http://localhost:9000/tempUsers", {
             method: "GET",
@@ -20,12 +25,17 @@ class Tags extends React.Component{
         .then(response => 
             response.json())
         .then(data => {
-            let table = [];
             let tags = [];
             for(let i = 0; i < data.length; i++){
-                tags.push(<tr key={data[i].id}><td>{data[i].name}</td><td>{data[i].email}</td><td>{data[i].phone_number}</td></tr>);
+                tags.push(<tr key={data[i].id}>
+                        <td>{data[i].name}</td>
+                        <td>{data[i].email}</td>
+                        <td>{data[i].phone_number}</td>
+                        <td><form action="http://localhost:9000/adminRemove" method="POST">
+                            <button name="id" type="submit" value={data[i].id} onClick={this.refresh}>DELETE</button>
+                        </form></td>
+                    </tr>);
             }
-            console.log(tags);
             this.setState({
                 loading: false,
                 result: tags
@@ -36,8 +46,6 @@ class Tags extends React.Component{
         })
     }
 
-
-
     render() {
         window.onload = this.displayQueue;
         const {loading, result} = this.state;
@@ -47,12 +55,8 @@ class Tags extends React.Component{
                     <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Add to queue</Button>
                 </a>
                 <div>
-                    {!result &&
-                    !loading && (
-                    <div>
-                        <p>Loading list... </p>
-                    </div>
-                    )}
+                    
+                    {loading && <p>Loading list...</p>}
                     {result && <h1>Result is: {<table><tbody>{result}</tbody></table>}</h1>}
             </div>
         </div>

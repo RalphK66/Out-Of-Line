@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 
+// Gets the current JWT session token and checks if the token is a. undefined and b. if if the token's isEmployee property is true
 export const getSession = () => {
   const jwt = Cookies.get('token')
   let session

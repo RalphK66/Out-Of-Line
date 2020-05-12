@@ -15,14 +15,17 @@ import {
 } from "reactstrap";
 import Cookies from "js-cookie";
 
+// Login component 
 function Login() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  // Handles login event 
   const PostLogin = (event) => {
     event.preventDefault();
 
+    // Fetch request to the backend 
     fetch(process.env.REACT_APP_API_URL + '/login', {
       method: "POST",
       body: JSON.stringify({
@@ -36,7 +39,7 @@ function Login() {
       credentials: 'include'
     })
       .then(res => {
-        if (res.status === 200) {
+        if (res.status === 200) {// Redirects after successful login 
           setLoggedIn(true);
         } else {
           throw Error(res.statusText);
@@ -48,15 +51,18 @@ function Login() {
     setPassword('');
   };
 
+  // Logout component 
   const Logout = () => {
     Cookies.remove('token');    
     return <Redirect to="/"/>;
   }
 
+  // Redirects to landing page once logged in
   if (isLoggedIn) {
     return <Redirect to="/"/>;
   }
 
+  // Front-end component
   return (
     <div className="container col-sm-8 shadow box">
       <Form>

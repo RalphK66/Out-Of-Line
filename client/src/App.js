@@ -3,9 +3,12 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./html-pages/login";
 import NavBar from "./html-pages/navbar";
 import Home from "./html-pages/landing-page";
-import Admin from "./html-pages/store-admin";
-import SignUp from "./html-pages/sign-up";
-import NavBar from "./html-pages/Navbar";
+import About from "./html-pages/about"
+import Stores from "./html-pages/stores";
+import SignUp from "./html-pages/signup";
+import Admin from "./html-pages/admin";
+import PrivateRoute from './routes/private-route';
+import {AuthContext} from "./context/auth";
 import AddUser from "./html-pages/admin-form";
 
 // class App extends React.Component {

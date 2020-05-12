@@ -41,10 +41,11 @@ function Login() {
       .then(res => {
         if (res.status === 200) {// Redirects after successful login 
           setLoggedIn(true);
-        } else {
-          throw Error(res.statusText);
         }
-      });
+      })
+      .catch(err => {
+        console.error(err);
+      });;
 
     // Clear input values
     setUsername('');

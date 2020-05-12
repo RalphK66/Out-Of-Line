@@ -72,13 +72,8 @@ class SignUp extends React.Component {
       .then(response => { // Redirects after successful sign-up 
         if (response.status === 200) {
           this.isLoggedIn = true;
-
-          if (this.isLoggedIn) {
-            return <Redirect to="/"/>;
-          }
-        } else {
-          this.error = false;
-        }
+          return <Redirect to="/"/>;
+        } 
       })
       .catch(err => {
         console.error(err);

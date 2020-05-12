@@ -1,16 +1,23 @@
-import React, {Component} from "react";
+import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./html-pages/login";
 import NavBar from "./html-pages/navbar";
 import Home from "./html-pages/landing-page";
+<<<<<<< HEAD
 import About from "./html-pages/about"
 import Stores from "./html-pages/stores";
 import SignUp from "./html-pages/signup";
-import Admin from "./html-pages/store-admin";
+import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import {AuthContext} from "./context/auth";
+=======
+import Admin from "./html-pages/store-admin";
+import SignUp from "./html-pages/sign-up";
+import NavBar from "./html-pages/Navbar";
+import AddUser from "./html-pages/admin-form";
+>>>>>>> Kyrill-Metalnikov-addremove-user
 
-// class App extends Component {
+// class App extends React.Component {
 //   constructor(props) {
 //     super(props);
 //
@@ -47,7 +54,7 @@ import {AuthContext} from "./context/auth";
 // }
 
 const App = () => {
-  const existingTokens = localStorage.getItem("tokens");
+  const existingTokens = localStorage.getItem("token");
   const [authTokens, setAuthTokens] = React.useState(existingTokens);
   const setTokens = (data) => {
     localStorage.setItem("tokens", JSON.stringify(data));
@@ -59,12 +66,17 @@ const App = () => {
       <Router>
         <Route> <NavBar/> </Route>
         <Switch>
-          <Route path="/login"><Login/></Route>
-          <Route path="/stores"><Stores/></Route>
+          <Route path="/login" ><Login /></Route>
+          <Route path="/stores" ><Stores /></Route>
           <Route path="/about"><About/></Route>
-          <PrivateRoute path="/admin"><Admin/></PrivateRoute>
-          <Route path="/signup"><SignUp/></Route>
-          <Route exact path="/"><Home/></Route>
+          <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
+          <Route path="/signup"><SignUp /></Route>
+<<<<<<< HEAD
+          <Route exact path="/" ><Home /></Route>
+=======
+          <Route exact path="/"><Home /></Route>
+          <Route exact path="/adduser"><AddUser /></Route>
+>>>>>>> Kyrill-Metalnikov-addremove-user
         </Switch>
       </Router>
     </AuthContext.Provider>

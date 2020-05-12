@@ -24,13 +24,10 @@ const NavBar = () => {
   function Germ(e) {
       e.preventDefault();
       let gif = document.getElementById("gif")
-      let page = document.getElementById("annimation")
       if (e.detail === 5) {
         gif.hidden = false;
-        page.style.animationPlayState = "running";
         gif.style.animationPlayState = "running";
         setTimeout(() => {
-          page.style.animationPlayState = "paused";
           gif.hidden = true;
         }, 8000);
       }

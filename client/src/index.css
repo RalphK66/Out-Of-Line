@@ -49,18 +49,3 @@
 
 }
 
-#annimation {
-  width: 100%;
-  height: 100%;
-  animation: pulse 0.2s infinite;
-  animation-play-state: paused;
-}
-
-@keyframes pulse {
-  0% {
-    background-color: none;
-  }
-  100% {
-    background-color: green;
-  }
-}

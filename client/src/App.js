@@ -8,6 +8,10 @@ import Stores from "./html-pages/stores";
 import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
+import Admin from "./html-pages/store-admin";
+import SignUp from "./html-pages/sign-up";
+import NavBar from "./html-pages/Navbar";
+import AddUser from "./html-pages/admin-form";
 
 class App extends React.Component {
 
@@ -21,7 +25,8 @@ class App extends React.Component {
           <Route path="/about"><About/></Route>
           <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
           <Route path="/signup"><SignUp /></Route>
-          <Route exact path="/" ><Home /></Route>
+          <Route exact path="/"><Home /></Route>
+          <Route exact path="/adduser"><AddUser /></Route>
         </Switch>
       </Router>
   );

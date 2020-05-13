@@ -2,7 +2,7 @@ import React from 'react';
 import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
 
-import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
 
 import '../css/sign-up.css'
 import {Redirect} from "react-router-dom";

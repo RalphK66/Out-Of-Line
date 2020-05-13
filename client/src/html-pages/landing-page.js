@@ -40,7 +40,7 @@ class LandingPage extends React.Component {
               alt="Card image cap"
             />
             <CardBody>
-              <CardTitle><strong>Interctive Map</strong></CardTitle>
+              <CardTitle><strong>Interactive Map</strong></CardTitle>
               <CardText>
                 Find the grocery stores quickly and easily with this interactive
                 map.

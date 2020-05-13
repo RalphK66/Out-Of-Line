@@ -13,7 +13,6 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import Cookies from "js-cookie";
 
 // Login component 
 function Login() {
@@ -52,14 +51,9 @@ function Login() {
     setPassword('');
   };
 
-  // Logout component 
-  const Logout = () => {
-    Cookies.remove('token');
-    setLoginRedirectState(true);
-  }
-
   // Redirects to landing page once logged in/out
   if (loginRedirectState) {
+    window.location.reload(false);
     return <Redirect to="/"/>;
   }
 
@@ -117,7 +111,6 @@ function Login() {
               size="lg" onClick={PostLogin}>Login</Button>
             <br/>
             <br/>
-            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={Logout}>Logout</Button>
           </div>
         </FormGroup>
       </Form>

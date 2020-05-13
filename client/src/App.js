@@ -9,7 +9,6 @@ import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import {AuthContext} from "./context/auth";
-import collection from 'easter-egg-collection'
 import AddUser from "./html-pages/admin-form";
 
 // class App extends React.Component {

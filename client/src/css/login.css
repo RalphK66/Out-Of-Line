@@ -26,3 +26,8 @@ input {
 .icon {
     color: #6A6A6A !important;
 }
+
+.d-flex {
+    justify-content: center;
+    
+}

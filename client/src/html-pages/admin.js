@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class Tags extends React.Component{
 

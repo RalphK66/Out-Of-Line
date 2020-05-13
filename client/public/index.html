@@ -18,10 +18,16 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
   <link rel="stylesheet" href="/style.css">
+  <script src="/index.js"></script>
+
 </head>
 
-<body id="annimation">
+<body id="body">
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()"/>
+  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="covid" />
+  <audio  id="run" src="../src/media/aah.aiff" ref="audio_tag" autoPlay type="audio/aiff"></audio>
+  <audio  id="tongue"  src="../src/media/tongue.wav" type="audio/wav"></audio>
   <div class="container " >
     <div class="content">
       
@@ -40,7 +46,7 @@
   </div>
 
   <footer class="footer">
-    <div class="container">
+    <div id="trigger" class="container" onclick="Germ(event)">
       <span class="text-muted">© 2020 Copyright: out-of-line.ca</span>
     </div>
   </footer>

@@ -8,9 +8,12 @@ import {
   CardBody,
   Container,
   Jumbotron,
-  ListGroup,
-  ListGroupItem,
+
 } from "reactstrap";
+import map_1 from "../images/map-1.png";
+import map_2 from "../images/map-2.png";
+import map_3 from "../images/map-3.png";
+import "../css/landing-page.css"
 
 class LandingPage extends React.Component {
   render() {
@@ -33,7 +36,7 @@ class LandingPage extends React.Component {
             <CardImg
               top
               width="100%"
-              src="/images/map-1.png"
+              src={map_1}
               alt="Card image cap"
             />
             <CardBody>
@@ -48,22 +51,18 @@ class LandingPage extends React.Component {
             <CardImg
               top
               width="100%"
-              src="/images/map-2.png"
+              src={map_2}
               alt="Card image cap"
             />
             <CardBody>
               <CardTitle><strong>Grocery Store Info</strong></CardTitle>
               <CardText>
                 Clicking on a grocery store will display that store's relevant
-                information, including:
-                <ListGroup flush>
-                  <ListGroupItem>Estimated wait times</ListGroupItem>
-                  <ListGroupItem>
-                    Number of people currently in line
-                  </ListGroupItem>
-                  <ListGroupItem>Health & Safety Information</ListGroupItem>
-                  <ListGroupItem>Contact Information & Directions</ListGroupItem>
-                </ListGroup>
+                information, including:<br />
+                - Estimated wait times<br />
+                - Length of queue<br />
+                - Health & Safety Information<br />
+                - Contact Details<br />
                 Place yourself in line at the store you choose by hitting the{" "}
                 <strong>"Queue"</strong> button.
               </CardText>
@@ -73,7 +72,7 @@ class LandingPage extends React.Component {
             <CardImg
               top
               width="100%"
-              src="/images/map-3.png"
+              src={map_3}
               alt="Card image cap"
             />
             <CardBody>

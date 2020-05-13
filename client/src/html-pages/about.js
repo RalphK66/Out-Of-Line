@@ -25,103 +25,96 @@ const crew = {
   },
 };
 
-
-
-
 const about = () => {
   return (
     <div>
-    
-    <Container fluid className="box">
-      <Container>
-        <div className="header container ">
-          <p className="header-title">Out-of-Line</p>
-          <hr />
-          <p className="header-text">
-            <span className="OoF">Out-of-Line</span> is a diverse and dynamic team of students with a desire
-            to make the world a better place. With this application we intend to
-            make a significant improvement to the shopping experience during
-            these difficult times. 
-            <br />
-            <br />
-            <span className="OoF">Out-of-Line</span> will improve the effectiveness of
-            social distancing by implementing an effecient well-managed queueing
-            system, designed to minimize waiting times and limit the extent of
-            physical proximity necessary to get the necessities you need.
-            <br />
-            <br />
-            Need to stand in line? Do it online, with <span className="OoF">Out-of-Line</span>!
-          </p>
-        </div>
-        <br />
-        <br />
+      <Container fluid className="box">
+        <Container>
+          <div className="header container ">
+            <p className="header-title">Out-of-Line</p>
+            <hr />
+            <p className="header-text">
+              <span className="OoF">Out-of-Line</span> is a diverse and dynamic
+              team of students with a desire to make the world a better place.
+              With this application we intend to make a significant improvement
+              to the shopping experience during these difficult times.
+              <br />
+              <br />
+              <span className="OoF">Out-of-Line</span> will improve the
+              effectiveness of social distancing by implementing an effecient
+              well-managed queueing system, designed to minimize waiting times
+              and limit the extent of physical proximity necessary to get the
+              necessities you need.
+              <br />
+              <br />
+              Need to stand in line? Do it online, with{" "}
+              <span className="OoF">Out-of-Line</span>!
+            </p>
+          </div>
+          <br />
+          <br />
+        </Container>
+
+        <Row>
+          <Col sm></Col>
+          <Col sm>
+            <div className="container-1">
+              <Image src={kyrill} roundedCircle fluid />
+              <div className="overlay">
+                <div className="text">
+                  <p>{crew.km.name}</p>
+                  <hr />
+                  <p>{crew.km.message}</p>
+                </div>
+              </div>
+            </div>
+          </Col>
+          <Col sm></Col>
+        </Row>
+        <Row>
+          <Col sm>
+            <div className="container-1">
+              <Image src={ralph} roundedCircle fluid />
+              <div className="overlay">
+                <div className="text">
+                  <p>{crew.rk.name}</p>
+                  <hr />
+                  <p>{crew.rk.message}</p>
+                </div>
+              </div>
+            </div>
+          </Col>
+          <Col sm></Col>
+          <Col sm>
+            <div className="container-1">
+              <Image src={janelle} roundedCircle fluid />
+              <div className="overlay">
+                <div className="text">
+                  <p>{crew.jk.name}</p>
+                  <hr />
+                  <p>{crew.jk.message}</p>
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm></Col>
+          <Col sm>
+            <div className="container-1">
+              <Image src={david} roundedCircle fluid />
+              <div className="overlay">
+                <div className="text">
+                  <p>{crew.dh.name}</p>
+                  <hr />
+                  <p>{crew.dh.message}</p>
+                </div>
+              </div>
+            </div>
+          </Col>
+          <Col sm></Col>
+        </Row>
       </Container>
-
-      <Row>
-        <Col sm></Col>
-        <Col sm>
-          <div className="container-1">
-            <Image src={kyrill} roundedCircle fluid />
-            <div className="overlay">
-              <p className="text">
-                {crew.km.name}
-                <hr />
-                {crew.km.message}
-              </p>
-            </div>
-          </div>
-        </Col>
-        <Col sm></Col>
-      </Row>
-      <Row>
-        <Col sm>
-          <div className="container-1">
-            <Image src={ralph} roundedCircle fluid />
-            <div className="overlay">
-              <p className="text">
-                {crew.rk.name}
-                <hr />
-                {crew.rk.message}
-              </p>
-            </div>
-          </div>
-        </Col>
-        <Col sm></Col>
-        <Col sm>
-          <div className="container-1">
-            <Image src={janelle} roundedCircle fluid />
-            <div className="overlay">
-              <p className="text">
-                {crew.jk.name}
-                <hr />
-                {crew.jk.message}
-              </p>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm></Col>
-        <Col sm>
-          <div className="container-1">
-            <Image src={david} roundedCircle fluid />
-            <div className="overlay">
-              <p className="text">
-                {crew.dh.name}
-                <hr />
-                {crew.dh.message}
-              </p>
-            </div>
-          </div>
-        </Col>
-        <Col sm></Col>
-      </Row>
-   
-      
-
-    </Container>
-
-    
     </div>
   );
 };

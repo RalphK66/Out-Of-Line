@@ -1,0 +1,23 @@
+.wrapper {
+    margin-top: 50px; 
+    border: 20px solid #AAD2A9; 
+    border-radius: 10px; 
+    padding: 20px;
+}
+
+.content {
+    text-align: center; 
+    padding: 20px; 
+    border-radius: 10px;
+}
+
+Label {
+    color: #6A6A6A;
+}
+
+Button {
+    background-color: #AAD2A9;
+    font-weight: bolder;
+    border: none;
+    width: 150px;
+}

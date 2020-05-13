@@ -48,7 +48,7 @@
     animation-timing-function: linear;
   }
   @keyframes roll {
-    from {right: -20vw; top: -20vh}
-    to {right: 120vw; top: 120vh}
+    from {right: -20vw; top: 65vh}
+    to {right: 120vw; top: 65vh}
   }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

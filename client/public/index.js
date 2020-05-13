@@ -47,7 +47,7 @@ function toiletRoll() {
   let roll = document.getElementById("roll");
   roll.hidden = false
   roll.style.animationPlayState = "running";
-  toiletRollAudio()
+  // toiletRollAudio()
   // pause and hide animation
   setTimeout(() => {
     roll.style.animationPlayState = "paused";

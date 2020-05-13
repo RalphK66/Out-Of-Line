@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
+import { Form, FormGroup, Input, Button, Label, Container } from 'reactstrap';
+import "../css/admin-form.css"
 
 class Tags extends React.Component{
     constructor(props) {
@@ -49,19 +50,19 @@ class Tags extends React.Component{
 
     render() {
         return(
-            <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+            <Container className="col-sm-8 shadow wrapper">
                 <Form onSubmit={this.handleSubmission}>
                     <FormGroup>
-                        <div className="container shadow" style={{textAlign: 'center', padding: '20px', borderRadius: '10px'}}>
-                            <Label style={{color: "#6A6A6A"}} className="display-4">Add person to queue</Label>
+                        <Container className="shadow content">
+                            <Label className="display-4">Add person to queue</Label>
                             <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
                             <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
                             <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
-                            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Submit</Button>
-                        </div>
+                            <Button className="submit-btn">Submit</Button>
+                        </Container>
                     </FormGroup>
                 </Form>
-            </div>
+            </Container>
             )
     }
 }

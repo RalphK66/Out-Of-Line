@@ -67,7 +67,7 @@ class Stores extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="container shadow" id="map" style={{marginTop: '5vh', marginBottom: '5vh', height: '80vh' , border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}/>
+        <div className="container shadow" id="map" />
       </div>
     );
   }

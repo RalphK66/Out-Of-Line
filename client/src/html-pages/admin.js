@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from 'reactstrap';
+import "../css/admin.css"
 
 class Tags extends React.Component{
 
@@ -50,9 +51,9 @@ class Tags extends React.Component{
         window.onload = this.displayQueue;
         const {loading, result} = this.state;
         return(
-            <div className="container col-sm-8 shadow" style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+            <div className="container col-sm-8 shadow admin">
                 <a href="/adduser">
-                    <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Add to queue</Button>
+                    <Button className="add-user">Add to queue</Button>
                 </a>
                 <div>
                     

@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 
   db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], function(err, result) {
     if (err) throw err;
-    res.send("Updated!");
+    console.log("Updated!");
   });
 
   db.query("SELECT username, isEmployee FROM users WHERE email = (?)", req.body.email, function(err, result) {
@@ -35,7 +35,7 @@ router.post('/', (req, res, next) => {
     const token = jwt.sign(payload, jwtSecret, {expiresIn: '8h'});
     console.log(token);
 
-    res.cookie("token", token, {httpOnly: false}).send(res.cookies);
+    res.cookie("token", token, {httpOnly: false}).send();
   });
 });
 

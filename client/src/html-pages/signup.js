@@ -47,7 +47,7 @@ class SignUp extends React.Component {
 
     console.log(this.state);
 
-    fetch('/api/signup', {
+    fetch(process.env.REACT_APP_API_URL + '/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields

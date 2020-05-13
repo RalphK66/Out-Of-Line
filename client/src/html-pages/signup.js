@@ -14,10 +14,14 @@ import {FaUser, FaLock, FaPhone, FaEnvelope} from 'react-icons/fa';
 import '../css/sign-up.css'
 import {Redirect} from "react-router-dom";
 
+// Sign-up component 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoggedIn: false,
+      isEmployee: false
+    };
 
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
@@ -30,10 +34,12 @@ class SignUp extends React.Component {
     this.isEmployeeField = React.createRef();
   }
 
+  // Handles changed text for forms
   handleText(event) {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  // Handles the value of the checkbox when changed
   handleCheckbox(event) {
     if (event.target.checked) {
       this.setState({[event.target.name]: true});
@@ -42,11 +48,13 @@ class SignUp extends React.Component {
     }
   }
 
+  // Handles the submission of values from the forms
   handleSubmission(event) {
     event.preventDefault();
 
     console.log(this.state);
 
+    // Fetch request to the backend
     fetch(process.env.REACT_APP_API_URL + '/signup', {
       method: "POST",
       body: JSON.stringify({
@@ -62,24 +70,22 @@ class SignUp extends React.Component {
       },
       credentials: 'include'
     })
-      .then(response => {
+      .then(response => { // Redirects after successful sign-up 
         if (response.status === 200) {
-          localStorage.setItem("token", document.cookie);
-          this.isLoggedIn = true;
-
-          if (this.isLoggedIn) {
-            return <Redirect to="/"/>;
-          }
-        } else {
-          this.error = false;
-        }
+          this.setState({isLoggedIn: true});
+        } 
       })
       .catch(err => {
         console.error(err);
       });
   }
 
+  // Front-end component
   render() {
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      return <Redirect to="/"/>;
+    }
     return (
       <div className="container col-sm-8 shadow box">
         <Form onSubmit={this.handleSubmission}>

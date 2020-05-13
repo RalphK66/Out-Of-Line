@@ -56,21 +56,21 @@ function toiletRoll() {
 }
 
 // toilet roll gif sound - NOT WORKING
-function toiletRollAudio() {
-    let aaaah = document.getElementById("run")
-    let playPromise = aaaah.play();
+// function toiletRollAudio() {
+//     let aaaah = document.getElementById("run")
+//     let playPromise = aaaah.play();
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then(_ => {
-          // Automatic playback started!
-          // Show playing UI.
-          console.log("audio played auto");
-        })
-        .catch(error => {
-          // Auto-play was prevented
-          // Show paused UI.
-          console.log("playback prevented");
-        });
-    }
-}
+//     if (playPromise !== undefined) {
+//       playPromise
+//         .then(_ => {
+//           // Automatic playback started!
+//           // Show playing UI.
+//           console.log("audio played auto");
+//         })
+//         .catch(error => {
+//           // Auto-play was prevented
+//           // Show paused UI.
+//           console.log("playback prevented");
+//         });
+//     }
+// }

@@ -11,3 +11,30 @@
     border: none;
     width: 150px; 
 }
+
+td {
+    padding: 10px;
+    font-size: small;
+    vertical-align: middle !important;
+}
+
+.column-name {
+    color: #6A6A6A;
+    width: 100%;
+}
+
+
+    
+
+
+.del-btn {
+    width: fit-content !important; 
+    color: #6A6A6A;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.icon {
+    text-align: left;
+    width: fit-content !important;
+}

@@ -27,6 +27,7 @@
     min-width: 120px;
     min-height: 120px;
     animation-play-state: paused;
+    visibility: hidden;
   }
   #covid {
     animation-name: covid;

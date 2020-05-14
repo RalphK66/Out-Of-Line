@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, FormGroup, Input, Button, Label, Container } from 'reactstrap';
+import { Form, FormGroup, Input, Button, Label, Container, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
+import { FaUser, FaPhone, FaEnvelope } from 'react-icons/fa';
 import "../css/admin-form.css"
 
 class Tags extends React.Component{
@@ -54,10 +55,28 @@ class Tags extends React.Component{
                 <Form onSubmit={this.handleSubmission}>
                     <FormGroup>
                         <Container className="shadow content">
-                            <Label className="display-4">Add person to queue</Label>
-                            <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
-                            <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
-                            <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
+                            <Label className="display-4">Add to Queue</Label>
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><FaEnvelope/></InputGroupText>
+                                </InputGroupAddon>
+                                <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
+                            </InputGroup>
+                            <br/>
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><FaPhone/></InputGroupText>
+                                </InputGroupAddon>
+                                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
+                            </InputGroup>
+                            <br/>
+                            <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><FaUser/></InputGroupText>
+                                </InputGroupAddon>
+                                <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
+                            </InputGroup>
+                            <br/>
                             <Button className="submit-btn">Submit</Button>
                         </Container>
                     </FormGroup>

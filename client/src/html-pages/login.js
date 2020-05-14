@@ -14,6 +14,7 @@ import {
   InputGroupText,
 } from "reactstrap";
 import Cookies from "js-cookie";
+import { loginMessage, logoutMessage, loginFail} from "../notifications/notifications";
 
 // Login component 
 function Login() {
@@ -40,10 +41,12 @@ function Login() {
     })
       .then(res => {
         if (res.status === 200) {// Redirects after successful login
+          loginMessage(username.toUpperCase())
           setLoginRedirectState(true);
         }
       })
       .catch(err => {
+        loginFail()
         console.error(err);
       });;
 
@@ -52,9 +55,12 @@ function Login() {
     setPassword('');
   };
 
+
+  
   // Logout component 
   const Logout = () => {
     Cookies.remove('token');
+    logoutMessage()
     setLoginRedirectState(true);
   }
 
@@ -63,6 +69,7 @@ function Login() {
     return <Redirect to="/"/>;
   }
 
+  
   // Front-end component
   return (
     <div className="container col-sm-8 shadow box">

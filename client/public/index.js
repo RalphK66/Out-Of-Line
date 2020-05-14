@@ -5,10 +5,10 @@ function Germ(e) {
   if (e.detail === 5) {
     trigger()
     let gif = document.getElementById("covid");
-    gif.hidden = false;
+    gif.style.visibility = "visible";
     gif.style.animationPlayState = "running";
     setTimeout(() => {
-      gif.hidden = true;
+      gif.style.visibility = "hidden";
       gif.style.animationPlayState = "paused";
       resetGif()
     }, 8000);
@@ -31,7 +31,7 @@ function explode() {
   gif.style.animationPlayState = "paused";
   gif.src = "https://media.giphy.com/media/yr6EicFQYkbgk/source.gif";
   setTimeout(() => {
-    gif.hidden = true;
+    gif.style.visibility = "hidden"
     toiletRoll()
   }, 1000);
   
@@ -45,32 +45,34 @@ function resetGif() {
 // toilet roll gif annimation
 function toiletRoll() {
   let roll = document.getElementById("roll");
-  roll.hidden = false
+  roll.style.visibility = "visible";
   roll.style.animationPlayState = "running";
-  // toiletRollAudio()
+  toiletRollAudio()
   // pause and hide animation
   setTimeout(() => {
     roll.style.animationPlayState = "paused";
-    roll.hidden = true;
+    roll.style.visibility = "hidden";
   }, 3000);
 }
 
 // toilet roll gif sound - NOT WORKING
-// function toiletRollAudio() {
-//     let aaaah = document.getElementById("run")
-//     let playPromise = aaaah.play();
+function toiletRollAudio() {
+    let aaaah = document.getElementById("run")
+    // aaaah.play();
+    let playPromise = aaaah.play();
 
-//     if (playPromise !== undefined) {
-//       playPromise
-//         .then(_ => {
-//           // Automatic playback started!
-//           // Show playing UI.
-//           console.log("audio played auto");
-//         })
-//         .catch(error => {
-//           // Auto-play was prevented
-//           // Show paused UI.
-//           console.log("playback prevented");
-//         });
-//     }
-// }
+    if (playPromise !== undefined) {
+      playPromise
+        .then(_ => {
+          // Automatic playback started!
+          // Show playing UI.
+          console.log("audio played auto");
+        })
+        .catch(error => {
+          // Auto-play was prevented
+          // Show paused UI.
+          console.log("playback prevented");
+          console.log(error)
+        });
+    }
+}

@@ -11,13 +11,15 @@
     border-radius: 10px;
 }
 
-Label {
+.display-4 {
     color: #6A6A6A;
+    
 }
 
-Button {
+.submit-btn {
     background-color: #AAD2A9;
     font-weight: bolder;
+    font-size: larger;
     border: none;
     width: 150px;
 }

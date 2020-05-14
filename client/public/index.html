@@ -3,48 +3,39 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta property="og:title" content="__OG_TITLE__" />
   <meta property="og:description" content="__OG_DESCRIPTION__" />
 
+  <!-- I converted our url_logo to a .ico file and renamed it favicon to try and get rid of a 404 error -->
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
-  <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"> 
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <!-- MapBox -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-
   <link rel="stylesheet" href="/style.css">
   <script src="/index.js"></script>
 
 </head>
 
-<body id="body">
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()"/>
-  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="covid" />
-  <!-- <audio  id="run" src="../src/media/aah.aiff" ref="audio_tag" autoPlay type="audio/aiff"></audio>
-  <audio  id="tongue"  src="../src/media/tongue.wav" type="audio/wav"></audio> -->
-  <div class="container " >
-    <div class="content">
-      
-      <div id="root"></div>
-      <!--
-          This HTML file is a template.
-          If you open it directly in the browser, you will see an empty page.
-    
-          You can add webfonts, meta tags, or analytics to this file.
-          The build step will place the bundled scripts into the <body> tag.
-    
-          To begin the development, run `npm start` or `yarn start`.
-          To create a production bundle, use `npm run build` or `yarn build`.
-        -->
-    </div>
-  </div>
+<body>
 
+  <!-- gifs for easter egg -->
+  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" />
+  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="covid" />
+
+  <!-- audio for easter eggs -->
+  <audio  id="run" src="./media/run.wav" type="audio/wav"></audio>
+  <audio  id="tongue"  src="./media/tongue.wav" type="audio/wav"></audio>
+
+  
+    <div id="root"></div>
+  
+  
   <footer class="footer">
     <div id="trigger" class="container" onclick="Germ(event)">
       <span class="text-muted">© 2020 Copyright: out-of-line.ca</span>
@@ -67,4 +58,5 @@
   <script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
   <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 </body>
+
 </html>

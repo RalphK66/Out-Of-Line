@@ -9,14 +9,17 @@ import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import AddUser from "./html-pages/admin-form";
+import ReactNotification from 'react-notifications-component'
+
 
 class App extends React.Component {
 
   render() {
     return (
+      
       <Router>
       
-        <Route> <NavBar/></Route>
+        <NavBar/>
         <Switch>
           <Route path="/login" ><Login /></Route>
           <Route path="/stores" ><Stores /></Route>

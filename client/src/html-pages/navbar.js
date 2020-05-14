@@ -23,7 +23,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar dark expand="md" className="shadow my-navbar" id="navbar">
+      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
         <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar >

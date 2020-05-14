@@ -2,6 +2,7 @@
     background-color: #AAD2A9;
     padding: 0px;
     border-radius: 5px;
+    z-index: 2;
   }
   .navbar-navlink {
       font-weight: bold;

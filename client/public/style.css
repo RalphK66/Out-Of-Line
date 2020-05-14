@@ -1,19 +1,22 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-  /* Sticky footer */
+/* Sticky footer */
 
-  html {
+html {
     height: 100%;
-  }
-  body {
+}
+
+body {
     min-height: 100%;
     display: grid;
     grid-template-rows: 1fr auto;
-  }
-  .footer {
+}
+
+.footer {
     grid-row-start: 2;
     grid-row-end: 3;
-  }
-  .footer {
+}
+
+.footer {
     margin: 20px;
     text-align: center;
   }

@@ -3,50 +3,49 @@ import { Form, FormGroup, Input, Button, Label, Container, InputGroup, InputGrou
 import { FaUser, FaPhone, FaEnvelope } from 'react-icons/fa';
 import "../css/admin-form.css"
 
-class Tags extends React.Component{
-    constructor(props) {
-        super(props);
+class Tags extends React.Component {
+  constructor(props) {
+    super(props);
 
-        // Setup fields
+    this.handleText = this.handleText.bind(this);
+    this.handleSubmission = this.handleSubmission.bind(this);
 
-        this.handleText = this.handleText.bind(this);
-        this.handleSubmission = this.handleSubmission.bind(this);
+    this.emailField = React.createRef();
+    this.phoneNumberField = React.createRef();
+    this.nameField = React.createRef();
+  }
 
-        this.emailField = React.createRef();
-        this.phoneNumberField = React.createRef();
-        this.nameField = React.createRef();
-    }
+  // Change the form input into an object where name: value
+  handleText(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
-    // Change the form input into an object where name: value
-    handleText(event) {
-        this.setState({[event.target.name]: event.target.value});
-    }
+  handleSubmission(event) {
+    event.preventDefault();
 
-    handleSubmission(event) {
-        event.preventDefault();
+    // Send information to database
+    fetch(process.env.REACT_APP_API_URL + '/adminAdd', {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.email,
+        phoneNumber: this.state.phoneNumber,
+        name: this.state.name
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => {
+        console.log(response.json());
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
 
-        // Send information to database
-        fetch('http://localhost:9000/adminAdd', {
-            method: "POST",
-            body: JSON.stringify({
-                email: this.state.email,
-                phoneNumber: this.state.phoneNumber,
-                name: this.state.name
-            }),
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            console.log(response.json());
-          })
-        .catch(function(err) {
-            console.error(err);
-        });
+    window.location.replace("/admin");
+  }
 
-        window.location.replace("http://localhost:3000/admin");
-    }
 
 
     render() {

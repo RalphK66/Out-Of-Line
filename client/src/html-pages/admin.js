@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Table } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-import { adminAddUser, adminRemoveUser} from "../notifications/notifications";
+import { adminAddUser, adminRemoveUser } from "../notifications/notifications";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class Tags extends React.Component {
       loading: true,
       result: null,
     };
+    this.displayQueue();
   }
 
   refresh() {
@@ -23,17 +24,17 @@ class Tags extends React.Component {
   }
 
   displayQueue(event) {
-    fetch("http://localhost:9000/tempUsers", {
+    fetch(process.env.REACT_APP_API_URL + "/tempUsers", {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
         let tags = [];
         // notification for last person joining the queue - some issues
-        let newPerson = data[data.length-1]
-        adminAddUser(newPerson.name)
-        
-        for (let i = 0; i < data.length; i++) { 
+        let newPerson = data[data.length - 1];
+        adminAddUser(newPerson.name);
+
+        for (let i = 0; i < data.length; i++) {
           tags.push(
             <tr key={data[i].id}>
               <td>
@@ -89,7 +90,6 @@ class Tags extends React.Component {
   }
 
   render() {
-    window.onload = this.displayQueue;
     const { loading, result } = this.state;
     return (
       <Container className="container col-sm-8 shadow admin">
@@ -108,7 +108,11 @@ class Tags extends React.Component {
           {loading && (
             <tbody>
               <tr>
-                <td colSpan="2"><br/>Loading list...<br/></td>
+                <td colSpan="2">
+                  <br />
+                  Loading list...
+                  <br />
+                </td>
               </tr>
             </tbody>
           )}

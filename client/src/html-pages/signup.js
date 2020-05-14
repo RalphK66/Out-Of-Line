@@ -47,7 +47,7 @@ class SignUp extends React.Component {
 
     console.log(this.state);
 
-    fetch('/api/signup', {
+    fetch(process.env.REACT_APP_API_URL + '/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields
@@ -120,7 +120,7 @@ class SignUp extends React.Component {
               <br/>
               <div>
                 <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
-                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
+                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Grocery Store Employee"/>
               </div>
               <br/>
               <Button size="lg">Submit</Button>

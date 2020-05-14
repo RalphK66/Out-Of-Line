@@ -1,7 +1,6 @@
 import React from "react";
-import {FaUser} from "react-icons/fa";
-import {FaLock} from "react-icons/fa";
-import '../css/login.css'
+import '../css/login.css';
+import { FaUser, FaLock } from "react-icons/fa";
 import {useAuth} from "../context/auth";
 import {Redirect} from "react-router-dom";
 import {
@@ -20,12 +19,13 @@ function Login() {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const useAuthObj = useAuth();
   const {setAuthTokens} = useAuth();
 
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:9000/login", {
+    fetch(process.env.REACT_APP_API_URL + '/login', {
       method: "POST",
       body: JSON.stringify({
         username: username,
@@ -40,7 +40,9 @@ function Login() {
       .then(res => {
         if (res.status === 200) {
           console.log(document.cookie);
+          console.log(useAuthObj);
           setAuthTokens(document.cookie);
+          console.log(useAuthObj);
           setLoggedIn(true);
         } else {
           throw Error(res.statusText);
@@ -52,7 +54,8 @@ function Login() {
     setPassword('');
   };
 
-  const Logout = () => {
+  function Logout() {
+    console.log("Janelle is confused!");
     localStorage.clear();
     return <Redirect to="/"/>;
   }

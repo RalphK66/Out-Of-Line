@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardGroup,
-  CardBody,
-  Container,
-  Jumbotron,
+import { Container } from "reactstrap";
+import "../css/contact.css";
 
-} from "reactstrap";import "./css/contact.css"
+const Contact = () => {
+  return <Container fluid className="shadow contact-box"></Container>;
+};
+export default Contact;

@@ -28,7 +28,7 @@ const crew = {
 const about = () => {
   return (
     <div>
-      <Container fluid className="about-box">
+      <Container fluid className="about-box shadow">
         <Container>
           <div className="header container ">
             <p className="about-header-title">Out-of-Line</p>

@@ -9,8 +9,7 @@ import SignUp from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import AddUser from "./html-pages/admin-form";
-import ReactNotification from 'react-notifications-component'
-
+import Contact from "./html-pages/contact";
 
 class App extends React.Component {
 
@@ -18,7 +17,6 @@ class App extends React.Component {
     return (
       
       <Router>
-      
         <NavBar/>
         <Switch>
           <Route path="/login" ><Login /></Route>
@@ -28,6 +26,7 @@ class App extends React.Component {
           <Route path="/signup"><SignUp /></Route>
           <Route exact path="/"><Home /></Route>
           <Route exact path="/adduser"><AddUser /></Route>
+          <Route path="/contact"><Contact /></Route>
         </Switch>
       </Router>
   );

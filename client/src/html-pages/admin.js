@@ -12,6 +12,7 @@ class Tags extends React.Component {
       loading: true,
       result: null
     }
+    this.displayQueue();
   }
 
   refresh() {
@@ -51,23 +52,22 @@ class Tags extends React.Component {
   }
 
   render() {
-    window.onload = this.displayQueue;
     const {loading, result} = this.state;
     return (
-      <div className="container col-sm-8 shadow"
-           style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
-        <a href="/adduser">
-          <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Add to
+        <div className="container col-sm-8 shadow"
+        style={{marginTop: '50px', border: '20px solid #AAD2A9', borderRadius: '10px', padding: '20px'}}>
+            <a href="/adduser">
+            <Button style={{backgroundColor: '#AAD2A9', fontWeight: 'bolder', border: 'none', width: '150px'}}>Add to
             queue</Button>
-        </a>
-        <div>
+            </a>
+            <div>
 
-          {loading && <p>Loading list...</p>}
-          {result && <h1>Result is: {<table>
-            <tbody>{result}</tbody>
-          </table>}</h1>}
+                {loading && <p>Loading list...</p>}
+                {result && <h1>Result is: {<table>
+                <tbody>{result}</tbody>
+                </table>}</h1>}
+            </div>
         </div>
-      </div>
     )
   }
 }

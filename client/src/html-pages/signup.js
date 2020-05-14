@@ -12,7 +12,6 @@ import {
 } from 'reactstrap'
 import {FaUser, FaLock, FaPhone, FaEnvelope} from 'react-icons/fa';
 import '../css/sign-up.css'
-import {Redirect} from "react-router-dom";
 
 // Sign-up component 
 class SignUp extends React.Component {
@@ -84,7 +83,7 @@ class SignUp extends React.Component {
   render() {
     // Will redirect once successfully signed up
     if (this.state.isLoggedIn) {
-      return <Redirect to="/"/>;
+      window.location.replace('/');
     }
     return (
       <div className="container col-sm-8 shadow box">

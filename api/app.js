@@ -14,6 +14,7 @@ const loginRouter = require('./routes/login');
 const adminAddRouter = require('./routes/adminAdd');
 const adminRemoveRouter = require('./routes/adminRemove');
 const tempUsers = require('./routes/tempUsers');
+const passwordResetRouter = require('./routes/passwordReset');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use('/login', loginRouter);
 app.use('/adminAdd', adminAddRouter);
 app.use('/adminRemove', adminRemoveRouter);
 app.use('/tempUsers', tempUsers);
+app.use('/password_reset', passwordResetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

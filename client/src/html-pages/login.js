@@ -2,7 +2,6 @@ import React from "react";
 import {FaUser} from "react-icons/fa";
 import {FaLock} from "react-icons/fa";
 import '../css/login.css'
-import {Redirect} from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -13,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 // Login component 
 function Login() {
@@ -53,8 +53,7 @@ function Login() {
 
   // Redirects to landing page once logged in/out
   if (loginRedirectState) {
-    window.location.reload(false);
-    return <Redirect to="/"/>;
+    window.location.replace('/');
   }
 
   // Front-end component
@@ -111,6 +110,7 @@ function Login() {
               size="lg" onClick={PostLogin}>Login</Button>
             <br/>
             <br/>
+            <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
         </FormGroup>
       </Form>

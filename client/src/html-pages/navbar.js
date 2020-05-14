@@ -88,15 +88,9 @@ const NavBar = () => {
               <NavItem>
                   <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
               </NavItem>
-              {/* <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active">Sign Up</NavLink>
-              </NavItem> */}
               <NavItem>
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active">Logout</NavLink>
               </NavItem>
-              {/* <NavItem>
-                <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
-              </NavItem> */}
             </Nav>
             <Form>
               <Input type="search" name="search" id="mySearch" placeholder="Search"/>
@@ -122,14 +116,11 @@ const NavBar = () => {
               <NavItem>
                   <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
               </NavItem>
-              {/* <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active">Sign Up</NavLink>
-              </NavItem> */}
-              <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active">Logout</NavLink>
-              </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active">Logout</NavLink>
               </NavItem>
             </Nav>
             <Form>
@@ -161,9 +152,6 @@ const NavBar = () => {
                 </NavItem>
                 <NavItem>
                     <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
                 </NavItem>
               </Nav>
               <Form>

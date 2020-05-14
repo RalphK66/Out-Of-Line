@@ -28,12 +28,12 @@ const crew = {
 const about = () => {
   return (
     <div>
-      <Container fluid className="box">
+      <Container fluid className="about-box">
         <Container>
           <div className="header container ">
-            <p className="header-title">Out-of-Line</p>
+            <p className="about-header-title">Out-of-Line</p>
             <hr />
-            <p className="header-text">
+            <p className="about-header-text">
               <span className="OoF">Out-of-Line</span> is a diverse and dynamic
               team of students with a desire to make the world a better place.
               With this application we intend to make a significant improvement
@@ -59,7 +59,7 @@ const about = () => {
           <Col sm></Col>
           <Col sm>
             <div className="container-1">
-              <Image src={kyrill} roundedCircle fluid />
+              <Image className="crew-image" src={kyrill} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
                   <p>{crew.km.name}</p>
@@ -74,7 +74,7 @@ const about = () => {
         <Row>
           <Col sm>
             <div className="container-1">
-              <Image src={ralph} roundedCircle fluid />
+              <Image className="crew-image" src={ralph} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
                   <p>{crew.rk.name}</p>
@@ -87,7 +87,7 @@ const about = () => {
           <Col sm></Col>
           <Col sm>
             <div className="container-1">
-              <Image src={janelle} roundedCircle fluid />
+              <Image className="crew-image" src={janelle} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
                   <p>{crew.jk.name}</p>
@@ -102,7 +102,7 @@ const about = () => {
           <Col sm></Col>
           <Col sm>
             <div className="container-1">
-              <Image src={david} roundedCircle fluid />
+              <Image className="crew-image" src={david} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
                   <p>{crew.dh.name}</p>

@@ -7,9 +7,9 @@ export function loginMessage(props) {
       message: "You are now logged in!",
       type: "success",
       insert: "top",
-      container: "top-right",
+      container: "botom-right",
       dismiss: {
-        duration: 8000,
+        duration: 5000,
         onScreen: false,
       },
     })
@@ -17,11 +17,11 @@ export function loginMessage(props) {
 
   export function  logoutMessage() {
     store.addNotification({
-      title: "Bye-bye!",
+      title: `Bye-bye!`,
       message: "See you next time!",
-      type: "info",
+      type: "success",
       insert: "top",
-      container: "top-center",
+      container: "botom-right",
       dismiss: {
         duration: 3000,
         onScreen: false,
@@ -35,9 +35,23 @@ export function loginMessage(props) {
       message: "Something went wrong! Please check your email and password and try again!",
       type: "warning",
       insert: "top",
-      container: "top-center",
+      container: "botom-right",
       dismiss: {
-        duration: 4000,
+        duration: 5000,
+        onScreen: false,
+      },
+    })
+  }
+
+  export function registerMessage(props) {
+    store.addNotification({
+      title: `Hi, ${props}!`,
+      message: "You are signed up and logged in!",
+      type: "success",
+      insert: "top",
+      container: "botom-right",
+      dismiss: {
+        duration: 5000,
         onScreen: false,
       },
     })
@@ -47,14 +61,28 @@ export function loginMessage(props) {
     store.addNotification({
       title: `${props},`,
       message: "has been added to the queue",
-      type: "warning",
+      type: "info",
       insert: "top",
-      container: "top-center",
+      container: "botom-right",
       dismiss: {
-        duration: 3000,
+        duration: 5000,
         onScreen: false,
       },
     })
   }
 
-  export default { loginMessage, logoutMessage, loginFail, adminAddUser }
+  export function adminRemoveUser(props) {
+    store.addNotification({
+      title: `${props},`,
+      message: "has been removed from the queue",
+      type: "warning",
+      insert: "top",
+      container: "botom-right",
+      dismiss: {
+        duration: 5000,
+        onScreen: false,
+      },
+    })
+  }
+
+  export default { loginMessage, logoutMessage, loginFail, registerMessage, adminAddUser, adminRemoveUser }

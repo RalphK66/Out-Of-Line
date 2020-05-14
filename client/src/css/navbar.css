@@ -1,24 +1,13 @@
-.navbar {
+.my-navbar {
     background-color: #AAD2A9;
     padding: 0px;
     border-radius: 5px;
   }
-  .navbar-light {
-    padding: 0px !important;
-  }
-
-  .nav-link {
+  .navbar-navlink {
       font-weight: bold;
       font-size: large;
   }
-  .jumbotron {
-    color: #6A6A6A;
-    border: 2px solid #FFFFFF;
-  }
-  hr {
-    border-color: #FFFFFF;
-  }
-  .logo {
+  .navbar-logo {
     width: 60px;
     height: 60px;
   }

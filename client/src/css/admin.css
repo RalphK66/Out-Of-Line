@@ -1,40 +1,51 @@
+/* container */
 .admin {
     margin-top: 50px;
     border: 20px solid #AAD2A9;
     border-radius: 10px;
     padding: 20px;
+    text-align: center;
 }
-
+/* add user button */
 .add-user {
     background-color: #AAD2A9;
     font-weight: bolder;
     border: none;
     width: 150px; 
 }
-
-td {
-    padding: 10px;
-    font-size: small;
+/* header for customer column */
+.customer-header {
+    color: #6A6A6A;
+}
+/* the main table */
+.main-table {
+    table-layout: auto;
+    width: 100%;
     vertical-align: middle !important;
 }
-
-.column-name {
-    color: #6A6A6A;
-    width: 100%;
+/* Each user in queue is a little talble */
+.sub-table {
+    text-align: left !important;
+    font-size: small;
+    vertical-align: middle !important;
+    color: #6A6A6A !important;
 }
-
-
-    
-
-
+/* each delete button */
 .del-btn {
     width: fit-content !important; 
     color: #6A6A6A;
     border-radius: 10px;
     padding: 5px;
+    font-size: small;
 }
-
+/* the user, email and phone icons coloumn */
 .icon {
     text-align: left;
     width: fit-content !important;
+}
+/* the column with "Remove" containing the delete buttons */
+.remove {
+    width: fit-content;
+    color: #6A6A6A;
+    vertical-align: middle !important;
 }

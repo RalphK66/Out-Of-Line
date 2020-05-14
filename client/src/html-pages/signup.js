@@ -3,7 +3,7 @@ import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, Cust
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
-
+import { registerMessage } from "../notifications/notifications";
 import '../css/sign-up.css'
 import {Redirect} from "react-router-dom";
 
@@ -66,6 +66,7 @@ class SignUp extends React.Component {
       .then(response => { // Redirects after successful sign-up 
         if (response.status === 200) {
           this.setState({isLoggedIn: true});
+          registerMessage(this.state.username)
         } 
       })
       .catch(err => {
@@ -80,52 +81,51 @@ class SignUp extends React.Component {
       return <Redirect to="/"/>;
     }
     return (
-      <div className="container col-sm-8 shadow box">
+      <div className="container col-sm-8 shadow signup-box">
         <AvForm onSubmit={this.handleSubmission}>
           <AvGroup>
-            <div className="container shadow form-box">
-              <Label className="display-4 form-label">Sign Up</Label>
-              <AvGroup>
+            <div className="container shadow signup-form-box">
+              <Label className="display-4 signup-form-label">Sign Up</Label>
+              <AvGroup className="signup-input">
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaEnvelope/></InputGroupText>
+                  <InputGroupText><FaEnvelope className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
                 <AvInput name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
                 <AvFeedback>Please enter a valid email address</AvFeedback>  
               </InputGroup>
               </AvGroup>
- 
-              <AvGroup>
+              <AvGroup className="signup-input">
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
-                      <InputGroupText><FaPhone/></InputGroupText>
+                      <InputGroupText><FaPhone className="signup-form-icons"/></InputGroupText>
                     </InputGroupAddon>
                   <AvInput name="phoneNumber" type="tel" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
                   <AvFeedback>Please enter a valid 10-digit number</AvFeedback>
                   </InputGroup>
               </AvGroup>
-              <InputGroup>
+              <InputGroup className="signup-input">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaUser/></InputGroupText>
+                  <InputGroupText><FaUser className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField}
                        placeholder="Username" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
-              <InputGroup>
+              <InputGroup className="signup-input">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaLock/></InputGroupText>
+                  <InputGroupText><FaLock className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField}
                        placeholder="Password" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <div>
-                <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
+                <CustomInput className="custom-checkbox-lg employee-checkbox" name="isEmployee" id="isEmployee" type="checkbox"
                              onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
               </div>
               <br/>
-              <Button size="lg">Submit</Button>
+              <Button className="signup-btn" size="lg">Submit</Button>
             </div>
           </AvGroup>
         </AvForm>

@@ -23,28 +23,28 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar dark expand="md" className="shadow" id="navbar">
-        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow logo" ></img></NavbarBrand>
+      <Navbar dark expand="md" className="shadow my-navbar" id="navbar">
+        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar >
           <Nav className="mr-auto" navbar >
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+                <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active">About</NavLink>
+                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
+                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active">Sign Up</NavLink>
+                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">Sign Up</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
+                <NavLink tag={RRNavLink} exact to="/login" activeClassName="active" className="navbar-navlink">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
+              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active" className="navbar-navlink">Admin</NavLink>
             </NavItem>
           </Nav>
           <Form>

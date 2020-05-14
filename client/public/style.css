@@ -27,7 +27,6 @@
     min-width: 120px;
     min-height: 120px;
     animation-play-state: paused;
-    visibility: hidden;
   }
   #covid {
     animation-name: covid;
@@ -49,7 +48,7 @@
     animation-timing-function: linear;
   }
   @keyframes roll {
-    from {right: -20vw; top: 65vh}
+    from {right: -45vw; top: 65vh}
     to {right: 120vw; top: 65vh}
   }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

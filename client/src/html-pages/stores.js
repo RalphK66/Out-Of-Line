@@ -1,7 +1,7 @@
 import React from 'react';
 import MapGL from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import "../css/map.css"
+import "../css/stores.css"
 // import Geocoder from 'react-map-gl-geocoder';
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
@@ -66,9 +66,10 @@ class Stores extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="container shadow" id="map" />
+      <div className="map-container">
+        <div id="map"></div>
       </div>
+      
     );
   }
 };

@@ -1,33 +1,26 @@
-.box {
+.login-box {
     margin-top: 50px;
     border: 20px solid #AAD2A9;
     border-radius: 10px;
     padding: 20px;
 }
-
-.form-box {
+.login-form-box {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
-
-.login-label {
+.login-form-label {
     color: #6A6A6A !important;
 }
-
-Button {
+.login-logout-btn{
     background-color: #AAD2A9 !important;
+    font-weight: bolder;
     border: none !important;
     width: 150px !important;
 }
-input {
+.login-form-input {
     color: #6A6A6A !important;
 }
-.icon {
+.login-form-icon {
     color: #6A6A6A !important;
-}
-
-.d-flex {
-    justify-content: center;
-    
 }

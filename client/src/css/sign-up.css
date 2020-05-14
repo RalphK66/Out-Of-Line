@@ -1,28 +1,30 @@
-.box {
+.signup-box {
     margin-top: 50px;
     border: 20px solid #AAD2A9; 
     border-radius: 10px;
     padding: 20px;
 }
-
-.form-box {
+.signup-form-box {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
-.form-label {
+.signup-form-label {
     color: #6A6A6A;
 }
-
-Button {
-    background-color: #AAD2A9;
+.signup-btn {
+    background-color: #AAD2A9 !important;
     font-weight: bolder;
-    border: none;
-    width: 150px;
+    border: none !important;
+    width: 150px !important;
 }
-
-.custom-checkbox-lg {
-    color: #6A6A6A;
+.employee-checkbox {
+    color: #6A6A6A !important;
     font-weight: bolder;
-   
+}
+.signup-input {
+    color: #6A6A6A !important;
+}
+.signup-form-icons {
+    color: #6A6A6A;
 }

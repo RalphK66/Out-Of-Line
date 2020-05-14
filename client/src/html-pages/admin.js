@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Table } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-import { adminAddUser} from "../notifications/notifications";
+import { adminAddUser, adminRemoveUser} from "../notifications/notifications";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -37,13 +37,13 @@ class Tags extends React.Component {
           tags.push(
             <tr key={data[i].id}>
               <td>
-                <Table borderless>
+                <Table borderless className="sub-table">
                   <tbody>
                     <tr>
                       <td className="icon">
                         <FaUser />
                       </td>
-                      <td style={{ textAlign: "left" }}>
+                      <td className="customer">
                         <strong>{data[i].name} </strong>
                       </td>
                     </tr>
@@ -51,20 +51,18 @@ class Tags extends React.Component {
                       <td className="icon">
                         <FaEnvelope />
                       </td>
-                      <td style={{ textAlign: "left" }}>{data[i].email}</td>
+                      <td className="customer">{data[i].email}</td>
                     </tr>
                     <tr>
                       <td className="icon">
                         <FaPhone />
                       </td>
-                      <td style={{ textAlign: "left" }}>
-                        {data[i].phone_number}
-                      </td>
+                      <td className="customer">{data[i].phone_number}</td>
                     </tr>
                   </tbody>
                 </Table>
               </td>
-              <td>
+              <td className="remove">
                 <form action="http://localhost:9000/adminRemove" method="POST">
                   <button
                     className="del-btn"
@@ -100,11 +98,11 @@ class Tags extends React.Component {
         </a>
         <br />
         <br />
-        <Table size="sm">
+        <Table size="sm" className="main-table">
           <thead>
             <tr>
-              <th className="column-name">Customer</th>
-              <th className="column-name">Remove</th>
+              <th className="customer-header">Customer</th>
+              <th className="remove">Remove</th>
             </tr>
           </thead>
           {loading && (

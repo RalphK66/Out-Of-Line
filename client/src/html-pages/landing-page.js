@@ -20,10 +20,10 @@ class LandingPage extends React.Component {
     return (
       <Container fluid>
         <div>
-          <Jumbotron className="shadow ">
+          <Jumbotron className="shadow landing-jumbo">
             <h1 className="display-3">Out-of-Line</h1>
             <p className="lead">Need to wait in line? Do it online!</p>
-            <hr className="my-2"/>
+            <hr />
             <p>
               Virtually queue at your favourite or local grocery store and take
               your social distancing to a whole new level while simultaneously
@@ -31,13 +31,14 @@ class LandingPage extends React.Component {
             </p>
           </Jumbotron>
         </div>
-        <CardGroup className="card-group shadow">
-          <Card className="shadow">
+        <CardGroup className="landing-card-group shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
               src={map_1}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Interactive Map</strong></CardTitle>
@@ -47,12 +48,13 @@ class LandingPage extends React.Component {
               </CardText>
             </CardBody>
           </Card>
-          <Card className="shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
               src={map_2}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Grocery Store Info</strong></CardTitle>
@@ -68,12 +70,13 @@ class LandingPage extends React.Component {
               </CardText>
             </CardBody>
           </Card>
-          <Card className="shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
               src={map_3}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Virtual Queue</strong></CardTitle>

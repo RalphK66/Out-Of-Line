@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import "../index.css"
 
 export function loginMessage(props) {
   toast.success(`Success, ${props}! You are logged in!`, {
@@ -8,7 +9,8 @@ export function loginMessage(props) {
 }
 
 export function logoutMessage(props) {
-  toast.success(`Bye-bye ${props}!`, {
+  // toast.success(`Bye-bye ${props}!`, {
+  toast.success(`Bye-bye!`, {
     className: "logout-message",
     position: toast.POSITION.BOTTOM_RIGHT,
   });

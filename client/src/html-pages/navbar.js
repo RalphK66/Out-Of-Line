@@ -20,7 +20,6 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
-
   return (
     <div>
       <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >

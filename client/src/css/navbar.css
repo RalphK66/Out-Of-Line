@@ -2,6 +2,11 @@
     background-color: #AAD2A9;
     border-radius: 5px;
     z-index: 2;
+    /* option to make navbar go over content */
+    /* z-index: 9999;
+    position: absolute;
+    width: 100%; */
+    
   }
   .navbar-navlink {
       font-weight: bold;

@@ -3,6 +3,12 @@
     border: 20px solid #AAD2A9;
     border-radius: 10px;
     padding: 20px 20px;
+    /* option to make navbar go over content */
+    /* top: 75px;
+    right: 5%;
+    left: 5%;
+    width: 90%;
+    position: absolute; */
 }
 
 .message-form-box {

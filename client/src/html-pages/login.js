@@ -47,7 +47,7 @@ function Login() {
         }
       })
       .catch((err) => {
-        loginFail();
+        // loginFail();
         console.error(err);
       });
 
@@ -58,7 +58,7 @@ function Login() {
   // Logout component
   const Logout = () => {
     Cookies.remove("token");
-    logoutMessage(username.toUpperCase());
+    logoutMessage();
     setLoginRedirectState(true);
   };
 

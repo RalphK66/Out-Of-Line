@@ -9,6 +9,7 @@
     "animate.css": "^4.1.0",
     "availity-reactstrap-validation-safe": "^2.6.1",
     "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "mapbox-gl": "^1.10.0",
     "mysql": "^2.18.1",

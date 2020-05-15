@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 import logo from "../images/logo.png";
-import '../index.css'
+import "../css/navbar.css"
 
 // Navbar component, will display differently depending on authentication and authorization status 
 const NavBar = () => {
@@ -23,6 +23,7 @@ const NavBar = () => {
   const [isEmployeeLoggedIn, setIsEmployeeLoggedIn] = React.useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+ 
   // Logout component 
   const Logout = () => {
     console.log("Logged out");
@@ -70,22 +71,25 @@ const NavBar = () => {
   if (isCustomerLoggedIn) {
     return (
       <div>
-        <Navbar dark expand="md" className="shadow" >
-          <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar >
-            <Nav className="mr-auto" navbar >
+      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
+        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar >
+          <Nav className="mr-auto" navbar >
+            <NavItem>
+              <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
+            </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/about" activeClassName="active">About</NavLink>
+                <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
+                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active">Logout</NavLink>
+                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
             <Form>
@@ -99,25 +103,28 @@ const NavBar = () => {
     // Navbar for employees
     return (
       <div>
-        <Navbar dark expand="md" className="shadow" >
-          <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar >
-            <Nav className="mr-auto" navbar >
+      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
+        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar >
+          <Nav className="mr-auto" navbar >
+          <NavItem>
+          <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
+      </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+              <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/about" activeClassName="active">About</NavLink>
+              <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
+            </NavItem>
+              <NavItem>
+              <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
               </NavItem>
               <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
+              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active" className="navbar-navlink">Admin</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active">Admin</NavLink>
-              </NavItem>
-              <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active">Logout</NavLink>
+                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
             <Form>
@@ -131,25 +138,28 @@ const NavBar = () => {
     // Navbar for no auth
     return (
       <div>
-          <Navbar dark expand="md" className="shadow" >
-            <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} style={{width: '60px', height: '60px'}} alt="logo" className="shadow"></img></NavbarBrand>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar >
-              <Nav className="mr-auto" navbar >
+      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
+        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar >
+          <Nav className="mr-auto" navbar >
+          <NavItem>
+          <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
+      </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/about" activeClassName="active">About</NavLink>
+                <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
+              </NavItem>
+                <NavItem>
+                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active">Stores</NavLink>
+                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">SignUp</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active">Sign Up</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={RRNavLink} exact to="/login" activeClassName="active">Login</NavLink>
+                <NavLink tag={RRNavLink} exact to="/login" activeClassName="active" className="navbar-navlink">Login</NavLink>
                 </NavItem>
               </Nav>
               <Form>

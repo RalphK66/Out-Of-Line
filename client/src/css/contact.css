@@ -1,34 +1,35 @@
-.login-box {
+.message-box {
     margin-top: 50px;
     border: 20px solid #AAD2A9;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 20px;
+    /* option to make navbar go over content */
+    /* top: 75px;
+    right: 5%;
+    left: 5%;
+    width: 90%;
+    position: absolute; */
 }
-.login-form-box {
+
+.message-form-box {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
-.login-form-label {
+.message-form-label {
     color: #6A6A6A !important;
     margin-bottom: 20px;
 }
-.login-btn{
+.send-btn{
     background-color: #AADAFF !important;
     font-weight: bolder;
     border: none !important;
     width: 150px !important;
 }
-.logout-btn{
-    background-color: #EC745F !important;
-    font-weight: bolder;
-    border: none !important;
-    width: 150px !important;
-}
-.login-form-input {
-    color: #6A6A6A !important;
-}
-.login-form-icon {
-    color: #6A6A6A !important;
-}
 
+.message-form-input {
+    color: #6A6A6A !important;
+}
+.message-form-icon {
+    color: #6A6A6A !important;
+}

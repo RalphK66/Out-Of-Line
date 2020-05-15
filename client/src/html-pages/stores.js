@@ -1,7 +1,11 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
 import MapGL from 'mapbox-gl';
-import "../css/map.css";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import "../css/map.css"
+
+// import Geocoder from 'react-map-gl-geocoder';
+// import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 class Stores extends React.Component {
   constructor(props) {
@@ -160,7 +164,7 @@ class Stores extends React.Component {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
 
-          new MapGL.Popup()
+          new MapGL.Popup({className: "store-popup"})
             .setLngLat(coordinates)
             .setHTML(`${brand}`)
             .addTo(this.map);
@@ -181,10 +185,11 @@ class Stores extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         <div ref={this.mapRef} className="map-container"/>
         <div id="filter-container" className="filter-group"/>
       </div>
+      
     );
   }
 };

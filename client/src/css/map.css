@@ -2,16 +2,19 @@
     position: absolute !important;
     top: 100px;
     bottom: 0;
-    width: 81.5%;
+    width: 100vw;
+    border: 20px solid #AAD2A9;
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
-
 .filter-group {
+    margin-top: 20px;
+    margin-left: 20px;
     font: .8em 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: 600;
-    position: relative;
-    top: 20px;
+    position: absolute;
+    top: 110px;
     left: 10px;
-    z-index: 1;
     border-radius: 3px;
     width: 120px;
     color: #fff;
@@ -52,3 +55,30 @@
     content: '✔';
     margin-right: 5px;
 }
+
+.store-popup {
+
+}
+.mapboxgl-popup-content {
+    border: 4px solid #AADAFF;
+    border-radius: 20px;
+    height: 120px;
+    width: 120px;
+    font-weight: bolder;
+    color: black;
+    opacity: 85%;
+}
+.mapboxgl-popup-close-button {
+    color: #EC745F;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.marker {
+    background-image: url("../images/logo.png") !important;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }

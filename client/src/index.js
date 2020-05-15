@@ -4,12 +4,14 @@ import { BrowserRouter as Router} from "react-router-dom";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+  <Router>
+    <ToastContainer />
+    <App />
+  </Router>,
   document.getElementById('root')
 );
 

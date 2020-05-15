@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
-const creds = require("./config");
 
 const transport = {
   host: "smtp.gmail.com", // Gmail SMTP server
-  port: 587, // 465
+  port: 465, 
   auth: {
-    user: creds.USER,
-    pass: creds.PASS,
+    user: 'out.of.line.inc@gmail.com',
+    pass: 'pljsfihskynizqxj',
   },
 };
     // SMTP transport to send messages from our app

@@ -30,9 +30,8 @@ class Tags extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         let tags = [];
-        // notification for last person joining the queue - some issues
-        let newPerson = data[data.length - 1];
-        adminAddUser(newPerson.name);
+
+        adminAddUser();
 
         for (let i = 0; i < data.length; i++) {
           tags.push(

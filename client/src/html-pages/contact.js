@@ -37,11 +37,12 @@ class Contact extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:3000/send", {
+    // fetch(process.env.REACT_APP_API_URL + '/send', {
+    fetch(process.env.REACT_APP_API_URL + '/send', {
       method: "POST",
       body: JSON.stringify(this.state),
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
     })

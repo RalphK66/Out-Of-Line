@@ -14,7 +14,7 @@ const loginRouter = require('./routes/login');
 const adminAddRouter = require('./routes/adminAdd');
 const adminRemoveRouter = require('./routes/adminRemove');
 const tempUsers = require('./routes/tempUsers');
-// const contactRouter = require('./routes/contact'); This is for the contact page... still trying to figure it out - Ralph
+const contactRouter = require('./routes/contact'); // This is for the contact page... still trying to figure it out - Ralph
 
 const app = express();
 
@@ -46,7 +46,7 @@ app.use('/login', loginRouter);
 app.use('/adminAdd', adminAddRouter);
 app.use('/adminRemove', adminRemoveRouter);
 app.use('/tempUsers', tempUsers);
-// app.use('/send', contactRouter); This is for the contact page... still trying to figure it out - Ralph
+app.use('/send', contactRouter); // This is for the contact page... still trying to figure it out - Ralph
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

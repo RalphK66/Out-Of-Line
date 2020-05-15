@@ -1,7 +1,7 @@
 import React from "react";
-import {FaUser} from "react-icons/fa";
-import {FaLock} from "react-icons/fa";
-import '../css/login.css'
+import '../css/login.css';
+import { FaUser, FaLock } from "react-icons/fa";
+import { Redirect } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -24,7 +24,7 @@ function Login() {
   const PostLogin = (event) => {
     event.preventDefault();
 
-    // Fetch request to the backend 
+    // Fetch request to the backend
     fetch(process.env.REACT_APP_API_URL + '/login', {
       method: "POST",
       body: JSON.stringify({
@@ -36,15 +36,13 @@ function Login() {
         'Accept': 'application/json'
       },
       credentials: 'include'
-    })
-      .then(res => {
-        if (res.status === 200) {// Redirects after successful login
-          setLoginRedirectState(true);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });;
+    }).then(res => {
+      if (res.status === 200) {// Redirects after successful login
+        setLoginRedirectState(true);
+      }
+    }).catch(err => {
+      console.error(err);
+    });
 
     // Clear input values
     setUsername('');

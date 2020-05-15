@@ -7,11 +7,10 @@
     text-align: center;
 }
 /* add user button */
-.add-user {
-    background-color: #AAD2A9;
-    font-weight: bolder;
-    border: none;
-    width: 150px; 
+.add-to-queue-btn {
+    background-color: #AADAFF !important;
+    border: none !important;
+    width: 150px !important;
 }
 /* header for customer column */
 .customer-header {
@@ -31,9 +30,10 @@
     color: #6A6A6A !important;
 }
 /* each delete button */
-.del-btn {
+.del-customer-btn {
     width: fit-content !important; 
-    color: #6A6A6A;
+    border: none !important;
+    background-color: #EC745F !important;
     border-radius: 10px;
     padding: 5px;
     font-size: small;
@@ -46,6 +46,7 @@
 /* the column with "Remove" containing the delete buttons */
 .remove {
     width: fit-content;
+    text-align: center;
     color: #6A6A6A;
     vertical-align: middle !important;
 }

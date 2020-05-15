@@ -11,9 +11,16 @@
 }
 .login-form-label {
     color: #6A6A6A !important;
+    margin-bottom: 20px;
 }
-.login-logout-btn{
-    background-color: #AAD2A9 !important;
+.login-btn{
+    background-color: #AADAFF !important;
+    font-weight: bolder;
+    border: none !important;
+    width: 150px !important;
+}
+.logout-btn{
+    background-color: #EC745F !important;
     font-weight: bolder;
     border: none !important;
     width: 150px !important;
@@ -24,3 +31,4 @@
 .login-form-icon {
     color: #6A6A6A !important;
 }
+

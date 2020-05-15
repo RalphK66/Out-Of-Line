@@ -1,4 +1,6 @@
 
+
+
 // Trigger to start Covid Easter egg
 function Germ(e) {
   if (e.detail === 5) {
@@ -47,13 +49,13 @@ function resetGif() {
 // toilet roll gif annimation
 function toiletRoll() {
   let roll = document.getElementById("roll");
-  roll.hidden = false;
+  roll.style.display = "inline";
   roll.style.animationPlayState = "running";
   toiletRollAudio();
   // pause and hide animation
   setTimeout(() => {
     roll.style.animationPlayState = "paused";
-    roll.hidden = true;
+    roll.style.display = "none";
   }, 3000);
 }
 

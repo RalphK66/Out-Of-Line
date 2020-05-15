@@ -1,6 +1,5 @@
 import React from "react";
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+import { FaUser, FaLock } from "react-icons/fa";
 import "../css/login.css";
 import { Redirect } from "react-router-dom";
 import {
@@ -59,7 +58,6 @@ function Login() {
     setUsername("");
     setPassword("");
   };
-
   // Logout component
   const Logout = () => {
     Cookies.remove("token");
@@ -122,7 +120,7 @@ function Login() {
             </InputGroup>
             <br />
             <Button
-              className="login-logout-btn"
+              className="login-btn"
               type="submit"
               size="lg"
               onClick={PostLogin}
@@ -131,7 +129,7 @@ function Login() {
             </Button>
             <br />
             <br />
-            <Button className="login-logout-btn" onClick={Logout} size="lg">
+            <Button className="logout-btn" onClick={Logout} size="lg">
               Logout
             </Button>
           </div>

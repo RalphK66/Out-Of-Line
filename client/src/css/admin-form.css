@@ -1,25 +1,26 @@
-.wrapper {
+.add-user-box {
     margin-top: 50px; 
     border: 20px solid #AAD2A9; 
     border-radius: 10px; 
     padding: 20px;
 }
-
-.content {
+.add-user-form {
     text-align: center; 
     padding: 20px; 
     border-radius: 10px;
 }
-
-.display-4 {
-    color: #6A6A6A;
-    
+.add-user-form-input {
+    color: #6A6A6A !important;
 }
-
-.submit-btn {
-    background-color: #AAD2A9;
-    font-weight: bolder;
-    font-size: larger;
-    border: none;
-    width: 150px;
+.add-user-form-label {
+    color: #6A6A6A;
+    margin-bottom: 20px;
+}
+.add-user-btn {
+    background-color: #AADAFF !important;
+    border: none !important;
+    width: 150px !important;
+}
+.add-user-form-icon {
+    color: #6A6A6A;
 }

@@ -50,33 +50,33 @@ class Tags extends React.Component {
 
     render() {
         return(
-            <Container className="col-sm-8 shadow wrapper">
+            <Container className="col-sm-8 shadow add-user-box">
                 <Form onSubmit={this.handleSubmission}>
                     <FormGroup>
-                        <Container className="shadow content">
-                            <Label className="display-4">Add to Queue</Label>
+                        <Container className="shadow add-user-form">
+                            <Label className="display-4 add-user-form-label">Add to Queue</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaEnvelope/></InputGroupText>
+                                    <InputGroupText><FaEnvelope className="add-user-form-icon"/></InputGroupText>
                                 </InputGroupAddon>
-                                <Input name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email"/> <br />
+                                <Input className="add-user-form-input" name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
                             </InputGroup>
                             <br/>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaPhone/></InputGroupText>
+                                    <InputGroupText><FaPhone className="add-user-form-icon"/></InputGroupText>
                                 </InputGroupAddon>
-                                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number"/> <br />
+                                <Input className="add-user-form-input" name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
                             </InputGroup>
                             <br/>
                             <InputGroup>
                             <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaUser/></InputGroupText>
+                                    <InputGroupText><FaUser className="add-user-form-icon"/></InputGroupText>
                                 </InputGroupAddon>
-                                <Input name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name"/> <br />
+                                <Input className="add-user-form-input" name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name" bsSize="lg"/> <br />
                             </InputGroup>
                             <br/>
-                            <Button className="submit-btn">Submit</Button>
+                            <Button className="add-user-btn" size="lg">Submit</Button>
                         </Container>
                     </FormGroup>
                 </Form>

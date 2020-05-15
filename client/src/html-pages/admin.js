@@ -65,15 +65,16 @@ class Tags extends React.Component {
               </td>
               <td className="remove">
                 <form action="http://localhost:9000/adminRemove" method="POST">
-                  <button
-                    className="del-btn"
+                  <Button
+                    className="del-customer-btn"
                     name="id"
                     type="submit"
                     value={data[i].id}
                     onClick={this.refresh}
+                    size="sm"
                   >
                     DELETE
-                  </button>
+                  </Button>
                 </form>
               </td>
             </tr>
@@ -94,7 +95,7 @@ class Tags extends React.Component {
     return (
       <Container className="container col-sm-8 shadow admin">
         <a href="/adduser">
-          <Button className="add-user">Add to queue</Button>
+          <Button className="add-to-queue-btn" size="lg">Add to queue</Button>
         </a>
         <br />
         <br />

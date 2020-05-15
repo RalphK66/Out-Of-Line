@@ -11,9 +11,10 @@
 }
 .signup-form-label {
     color: #6A6A6A;
+    margin-bottom: 20px;
 }
 .signup-btn {
-    background-color: #AAD2A9 !important;
+    background-color: #AADAFF !important;
     font-weight: bolder;
     border: none !important;
     width: 150px !important;

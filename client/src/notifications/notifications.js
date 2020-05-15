@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { store } from "react-notifications-component";
 
 export function loginMessage(props) {

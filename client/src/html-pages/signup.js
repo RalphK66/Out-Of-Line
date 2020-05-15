@@ -132,8 +132,6 @@ class Signup extends React.Component {
               <br/>
               <div>
                 <CustomInput className="custom-checkbox-lg employee-checkbox" name="isEmployee" id="isEmployee" type="checkbox"
-                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
-                <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
                              onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Grocery Store Employee"/>
               </div>
               <br/>

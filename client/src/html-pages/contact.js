@@ -122,7 +122,6 @@ class Contact extends React.Component {
                   placeholder="Write your message here..."
                   value={this.state.message}
                   onChange={this.onMessageChange.bind(this)}
-                  color="muted"
                   rows="6"
                 />
               </InputGroup>

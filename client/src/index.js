@@ -4,15 +4,12 @@ import { BrowserRouter as Router} from "react-router-dom";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'react-notifications-component/dist/theme.css'
-import ReactNotification from 'react-notifications-component'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <Router>
     <ToastContainer />
-    <ReactNotification />
     <App />
   </Router>,
   document.getElementById('root')

@@ -2,9 +2,8 @@ import '../css/sign-up.css';
 import React from 'react';
 import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
-
+import { registerMessage } from "../notifications/toasts";
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
-import { registerMessage } from "../notifications/notifications";
 import '../css/sign-up.css'
 import {Redirect} from "react-router-dom";
 
@@ -74,8 +73,9 @@ class Signup extends React.Component {
             }
           });
         } else { // Successful login (status 200)
+          registerMessage()
           this.setState({isLoggedIn: true});
-          registerMessage(this.state.username)
+
         } 
       })
       .catch(err => {

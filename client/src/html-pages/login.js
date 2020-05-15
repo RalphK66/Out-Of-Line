@@ -13,11 +13,8 @@ import {
   InputGroupText,
 } from "reactstrap";
 import Cookies from "js-cookie";
-import {
-  loginMessage,
-  logoutMessage,
-  loginFail,
-} from "../notifications/notifications";
+
+import { loginMessage, logoutMessage, loginFail } from "../notifications/toasts";
 
 // Login component
 function Login() {
@@ -61,7 +58,7 @@ function Login() {
   // Logout component
   const Logout = () => {
     Cookies.remove("token");
-    logoutMessage();
+    logoutMessage(username.toUpperCase());
     setLoginRedirectState(true);
   };
 

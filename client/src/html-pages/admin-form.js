@@ -2,6 +2,7 @@ import React from "react";
 import { Form, FormGroup, Input, Button, Label, Container, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
 import { FaUser, FaPhone, FaEnvelope } from 'react-icons/fa';
 import "../css/admin-form.css"
+// import { adminAddUser, adminRemoveUser, } from "../notifications/toasts";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -42,8 +43,9 @@ class Tags extends React.Component {
       .catch(function (err) {
         console.error(err);
       });
-
+    // adminAddUser()
     window.location.replace("/admin");
+    
   }
 
 

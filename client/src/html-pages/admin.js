@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Container, Table } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-import { adminAddUser, adminRemoveUser } from "../notifications/notifications";
+// import { adminRemoveUser, } from "../notifications/toasts";
+
 
 class Tags extends React.Component {
   constructor(props) {
@@ -17,10 +18,15 @@ class Tags extends React.Component {
     this.displayQueue();
   }
 
+
   refresh() {
+    // adminRemoveUser()
     setTimeout(function () {
       window.location.reload();
+      
     }, 100);
+    // }, 4000);
+    
   }
 
   displayQueue(event) {
@@ -30,9 +36,6 @@ class Tags extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         let tags = [];
-
-        adminAddUser();
-
         for (let i = 0; i < data.length; i++) {
           tags.push(
             <tr key={data[i].id}>

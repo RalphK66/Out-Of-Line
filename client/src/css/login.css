@@ -15,14 +15,16 @@
     color: #6A6A6A !important;
 }
 
-Button {
-    background-color: #AAD2A9 !important;
-    border: none !important;
-    width: 150px !important;
-}
-input {
-    color: #6A6A6A !important;
-}
+/*button {*/
+/*    background-color: #AAD2A9 !important;*/
+/*    border: none !important;*/
+/*    width: 150px !important;*/
+/*}*/
+
+/*input {*/
+/*    color: #6A6A6A !important;*/
+/*}*/
+
 .icon {
     color: #6A6A6A !important;
 }

@@ -1,10 +1,9 @@
-
 /* Styling for the Landing page */
-
 .color-nav {
-    background-color: #AAD2A9;
+    /*background-color: #AAD2A9;*/
     border-radius: 5px;
 }
+
 .jumbotron {
     color: #6A6A6A;
     margin-top: 35px;
@@ -26,30 +25,31 @@
 }
 
 .mr-auto {
-  color: #FFFFFF;
-  ;
+    color: #FFFFFF;;
 }
 
 .display-5 {
-  text-align: center;
-  color: #6A6A6A;
+    text-align: center;
+    color: #6A6A6A;
 }
+
 .card-group {
-  border: 20px solid #AADAFF;
-  padding: 10px;
-  color: #6A6A6A;
-  border-radius: 5px;
+    border: 20px solid #AADAFF;
+    padding: 10px;
+    color: #6A6A6A;
+    border-radius: 5px;
 }
+
 .footer {
-  text-align: center;
+    text-align: center;
 }
 
 .mr-auto * {
-  color: #FFFFFF;
-
+    color: #FFFFFF;
 }
+
 .navbar-toggler {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 

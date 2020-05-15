@@ -1,3 +1,4 @@
+import '../css/sign-up.css';
 import React from 'react';
 import {
   Form,
@@ -10,14 +11,17 @@ import {
   Label,
   CustomInput
 } from 'reactstrap'
-import {FaUser, FaLock, FaPhone, FaEnvelope} from 'react-icons/fa';
-import '../css/sign-up.css'
-import {Redirect} from "react-router-dom";
+import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { Redirect } from "react-router-dom";
 
-class SignUp extends React.Component {
+// Sign-up component 
+class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoggedIn: false,
+      isEmployee: false
+    };
 
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
@@ -30,10 +34,12 @@ class SignUp extends React.Component {
     this.isEmployeeField = React.createRef();
   }
 
+  // Handles changed text for forms
   handleText(event) {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  // Handles the value of the checkbox when changed
   handleCheckbox(event) {
     if (event.target.checked) {
       this.setState({[event.target.name]: true});
@@ -42,12 +48,14 @@ class SignUp extends React.Component {
     }
   }
 
+  // Handles the submission of values from the forms
   handleSubmission(event) {
     event.preventDefault();
 
     console.log(this.state);
 
-    fetch('/api/signup', {
+    // Fetch request to the backend
+    fetch(process.env.REACT_APP_API_URL + '/signup', {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email, // handle empty fields
@@ -62,16 +70,17 @@ class SignUp extends React.Component {
       },
       credentials: 'include'
     })
-      .then(response => {
-        if (response.status === 200) {
-          localStorage.setItem("token", document.cookie);
-          this.isLoggedIn = true;
-
-          if (this.isLoggedIn) {
-            return <Redirect to="/"/>;
-          }
-        } else {
-          this.error = false;
+      .then(res => { // Redirects after successful sign-up
+        if (res.status === 409) { // Duplicate entry
+          res.json().then(data => {
+            if (data.errno === 1) {
+              this.setState({ invalidEmail: true });
+            } else if (data.errno === 2) {
+              this.setState({ invalidUsername: true });
+            }
+          });
+        } else { // Successful login (status 200)
+          this.setState({isLoggedIn: true});
         }
       })
       .catch(err => {
@@ -79,7 +88,13 @@ class SignUp extends React.Component {
       });
   }
 
+  // Front-end component
   render() {
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      window.location.replace('/');
+    }
+
     return (
       <div className="container col-sm-8 shadow box">
         <Form onSubmit={this.handleSubmission}>
@@ -91,7 +106,7 @@ class SignUp extends React.Component {
                   <InputGroupText><FaEnvelope/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email"
-                       bsSize="lg"/> <br/>
+                       bsSize="lg" required invalid={this.state.invalidEmail}/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
@@ -99,7 +114,7 @@ class SignUp extends React.Component {
                   <InputGroupText><FaPhone/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField}
-                       placeholder="Phone Number" bsSize="lg"/> <br/>
+                       placeholder="Phone Number" bsSize="lg" required/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
@@ -107,7 +122,7 @@ class SignUp extends React.Component {
                   <InputGroupText><FaUser/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField}
-                       placeholder="Username" bsSize="lg"/> <br/>
+                       placeholder="Username" bsSize="lg" required invalid={this.state.invalidUsername}/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
@@ -115,12 +130,12 @@ class SignUp extends React.Component {
                   <InputGroupText><FaLock/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField}
-                       placeholder="Password" bsSize="lg"/> <br/>
+                       placeholder="Password" bsSize="lg" required/> <br/>
               </InputGroup>
               <br/>
               <div>
                 <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
-                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Employee"/>
+                             onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Grocery Store Employee"/>
               </div>
               <br/>
               <Button size="lg">Submit</Button>
@@ -132,4 +147,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+export default Signup;

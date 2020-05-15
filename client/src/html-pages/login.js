@@ -1,9 +1,7 @@
 import React from "react";
-import {FaUser} from "react-icons/fa";
-import {FaLock} from "react-icons/fa";
-import '../css/login.css'
-import {useAuth} from "../context/auth";
-import {Redirect} from "react-router-dom";
+import '../css/login.css';
+import { FaUser, FaLock } from "react-icons/fa";
+import { Redirect } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -14,18 +12,20 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
-
+// Login component 
 function Login() {
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
+  const [loginRedirectState, setLoginRedirectState] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const {setAuthTokens} = useAuth();
 
+  // Handles login event 
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:9000/login", {
+    // Fetch request to the backend
+    fetch(process.env.REACT_APP_API_URL + '/login', {
       method: "POST",
       body: JSON.stringify({
         username: username,
@@ -36,31 +36,25 @@ function Login() {
         'Accept': 'application/json'
       },
       credentials: 'include'
-    })
-      .then(res => {
-        if (res.status === 200) {
-          console.log(document.cookie);
-          setAuthTokens(document.cookie);
-          setLoggedIn(true);
-        } else {
-          throw Error(res.statusText);
-        }
-      });
+    }).then(res => {
+      if (res.status === 200) {// Redirects after successful login
+        setLoginRedirectState(true);
+      }
+    }).catch(err => {
+      console.error(err);
+    });
 
     // Clear input values
     setUsername('');
     setPassword('');
   };
 
-  const Logout = () => {
-    localStorage.clear();
-    return <Redirect to="/"/>;
+  // Redirects to landing page once logged in/out
+  if (loginRedirectState) {
+    window.location.replace('/');
   }
 
-  if (isLoggedIn) {
-    return <Redirect to="/"/>;
-  }
-
+  // Front-end component
   return (
     <div className="container col-sm-8 shadow box">
       <Form>
@@ -114,10 +108,7 @@ function Login() {
               size="lg" onClick={PostLogin}>Login</Button>
             <br/>
             <br/>
-            <a href="/signup">Sign-Up</a>
-            <br/>
-            <br/>
-            <Button style={{backgroundColor: "#AAD2A9", border: "2px solid #FFFFFF"}} onClick={Logout}>Logout</Button>
+            <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
         </FormGroup>
       </Form>

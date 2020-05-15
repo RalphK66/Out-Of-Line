@@ -9,6 +9,7 @@ import Signup from "./html-pages/signup";
 import Admin from "./html-pages/admin";
 import PrivateRoute from './routes/private-route';
 import AddUser from "./html-pages/admin-form";
+import ResetPassword from "./html-pages/password-reset";
 
 class App extends React.Component {
   render() {
@@ -20,9 +21,10 @@ class App extends React.Component {
           <Route path="/stores"><Stores/></Route>
           <Route path="/about"><About/></Route>
           <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
-          <Route path="/signup"><Signup/></Route>
-          <Route exact path="/"><Home/></Route>
-          <Route exact path="/adduser"><AddUser/></Route>
+          <Route path="/signup"><SignUp /></Route>
+          <Route exact path="/"><Home /></Route>
+          <Route path="/password_reset"><ResetPassword /></Route>
+          <Route exact path="/adduser"><AddUser /></Route>
         </Switch>
       </Router>
     );

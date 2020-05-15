@@ -92,7 +92,7 @@ class Signup extends React.Component {
   render() {
     // Will redirect once successfully signed up
     if (this.state.isLoggedIn) {
-      return <Redirect to="/"/>;
+      window.location.replace('/');
     }
 
     return (

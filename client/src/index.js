@@ -7,9 +7,9 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+    <Router>
+      <App />
+    </Router>,
   document.getElementById('root')
 );
 

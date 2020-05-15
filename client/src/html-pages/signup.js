@@ -1,18 +1,10 @@
 import '../css/sign-up.css';
 import React from 'react';
-import {
-  Form,
-  FormGroup,
-  Input,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-  Button,
-  Label,
-  CustomInput
-} from 'reactstrap'
+import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { Redirect } from "react-router-dom";
+import { registerMessage } from "../notifications/toasts";
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
+import '../css/sign-up.css'
 
 // Sign-up component 
 class Signup extends React.Component {
@@ -80,8 +72,10 @@ class Signup extends React.Component {
             }
           });
         } else { // Successful login (status 200)
+          registerMessage()
           this.setState({isLoggedIn: true});
-        }
+
+        } 
       })
       .catch(err => {
         console.error(err);
@@ -96,52 +90,54 @@ class Signup extends React.Component {
     }
 
     return (
-      <div className="container col-sm-8 shadow box">
-        <Form onSubmit={this.handleSubmission}>
-          <FormGroup>
-            <div className="container shadow form-box">
-              <Label className="display-4 form-label">Sign Up</Label>
+      <div className="container col-sm-8 shadow signup-box">
+        <AvForm onSubmit={this.handleSubmission}>
+          <AvGroup>
+            <div className="container shadow signup-form-box">
+              <Label className="display-4 signup-form-label">Sign Up</Label>
+              <AvGroup className="signup-input">
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaEnvelope/></InputGroupText>
+                  <InputGroupText><FaEnvelope className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email"
-                       bsSize="lg" required invalid={this.state.invalidEmail}/> <br/>
+                <AvInput name="email" type="email" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
+                <AvFeedback>Please enter a valid email address</AvFeedback>  
               </InputGroup>
-              <br/>
-              <InputGroup>
+              </AvGroup>
+              <AvGroup className="signup-input">
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText><FaPhone className="signup-form-icons"/></InputGroupText>
+                    </InputGroupAddon>
+                  <AvInput name="phoneNumber" type="tel" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
+                  <AvFeedback>Please enter a valid 10-digit number</AvFeedback>
+                  </InputGroup>
+              </AvGroup>
+              <InputGroup className="signup-input">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaPhone/></InputGroupText>
-                </InputGroupAddon>
-                <Input name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField}
-                       placeholder="Phone Number" bsSize="lg" required/> <br/>
-              </InputGroup>
-              <br/>
-              <InputGroup>
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaUser/></InputGroupText>
+                  <InputGroupText><FaUser className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField}
                        placeholder="Username" bsSize="lg" required invalid={this.state.invalidUsername}/> <br/>
               </InputGroup>
               <br/>
-              <InputGroup>
+              <InputGroup className="signup-input">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaLock/></InputGroupText>
+                  <InputGroupText><FaLock className="signup-form-icons"/></InputGroupText>
                 </InputGroupAddon>
                 <Input name="password" type="password" onChange={this.handleText} ref={this.passwordField}
                        placeholder="Password" bsSize="lg" required/> <br/>
               </InputGroup>
               <br/>
               <div>
-                <CustomInput className="custom-checkbox-lg" name="isEmployee" id="isEmployee" type="checkbox"
+                <CustomInput className="custom-checkbox-lg employee-checkbox" name="isEmployee" id="isEmployee" type="checkbox"
                              onChange={this.handleCheckbox} innerRef={this.isEmployeeField} label="Grocery Store Employee"/>
               </div>
               <br/>
-              <Button size="lg">Submit</Button>
+              <Button className="signup-btn" size="lg">Submit</Button>
             </div>
-          </FormGroup>
-        </Form>
+          </AvGroup>
+        </AvForm>
       </div>
     );
   }

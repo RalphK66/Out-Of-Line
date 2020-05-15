@@ -8,19 +8,22 @@ import {
   CardBody,
   Container,
   Jumbotron,
-  ListGroup,
-  ListGroupItem,
+
 } from "reactstrap";
+import map_1 from "../images/map-1.png";
+import map_2 from "../images/map-2.png";
+import map_3 from "../images/map-3.png";
+import "../css/landing-page.css"
 
 class LandingPage extends React.Component {
   render() {
     return (
       <Container fluid>
         <div>
-          <Jumbotron className="shadow ">
+          <Jumbotron className="shadow landing-jumbo">
             <h1 className="display-3">Out-of-Line</h1>
             <p className="lead">Need to wait in line? Do it online!</p>
-            <hr className="my-2"/>
+            <hr />
             <p>
               Virtually queue at your favourite or local grocery store and take
               your social distancing to a whole new level while simultaneously
@@ -28,13 +31,14 @@ class LandingPage extends React.Component {
             </p>
           </Jumbotron>
         </div>
-        <CardGroup className="card-group shadow">
-          <Card className="shadow">
+        <CardGroup className="landing-card-group shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
-              src="/images/map-1.png"
+              src={map_1}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Interactive Map</strong></CardTitle>
@@ -44,37 +48,35 @@ class LandingPage extends React.Component {
               </CardText>
             </CardBody>
           </Card>
-          <Card className="shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
-              src="/images/map-2.png"
+              src={map_2}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Grocery Store Info</strong></CardTitle>
               <CardText>
                 Clicking on a grocery store will display that store's relevant
-                information, including:
-                <ListGroup flush>
-                  <ListGroupItem>Estimated wait times</ListGroupItem>
-                  <ListGroupItem>
-                    Number of people currently in line
-                  </ListGroupItem>
-                  <ListGroupItem>Health & Safety Information</ListGroupItem>
-                  <ListGroupItem>Contact Information & Directions</ListGroupItem>
-                </ListGroup>
+                information, including:<br />
+                - Estimated wait times<br />
+                - Length of queue<br />
+                - Health & Safety Information<br />
+                - Contact Details<br />
                 Place yourself in line at the store you choose by hitting the{" "}
                 <strong>"Queue"</strong> button.
               </CardText>
             </CardBody>
           </Card>
-          <Card className="shadow">
+          <Card className="shadow landing-card">
             <CardImg
               top
               width="100%"
-              src="/images/map-3.png"
+              src={map_3}
               alt="Card image cap"
+              className = "landing-card-img-top"
             />
             <CardBody>
               <CardTitle><strong>Virtual Queue</strong></CardTitle>

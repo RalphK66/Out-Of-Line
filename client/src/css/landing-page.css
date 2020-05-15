@@ -1,0 +1,20 @@
+.landing-jumbo {
+    color: #6A6A6A;
+    margin-top: 35px;
+    border: none;
+}
+.landing-card {
+    margin: 0 5px 5px;
+}
+.landing-card-img-top {
+    padding: 5px;
+    border: 10px solid #AAD2A9;
+}
+.landing-card-group {
+  border: 20px solid #AADAFF;
+  padding: 10px;
+  color: #6A6A6A;
+  border-radius: 5px;
+}
+
+

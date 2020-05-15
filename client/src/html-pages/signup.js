@@ -5,7 +5,6 @@ import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { registerMessage } from "../notifications/toasts";
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
 import '../css/sign-up.css'
-import {Redirect} from "react-router-dom";
 
 // Sign-up component 
 class Signup extends React.Component {
@@ -87,7 +86,7 @@ class Signup extends React.Component {
   render() {
     // Will redirect once successfully signed up
     if (this.state.isLoggedIn) {
-      return <Redirect to="/"/>;
+      window.location.replace('/');
     }
 
     return (

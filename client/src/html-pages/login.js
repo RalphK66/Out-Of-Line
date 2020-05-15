@@ -1,7 +1,6 @@
 import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import "../css/login.css";
-import { Redirect } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -12,9 +11,9 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
-import { loginMessage, logoutMessage, loginFail } from "../notifications/toasts";
+import { loginMessage } from "../notifications/toasts";
 
 // Login component
 function Login() {
@@ -55,16 +54,10 @@ function Login() {
     setUsername("");
     setPassword("");
   };
-  // Logout component
-  const Logout = () => {
-    Cookies.remove("token");
-    logoutMessage();
-    setLoginRedirectState(true);
-  };
 
   // Redirects to landing page once logged in/out
   if (loginRedirectState) {
-    return <Redirect to="/" />;
+    window.location.replace('/');
   }
 
   // Front-end component
@@ -119,16 +112,10 @@ function Login() {
             <Button
               className="login-btn"
               type="submit"
-              size="lg"
-              onClick={PostLogin}
-            >
-              Login
-            </Button>
-            <br />
-            <br />
-            <Button className="logout-btn" onClick={Logout} size="lg">
-              Logout
-            </Button>
+              size="lg" onClick={PostLogin}>Login</Button>
+            <br/>
+            <br/>
+            <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
         </FormGroup>
       </Form>

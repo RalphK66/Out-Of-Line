@@ -8,6 +8,10 @@ const router = express.Router();
 router.post('/', (req, res, next) => {
   // Queries data from the database
   db.query("SELECT password_salt, password_hash, isEmployee FROM users WHERE username = (?)", req.body.username, function (err, result) {
+    if(err) {
+      throw err;
+    }
+
     console.log(result);
 
     // Checks if the password from the client is correct.

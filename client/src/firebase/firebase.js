@@ -15,14 +15,11 @@ const config = {
       constructor() {
           app.initializeApp(config);
           this.auth = app.auth();
+          this.googleProvider = new app.auth.GoogleAuthProvider();
       }
 
-      userSignUp = (email, password) => {
-          this.auth.userSignUp(email, password);
-      }
-
-      userLoginIn = (email, password) => {
-          this.auth.userLoginIn(email, password);
+      userGoogleSignIn = () => {
+          this.auth.signInWithPopup(this.googleProvider);
       }
 
       firebaseSignOut = () => this.auth.signOut();

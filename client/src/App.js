@@ -21,7 +21,7 @@ class App extends React.Component {
           <Route path="/stores"><Stores/></Route>
           <Route path="/about"><About/></Route>
           <PrivateRoute path="/admin" comp={Admin}></PrivateRoute>
-          <Route path="/signup"><SignUp /></Route>
+          <Route path="/signup"><Signup /></Route>
           <Route exact path="/"><Home /></Route>
           <Route path="/password_reset"><ResetPassword /></Route>
           <Route exact path="/adduser"><AddUser /></Route>

@@ -13,6 +13,7 @@ import {
   InputGroupText,
 } from "reactstrap";
 
+// Resets the password if the inputted username is correct
 class ResetPassword extends React.Component {
     constructor(props) {
         super(props);

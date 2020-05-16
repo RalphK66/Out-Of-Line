@@ -18,10 +18,20 @@ export function logoutMessage(props) {
 
 export function loginFail() {
   toast.warn(
-    `Oh, no, something wwent wrong! 
+    `Oh, no, something went wrong! 
     Make sure your information is correct and try again!`,
     {
       className: "login-fail-message",
+      position: toast.POSITION.BOTTOM_RIGHT,
+    }
+  );
+}
+
+export function alreadyLoggedIn() {
+  toast.warn(
+    `You're already logged in!`,
+    {
+      className: "already-logged-in-message",
       position: toast.POSITION.BOTTOM_RIGHT,
     }
   );
@@ -52,6 +62,7 @@ export default {
   loginMessage,
   logoutMessage,
   loginFail,
+  alreadyLoggedIn,
   registerMessage,
   adminAddUser,
   adminRemoveUser,

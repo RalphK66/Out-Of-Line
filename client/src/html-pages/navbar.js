@@ -156,7 +156,7 @@ const NavBar = () => {
                 <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">SignUp</NavLink>
+                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">Sign Up</NavLink>
                 </NavItem>
                 <NavItem>
                 <NavLink tag={RRNavLink} exact to="/login" activeClassName="active" className="navbar-navlink">Login</NavLink>

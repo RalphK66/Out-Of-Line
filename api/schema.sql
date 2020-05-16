@@ -17,3 +17,10 @@ CREATE TABLE users (
     password_hash VARCHAR(256) DEFAULT NULL,
     isEmployee BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+CREATE TABLE temp_users (
+    id integer PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);

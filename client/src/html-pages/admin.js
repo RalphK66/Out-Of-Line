@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Table } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-// import { adminRemoveUser, } from "../notifications/toasts";
+import { adminRemoveUser, } from "../notifications/toasts";
 
 
 class Tags extends React.Component {
@@ -19,15 +19,13 @@ class Tags extends React.Component {
   }
 
 
-  refresh() {
-    // adminRemoveUser()
+  refresh = (function (props) {
+    adminRemoveUser(props)
     setTimeout(function () {
       window.location.reload();
-      
-    }, 100);
-    // }, 4000);
+    }, 2000);
     
-  }
+  })
 
   displayQueue(event) {
     fetch(process.env.REACT_APP_API_URL + "/tempUsers", {
@@ -72,7 +70,7 @@ class Tags extends React.Component {
                     name="id"
                     type="submit"
                     value={data[i].id}
-                    onClick={this.refresh}
+                    onClick={() => {this.refresh(data[i].name)}}
                     size="sm"
                   >
                     DELETE

@@ -10,15 +10,31 @@ export function loginMessage(props) {
   });
 }
 
-export function logoutMessage(props) {
-  // toast.success(`Bye-bye ${props}!`, {
-  toast.success(`Bye-bye, ${props}!`, {
+// export function logoutMessage(props) {
+//   // toast.success(`Bye-bye ${props}!`, {
+//   toast.success(`Bye-bye, ${props}!`, {
+//     className: "logout-message",
+//     position: toast.POSITION.BOTTOM_RIGHT,
+//   });
+// }
+
+export function logoutMessage() {
+  toast.success(`Bye-bye!`, {
     className: "logout-message",
     position: toast.POSITION.BOTTOM_RIGHT,
   });
 }
 
-export function loginFail() {
+export function loginFailEmpty() {
+  toast.warn("Username and Passowrd cannot be empty!",
+    {
+      className: "login-fail-message",
+      position: toast.POSITION.BOTTOM_RIGHT,
+    }
+  );
+}
+
+export function loginFailCredentials() {
   toast.warn(<div>Something went wrong!<br /> Make sure your username and password is correct and try again!</div>,
     {
       className: "login-fail-message",
@@ -45,7 +61,7 @@ export function emailAlreadyInUse(props) {
   toast.warn(
     <div>
       <div style={{color: "red"}}><FaExclamation/>{props}</div>
-      <div> already has an account.</div>
+      <div> already has an account associated with it.</div>
     </div>, 
     {
     className: "register-message",
@@ -54,23 +70,26 @@ export function emailAlreadyInUse(props) {
 }
 
 export function adminAddUser(props) {
-  toast.info(`${props} has been ADDED to the queue!`, {
+  toast.info(`${props} is being added to the queue.`, {
     className: "admin-add-user-message",
     position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
   });
 }
 
-export function adminRemoveUser() {
-  toast.info(`Customer has been removed from the queue!`, {
+export function adminRemoveUser(props) {
+  toast.info(`Removing ${props} from queue!`, {
     className: "admin-remove-user-message",
     position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
   });
 }
 
 export default {
   loginMessage,
   logoutMessage,
-  loginFail,
+  loginFailEmpty,
+  loginFailCredentials,
   registerMessage,
   usernameTakenMessage,
   emailAlreadyInUse,

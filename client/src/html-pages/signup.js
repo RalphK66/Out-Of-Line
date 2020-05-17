@@ -2,7 +2,7 @@ import '../css/sign-up.css';
 import React from 'react';
 import { Input, InputGroup, InputGroupText, InputGroupAddon, Button, Label, CustomInput } from 'reactstrap'
 import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { registerMessage } from "../notifications/toasts";
+import {   usernameTakenMessage, emailAlreadyInUse, } from "../notifications/toasts";
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
 import '../css/sign-up.css'
 
@@ -66,15 +66,15 @@ class Signup extends React.Component {
         if (res.status === 409) { // Duplicate entry
           res.json().then(data => {
             if (data.errno === 1) {
+              emailAlreadyInUse(this.state.email)
               this.setState({ invalidEmail: true });
             } else if (data.errno === 2) {
+              usernameTakenMessage(this.state.username)
               this.setState({ invalidUsername: true });
             }
           });
         } else { // Successful login (status 200)
-          registerMessage()
           this.setState({isLoggedIn: true});
-
         } 
       })
       .catch(err => {

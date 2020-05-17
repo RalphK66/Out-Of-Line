@@ -2,18 +2,17 @@ import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import "../css/login.css";
 import {
-  Form,
-  FormGroup,
-  Input,
   Button,
   Label,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
+
 import { Link } from "react-router-dom";
 
-import { loginMessage } from "../notifications/toasts";
+import { loginFailCredentials, loginFailEmpty } from "../notifications/toasts";
 
 // Login component
 function Login() {
@@ -21,11 +20,14 @@ function Login() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+
   // Handles login event
   const PostLogin = (event) => {
     event.preventDefault();
-
-    // Fetch request to the backend
+    if (!username.length > 0 || !password.length > 0) {
+      loginFailEmpty()
+    } else {
+        // Fetch request to the backend
     fetch(process.env.REACT_APP_API_URL + "/login", {
       method: "POST",
       body: JSON.stringify({
@@ -41,18 +43,17 @@ function Login() {
       .then((res) => {
         if (res.status === 200) {
           // Redirects after successful login
-          loginMessage(username.toUpperCase());
           setLoginRedirectState(true);
         }
+        else if (res.status === 401){
+          loginFailCredentials();
+        }        
       })
       .catch((err) => {
-        // loginFail();
+        if (err) 
         console.error(err);
       });
-
-    // Clear input values
-    setUsername("");
-    setPassword("");
+    }
   };
 
   // Redirects to landing page once logged in/out
@@ -63,8 +64,8 @@ function Login() {
   // Front-end component
   return (
     <div className="container col-sm-8 shadow login-box">
-      <Form>
-        <FormGroup>
+      <AvForm>
+        <AvGroup>
           <div className="container shadow login-form-box">
             <Label className="display-4 login-form-label">Login</Label>
             <InputGroup>
@@ -73,7 +74,8 @@ function Login() {
                   <FaUser className="login-form-icon" />
                 </InputGroupText>
               </InputGroupAddon>
-              <Input
+              <AvInput
+                required
                 className="login-form-input"
                 type="username"
                 name="username"
@@ -85,7 +87,7 @@ function Login() {
                   setUsername(event.target.value);
                 }}
               />
-              <br />
+              <AvFeedback>Username cannot be empty</AvFeedback>
             </InputGroup>
             <br />
             <InputGroup>
@@ -94,7 +96,8 @@ function Login() {
                   <FaLock className="login-form-icon" />
                 </InputGroupText>
               </InputGroupAddon>
-              <Input
+              <AvInput
+                required
                 className="login-form-input"
                 type="password"
                 name="password"
@@ -106,7 +109,7 @@ function Login() {
                   setPassword(event.target.value);
                 }}
               />
-              <br />
+              <AvFeedback>Password cannot be empty</AvFeedback>
             </InputGroup>
             <br />
             <Button
@@ -117,8 +120,8 @@ function Login() {
             <br/>
             <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
-        </FormGroup>
-      </Form>
+        </AvGroup>
+      </AvForm>
     </div>
   );
 }

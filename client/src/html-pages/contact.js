@@ -1,14 +1,13 @@
 import React from "react";
 import {
-  Form,
-  FormGroup,
-  Input,
   Button,
   Label,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
+import { messageSent, } from "../notifications/toasts";
 import { FaUser, FaEnvelope, FaCommentAlt } from "react-icons/fa";
 import "../css/contact.css";
 
@@ -37,7 +36,6 @@ class Contact extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    // fetch(process.env.REACT_APP_API_URL + '/send', {
     fetch(process.env.REACT_APP_API_URL + '/send', {
       method: "POST",
       body: JSON.stringify(this.state),
@@ -49,7 +47,7 @@ class Contact extends React.Component {
       .then((response) => response.json())
       .then((response) => {
         if (response.status === "success") {
-          alert("Message Sent.");
+          messageSent(this.state.name)
           this.resetForm();
         } else if (response.status === "fail") {
           alert("Message failed to send.");
@@ -64,22 +62,23 @@ class Contact extends React.Component {
   render() {
     return (
       <div className="container shadow message-box">
-        <Form
+        <AvForm
           id="contact-form"
           onSubmit={this.handleSubmit.bind(this)}
-          method="POST"
+          method="post"
         >
           <div className="container shadow message-form-box">
             <Label className="display-4 message-form-label">Contact Us</Label>
             <br />
-            <FormGroup>
+            <AvGroup>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
                     <FaUser className="message-form-icon" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input
+                <AvInput
+                  required
                   className="message-form-input"
                   type="text"
                   name="name"
@@ -89,6 +88,7 @@ class Contact extends React.Component {
                   value={this.state.name}
                   onChange={this.onNameChange.bind(this)}
                 />
+                <AvFeedback>Name cannot be empty</AvFeedback>
               </InputGroup>
               <br />
               <InputGroup>
@@ -97,7 +97,8 @@ class Contact extends React.Component {
                     <FaEnvelope className="message-form-icon" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input
+                <AvInput
+                  required
                   className="message-form-input"
                   type="email"
                   name="email"
@@ -107,6 +108,7 @@ class Contact extends React.Component {
                   value={this.state.email}
                   onChange={this.onEmailChange.bind(this)}
                 />
+                {this.state.email === "" ? <AvFeedback>Email cannot be empty</AvFeedback> : <AvFeedback>Please enter a valid email address</AvFeedback>}
               </InputGroup>
               <br />
               <InputGroup>
@@ -115,7 +117,8 @@ class Contact extends React.Component {
                     <FaCommentAlt className="message-form-icon" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input
+                <AvInput
+                  required
                   className="message-form-input message-area"
                   type="textarea"
                   name="message"
@@ -125,6 +128,7 @@ class Contact extends React.Component {
                   onChange={this.onMessageChange.bind(this)}
                   rows="6"
                 />
+                <AvFeedback>Please enter your message</AvFeedback>
               </InputGroup>
               <br />
               <Button
@@ -134,9 +138,9 @@ class Contact extends React.Component {
               >
                 Send
               </Button>
-            </FormGroup>
+            </AvGroup>
           </div>
-        </Form>
+        </AvForm>
       </div>
     );
   }

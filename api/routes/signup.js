@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
   console.log(values);
 
   db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], (err, result) => {
-    if (err.code === 'ER_DUP_ENTRY') {
+    if (err !== null && err.code === 'ER_DUP_ENTRY') {
       if (!!err.sqlMessage.match(/email/)) {
         res.status(409).send({ errno: 1 });
       } else if (!!err.sqlMessage.match(/username/)) {

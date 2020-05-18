@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
     // Updating the values in users with a new password
     db.query("UPDATE users SET password_salt = (?), password_hash = (?) WHERE username = (?)", [saltAndHashed.salt, saltAndHashed.hash, req.body.username], function (err, result) {
         if (err) {
-            console.error(err);
+            res.sendStatus(409);
         } else {
 
             // Sends back a JWT token if the password is correct

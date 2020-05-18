@@ -27,6 +27,16 @@ export function loginFail() {
   );
 }
 
+export function signInFail() {
+  toast.warn(
+    `Something went wrong with the information you inputted, check that it's correct!`,
+    {
+      className: "signin-fail-message",
+      position: toast.POSITION.BOTTOM_RIGHT,
+    }
+  );
+}
+
 export function alreadyLoggedIn() {
   toast.warn(
     `You're already logged in!`,
@@ -62,6 +72,7 @@ export default {
   loginMessage,
   logoutMessage,
   loginFail,
+  signInFail,
   alreadyLoggedIn,
   registerMessage,
   adminAddUser,

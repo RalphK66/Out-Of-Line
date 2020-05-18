@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const nodemailer = require("nodemailer");
+const router = express.Router();
 
 const transport = {
   host: "smtp.gmail.com", // Gmail SMTP server
@@ -27,10 +27,10 @@ router.post("/", (req, res, next) => {
   const message = req.body.message;
   const content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-    // content of messge to be sent
+    // content and address of message to be sent
   const mail = {
     from: name,
-    to: "out.of.line.inc@gmail.com", // Where we will receive messages
+    to: "out.of.line.inc@gmail.com",
     subject: "Contact Form Message",
     text: content,
   };

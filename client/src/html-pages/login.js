@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 import "../css/login.css";
+import "../css/toasts.css"
 import {
   Button,
   Label,
@@ -8,10 +10,12 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
-
-import { Link } from "react-router-dom";
-
+import {
+  AvForm,
+  AvGroup,
+  AvInput,
+  AvFeedback,
+} from "availity-reactstrap-validation-safe";
 import { loginFailCredentials, loginFailEmpty } from "../notifications/toasts";
 
 // Login component
@@ -20,45 +24,42 @@ function Login() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-
   // Handles login event
   const PostLogin = (event) => {
     event.preventDefault();
     if (!username.length > 0 || !password.length > 0) {
-      loginFailEmpty()
+      loginFailEmpty();
     } else {
-        // Fetch request to the backend
-    fetch(process.env.REACT_APP_API_URL + "/login", {
-      method: "POST",
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      credentials: "include",
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          // Redirects after successful login
-          setLoginRedirectState(true);
-        }
-        else if (res.status === 401){
-          loginFailCredentials();
-        }        
+      // Fetch request to the backend
+      fetch(process.env.REACT_APP_API_URL + "/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        credentials: "include",
       })
-      .catch((err) => {
-        if (err) 
-        console.error(err);
-      });
+        .then((res) => {
+          if (res.status === 200) {
+            // Redirects after successful login
+            setLoginRedirectState(true);
+          } else if (res.status === 401) {
+            loginFailCredentials();
+          }
+        })
+        .catch((err) => {
+          if (err) console.error(err);
+        });
     }
   };
 
   // Redirects to landing page once logged in/out
   if (loginRedirectState) {
-    window.location.replace('/');
+    window.location.replace("/");
   }
 
   // Front-end component
@@ -115,9 +116,13 @@ function Login() {
             <Button
               className="login-btn"
               type="submit"
-              size="lg" onClick={PostLogin}>Login</Button>
-            <br/>
-            <br/>
+              size="lg"
+              onClick={PostLogin}
+            >
+              Login
+            </Button>
+            <br />
+            <br />
             <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
         </AvGroup>

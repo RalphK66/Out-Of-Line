@@ -1,18 +1,34 @@
+/* - - - - - - - - - - - - - NAVBAR STYLES - - - - - - - - - - - - - - */
+
+/* Navbar container */
+
 .my-navbar {
-    background-color: #AAD2A9;
-    border-radius: 5px;
-    z-index: 2;
-    /* option to make navbar go over content */
-    /* z-index: 9999;
+  background-color: #AAD2A9;
+  border-radius: 5px;
+  z-index: 2;
+  /* option to make navbar go over content */
+  /* z-index: 9999;
     position: absolute;
     width: 100%; */
-    
-  }
-  .navbar-navlink {
-      font-weight: bold;
-      font-size: large;
-  }
-  .navbar-logo {
-    width: 60px;
-    height: 60px;
-  }
+}
+
+/* navbar links */
+
+.navbar-navlink {
+  font-weight: bold;
+  font-size: large;
+}
+
+/* navbar logo */
+
+.navbar-logo {
+  width: 60px;
+  height: 60px;
+}
+
+/* nabar text displaying the user that is currently logged in */
+
+.navbar-text-user {
+  float: right;
+  margin-right: 10px;
+}

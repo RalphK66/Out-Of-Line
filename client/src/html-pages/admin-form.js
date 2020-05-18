@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin-form.css";
+import "../css/toasts.css"
 import { adminAddUser, } from "../notifications/toasts";
 
 class Tags extends React.Component {

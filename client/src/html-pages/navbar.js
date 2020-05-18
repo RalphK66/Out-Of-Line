@@ -16,6 +16,7 @@ import {
 import { logoutMessage } from '../notifications/toasts'
 import logo from "../images/logo.png";
 import "../css/navbar.css"
+import "../css/toasts.css"
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -93,7 +94,8 @@ const NavBar = () => {
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
-            <NavbarText style={{float: "right", marginRight: "10px"}}>Hi, {username}</NavbarText>
+            {/* Displays the name of the person that is logged in */}
+            <NavbarText className="navbar-text-user" >Hi, {username}</NavbarText>
             <Form>
               <Input type="search" name="search" id="mySearch" placeholder="Search"/>
             </Form>
@@ -128,7 +130,8 @@ const NavBar = () => {
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
-            <NavbarText style={{float: "right", marginRight: "10px"}}>Hi, {username}</NavbarText>
+            {/* Displays the name of the person that is logged in */}
+            <NavbarText>Hi, {username}</NavbarText>
             <Form>
               <Input type="search" name="search" id="mySearch" placeholder="Search"/>
             </Form>

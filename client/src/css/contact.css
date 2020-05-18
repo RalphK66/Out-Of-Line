@@ -1,3 +1,7 @@
+/* - - - - - - - - - - - - - CONTACT US PAGE STYLES - - - - - - - - - - - - - */
+
+/* Container */
+
 .message-box {
     margin-top: 50px;
     border: 20px solid #AAD2A9;
@@ -11,25 +15,38 @@
     position: absolute; */
 }
 
+/* form container */
+
 .message-form-box {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
+
+/* form label */
+
 .message-form-label {
     color: #6A6A6A !important;
     margin-bottom: 20px;
 }
-.send-btn{
+
+/* send button */
+
+.send-btn {
     background-color: #AADAFF !important;
     font-weight: bolder;
     border: none !important;
     width: 150px !important;
 }
 
+/* name, email anddress and message inputs */
+
 .message-form-input {
     color: #6A6A6A !important;
 }
+
+/* input icons */
+
 .message-form-icon {
     color: #6A6A6A !important;
 }

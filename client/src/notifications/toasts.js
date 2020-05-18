@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import { toast } from "react-toastify";
-import "../index.css"
-import {FaExclamation, FaCheckDouble} from "react-icons/fa";
+import "../index.css";
+import { FaExclamation, FaCheckDouble } from "react-icons/fa";
 
 export function loginMessage(props) {
   toast.success(`Success, ${props}! You are logged in!`, {
@@ -10,14 +10,6 @@ export function loginMessage(props) {
   });
 }
 
-// export function logoutMessage(props) {
-//   // toast.success(`Bye-bye ${props}!`, {
-//   toast.success(`Bye-bye, ${props}!`, {
-//     className: "logout-message",
-//     position: toast.POSITION.BOTTOM_RIGHT,
-//   });
-// }
-
 export function logoutMessage() {
   toast.success(`Bye-bye!`, {
     position: toast.POSITION.BOTTOM_RIGHT,
@@ -25,15 +17,17 @@ export function logoutMessage() {
 }
 
 export function loginFailEmpty() {
-  toast.warn("Username and Passowrd cannot be empty!",
-    {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    }
-  );
+  toast.warn("Username and Passowrd cannot be empty!", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  });
 }
 
 export function loginFailCredentials() {
-  toast.warn(<div>Something went wrong!<br /> Make sure your username and password is correct and try again!</div>,
+  toast.warn(
+    <div>
+      Something went wrong!
+      <br /> Make sure your username and password is correct and try again!
+    </div>,
     {
       position: toast.POSITION.BOTTOM_RIGHT,
     }
@@ -47,20 +41,32 @@ export function registerMessage(props) {
 }
 
 export function usernameTakenMessage(props) {
-  toast.warn(<div><FaExclamation/>{props} is taken<br />Pick a different username.</div>, {
-    position: toast.POSITION.BOTTOM_RIGHT,
-  });
+  toast.warn(
+    <div>
+      <FaExclamation />
+      {props} is taken
+      <br />
+      Pick a different username.
+    </div>,
+    {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    }
+  );
 }
 
 export function emailAlreadyInUse(props) {
   toast.warn(
     <div>
-      <div style={{color: "red"}}><FaExclamation/>{props}</div>
+      <div style={{ color: "red" }}>
+        <FaExclamation />
+        {props}
+      </div>
       <div> already has an account associated with it.</div>
-    </div>, 
+    </div>,
     {
-    position: toast.POSITION.BOTTOM_RIGHT,
-  });
+      position: toast.POSITION.BOTTOM_RIGHT,
+    }
+  );
 }
 
 export function adminAddUser(props) {
@@ -77,10 +83,15 @@ export function adminRemoveUser(props) {
   });
 }
 export function messageSent(props) {
-  toast.success(<div><FaCheckDouble/>  {props}, your messge was sent</div>, {
-    position: toast.POSITION.BOTTOM_RIGHT,
-    autoClose: 2000,
-  });
+  toast.success(
+    <div>
+      <FaCheckDouble /> {props}, your messge was sent
+    </div>,
+    {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 2000,
+    }
+  );
 }
 
 export function emptyFields() {

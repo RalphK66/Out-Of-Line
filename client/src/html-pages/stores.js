@@ -3,6 +3,7 @@ import React from 'react';
 import MapGL from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "../css/map.css"
+import "../css/toasts.css"
 
 // import Geocoder from 'react-map-gl-geocoder';
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';

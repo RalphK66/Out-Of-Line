@@ -6,8 +6,13 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
-import { messageSent, } from "../notifications/toasts";
+import {
+  AvForm,
+  AvGroup,
+  AvInput,
+  AvFeedback,
+} from "availity-reactstrap-validation-safe";
+import { messageSent, emptyFields } from "../notifications/toasts";
 import { FaUser, FaEnvelope, FaCommentAlt } from "react-icons/fa";
 import "../css/contact.css";
 
@@ -34,25 +39,28 @@ class Contact extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-
-    fetch(process.env.REACT_APP_API_URL + '/send', {
-      method: "POST",
-      body: JSON.stringify(this.state),
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.status === "success") {
-          messageSent(this.state.name)
-          this.resetForm();
-        } else if (response.status === "fail") {
-          alert("Message failed to send.");
-        }
-      });
+    e.persist()
+    if (!this.state.message || !this.state.email || !this.state.name) {
+      emptyFields()
+    } else {
+      fetch(process.env.REACT_APP_API_URL + "/send", {
+        method: "POST",
+        body: JSON.stringify(this.state),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === "success") {
+            messageSent(this.state.name);
+            this.resetForm();
+          } else if (response.status === "fail") {
+            alert("Message failed to send.");
+          }
+        });
+    }
   }
 
   resetForm() {
@@ -87,7 +95,7 @@ class Contact extends React.Component {
                   bsSize="lg"
                   value={this.state.name}
                   onChange={this.onNameChange.bind(this)}
-                />
+                />{" "}
                 <AvFeedback>Name cannot be empty</AvFeedback>
               </InputGroup>
               <br />
@@ -107,8 +115,12 @@ class Contact extends React.Component {
                   bsSize="lg"
                   value={this.state.email}
                   onChange={this.onEmailChange.bind(this)}
-                />
-                {this.state.email === "" ? <AvFeedback>Email cannot be empty</AvFeedback> : <AvFeedback>Please enter a valid email address</AvFeedback>}
+                />{" "}
+                {this.state.email === "" ? (
+                  <AvFeedback>Email cannot be empty</AvFeedback>
+                ) : (
+                  <AvFeedback>Please enter a valid email address</AvFeedback>
+                )}
               </InputGroup>
               <br />
               <InputGroup>
@@ -127,15 +139,11 @@ class Contact extends React.Component {
                   value={this.state.message}
                   onChange={this.onMessageChange.bind(this)}
                   rows="6"
-                />
+                />{" "}
                 <AvFeedback>Please enter your message</AvFeedback>
               </InputGroup>
               <br />
-              <Button
-                className="send-btn"
-                type="submit"
-                size="lg"
-              >
+              <Button className="send-btn" type="submit" size="lg">
                 Send
               </Button>
             </AvGroup>

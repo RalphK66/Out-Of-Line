@@ -83,6 +83,12 @@ export function messageSent(props) {
   });
 }
 
+export function emptyFields() {
+  toast.warn("Please make sure all fields are filled out!", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 4000,
+  });
+}
 
 export default {
   loginMessage,
@@ -95,4 +101,5 @@ export default {
   adminAddUser,
   adminRemoveUser,
   messageSent,
+  emptyFields,
 };

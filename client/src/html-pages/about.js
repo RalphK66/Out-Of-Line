@@ -48,7 +48,7 @@ const about = () => {
               <br />
               <br />
               Need to stand in line? Do it online, with{" "}
-              <span className="OoF">Out-of-Line</span>!
+              <span className="Out-of-Line">Out-of-Line</span>!
             </p>
           </div>
           <br />
@@ -58,7 +58,7 @@ const about = () => {
         <Row>
           <Col sm></Col>
           <Col sm>
-            <div className="container-1">
+            <Container className="container-1">
               <Image className="crew-image" src={kyrill} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
@@ -67,13 +67,13 @@ const about = () => {
                   <p>{crew.km.message}</p>
                 </div>
               </div>
-            </div>
+            </Container>
           </Col>
           <Col sm></Col>
         </Row>
         <Row>
           <Col sm>
-            <div className="container-1">
+            <Container className="container-1">
               <Image className="crew-image" src={ralph} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
@@ -82,11 +82,11 @@ const about = () => {
                   <p>{crew.rk.message}</p>
                 </div>
               </div>
-            </div>
+            </Container>
           </Col>
           <Col sm></Col>
           <Col sm>
-            <div className="container-1">
+            <Container className="container-1">
               <Image className="crew-image" src={janelle} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
@@ -95,13 +95,13 @@ const about = () => {
                   <p>{crew.jk.message}</p>
                 </div>
               </div>
-            </div>
+            </Container>
           </Col>
         </Row>
         <Row>
           <Col sm></Col>
           <Col sm>
-            <div className="container-1">
+            <Container className="container-1">
               <Image className="crew-image" src={david} roundedCircle fluid />
               <div className="overlay">
                 <div className="text">
@@ -110,7 +110,7 @@ const about = () => {
                   <p>{crew.dh.message}</p>
                 </div>
               </div>
-            </div>
+            </Container>
           </Col>
           <Col sm></Col>
         </Row>

@@ -1,0 +1,30 @@
+.Toastify__toast--default {
+    background: #fff;
+    color: #aaa;
+    border: 3px solid #aaa !important;
+    border-radius: 5px !important;
+}
+
+.Toastify__toast--info {
+    background: #3498db;
+    border: 3px solid #3498db !important;
+    border-radius: 5px !important;
+}
+
+.Toastify__toast--success {
+    background: #07bc0c;
+    border: 3px solid #07bc0c !important;
+    border-radius: 5px !important;
+}
+
+.Toastify__toast--warning {
+    background: #f1c40f;
+    border: 3px solid #f1c40f !important;
+    border-radius: 5px !important;
+}
+
+.Toastify__toast--error {
+    background: #e74c3c;
+    border: 3px solid #e74c3c !important;
+    border-radius: 5px !important;
+}

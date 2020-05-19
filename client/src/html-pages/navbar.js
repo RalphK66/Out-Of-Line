@@ -10,9 +10,10 @@ import {
   NavItem,
   NavLink,
   Form,
-  Input
+  Input,
+  NavbarText
 } from "reactstrap";
-
+import { logoutMessage } from '../notifications/toasts'
 import logo from "../images/logo.png";
 import "../css/navbar.css"
 
@@ -21,6 +22,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = React.useState(false);
   const [isEmployeeLoggedIn, setIsEmployeeLoggedIn] = React.useState(false);
+  const [username, setUsername] = React.useState("not logged in");
   const toggle = () => setIsOpen(!isOpen);
 
  
@@ -30,6 +32,7 @@ const NavBar = () => {
     Cookies.remove('token');
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
+    logoutMessage()
   }
 
   // Checks whether or not the user is logged in or not, and as an employee or customer
@@ -50,26 +53,26 @@ const NavBar = () => {
       console.log(error)
     }
     if (session !== undefined && session.isEmployee) {
-      return true;
-    } else {
-      return false;
-    }
+      return {state: true, username: session.username};
+    } else if (session !== undefined && !session.isEmployee) {
+      return {state: true , username: session.username};
+    } else return {state: false}
   }
 
   // Checks whether or not the user is authenticated, and as an employee or customer
   React.useEffect(() => {
-    if (checkSession()) {
+    let info = checkSession()
+    if (info.state) {
       setIsEmployeeLoggedIn(true);
+      setUsername(info.username)
     } else {
-      console.log(Cookies.get("token"));
       if (Cookies.get("token") !== undefined) {
-        console.log(Cookies.get("token"));
         setIsCustomerLoggedIn(true);
+        setUsername(info.username)
       }
     }
   }, []);
 
-  // Navbar for customers
   if (isCustomerLoggedIn) {
     return (
       <div>
@@ -94,6 +97,8 @@ const NavBar = () => {
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
+            {/* Displays the name of the person that is logged in */}
+            <NavbarText className="navbar-text-user" >Hi, {username}</NavbarText>
             <Form>
               <Input type="search" name="search" id="mySearch" placeholder="Search"/>
             </Form>
@@ -129,11 +134,15 @@ const NavBar = () => {
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
+            {/* Displays the name of the person that is logged in */}
+            <NavbarText>Hi, {username}</NavbarText>
             <Form>
               <Input type="search" name="search" id="mySearch" placeholder="Search"/>
             </Form>
           </Collapse>
+          
         </Navbar>
+
       </div>
     );
   } else {

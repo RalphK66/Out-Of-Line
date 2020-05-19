@@ -5,6 +5,7 @@ import { FaUser, FaLock, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { registerMessage } from "../notifications/toasts";
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
 import '../css/sign-up.css'
+import { signInFail, alreadyLoggedIn } from "../notifications/toasts";
 
 // Sign-up component 
 class Signup extends React.Component {
@@ -67,8 +68,10 @@ class Signup extends React.Component {
           res.json().then(data => {
             if (data.errno === 1) {
               this.setState({ invalidEmail: true });
+              signInFail();
             } else if (data.errno === 2) {
               this.setState({ invalidUsername: true });
+              signInFail();
             }
           });
         } else { // Successful login (status 200)

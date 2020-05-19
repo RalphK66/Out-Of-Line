@@ -13,6 +13,7 @@ import {
   InputGroupText,
 } from "reactstrap";
 
+// Resets the password if the inputted username is correct
 class ResetPassword extends React.Component {
     constructor(props) {
         super(props);
@@ -32,6 +33,7 @@ class ResetPassword extends React.Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    // Handles the submission of values from the forms
     handleSubmission(event) {
         event.preventDefault();
 
@@ -60,6 +62,7 @@ class ResetPassword extends React.Component {
     }
 
     render() {
+      // Redirects if the user is logged in
         if (this.state.isLoggedIn) {
             window.location.replace('/');
         }

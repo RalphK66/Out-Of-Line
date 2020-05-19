@@ -43,7 +43,7 @@ class LandingPage extends React.Component {
             <CardBody>
               <CardTitle><strong>Interactive Map</strong></CardTitle>
               <CardText>
-                Find the grocery stores quickly and easily with this interactive
+                Find grocery stores quickly and easily with this interactive
                 map.
               </CardText>
             </CardBody>

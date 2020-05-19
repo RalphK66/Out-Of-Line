@@ -16,6 +16,7 @@ import {
   AvFeedback,
 } from "availity-reactstrap-validation-safe";
 import { loginFailCredentials, loginFailEmpty, alreadyLoggedIn, } from "../notifications/toasts";
+import Cookies from "js-cookie";
 
 // Login component
 function Login() {

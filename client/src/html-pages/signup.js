@@ -22,6 +22,7 @@ import {
   AvInput,
   AvFeedback,
 } from "availity-reactstrap-validation-safe";
+import Cookies from "js-cookie";
 
 
 // Sign-up component

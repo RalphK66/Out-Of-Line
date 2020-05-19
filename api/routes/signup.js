@@ -24,10 +24,9 @@ router.post('/', (req, res, next) => {
       console.log("Result =");
       console.log(result);
 
-      const payload = {username: req.body.username, isEmployee: req.body.isEmployee};
+      const payload = {username: req.body.username, password: req.body.password, isEmployee: req.body.isEmployee};
       const token = jwt.sign(payload, process.env.SECRET_JWT_STRING, {expiresIn: '8h'});
-      res.cookie("token", token, {httpOnly: false});
-      res.send();
+      res.cookie("token", token, {httpOnly: false}).send();
     }
   });
 });

@@ -45,7 +45,9 @@ class Signup extends React.Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    console.log(this.state);
+    if (Cookies.get('token')) {
+      return alreadyLoggedIn();
+    };
 
     // Fetch request to the backend
     fetch(process.env.REACT_APP_API_URL + '/signup', {

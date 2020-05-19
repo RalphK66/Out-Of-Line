@@ -1,25 +1,17 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { useAuth } from "../context/auth";
+import {Route, Redirect} from 'react-router-dom';
+import {getSession} from '../auth/get-session';
 
-function PrivateRoute(
-    { comp: Component, 
-        ...rest }) {
+// Restricts access to certain pages if the user does not have authentication and authorization
+function PrivateRoute({comp: Component, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+         getSession() ? (<Component {...props} />) : (<Redirect to="/login"/>)
+      }
+    />
+  );
+}
 
-    const { authTokens } = useAuth();
-
-    return (
-        <Route
-          {...rest}
-          render={props =>
-            authTokens ? (
-              <Component {...props} />
-            ) : (
-              <Redirect to="/" />
-            )
-          }
-        />
-      );
-    }
-  
-  export default PrivateRoute;
+export default PrivateRoute;

@@ -1,12 +1,13 @@
-.box {
-    margin-top: 50px;
+.about-box {
+    margin-top: 35px;
     border: 20px solid #AAD2A9;
     border-radius: 10px;
-    padding: 20px 20px;
-    box-shadow: 1px 1px 4px 4px #ccc;
+    padding: 20px;
+
+
 }
 
-Image {
+.crew-image  {
     display: block;
     width: 100%;
     height: auto;
@@ -56,7 +57,7 @@ Image {
 }
 
 
-.header-title {
+.about-header-title {
     color: #6A6A6A;
     text-align: center;
     font-size: 100px;
@@ -66,7 +67,7 @@ Image {
 
 
 @media (max-width:768px) {
-    .header-title {
+    .about-header-title {
         color: #6A6A6A;
         text-align: center;
         font-size: 10vw;
@@ -74,13 +75,7 @@ Image {
     }
 }
 
-.header-text {
-    color: #6A6A6A;
-    text-align: center;
-    margin-bottom: 20px; 
-}
-
-.header-text {
+.about-header-text {
     color: #6A6A6A;
     text-align: center;
     margin-bottom: 20px; 
@@ -91,3 +86,4 @@ Image {
     font-size: 20px;
     font-weight: bolder;
 }
+

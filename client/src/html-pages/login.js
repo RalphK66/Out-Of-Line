@@ -1,9 +1,6 @@
 import React from "react";
-import {FaUser} from "react-icons/fa";
-import {FaLock} from "react-icons/fa";
-import '../css/login.css'
-import {useAuth} from "../context/auth";
-import {Redirect} from "react-router-dom";
+import { FaUser, FaLock } from "react-icons/fa";
+import "../css/login.css";
 import {
   Form,
   FormGroup,
@@ -14,108 +11,111 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
+import { loginMessage } from "../notifications/toasts";
 
+// Login component
 function Login() {
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
-  const [isError, setIsError] = React.useState(false);
+  const [loginRedirectState, setLoginRedirectState] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const { setAuthTokens } = useAuth();
 
+  // Handles login event
   const PostLogin = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:9000/login", {
+    // Fetch request to the backend
+    fetch(process.env.REACT_APP_API_URL + "/login", {
       method: "POST",
       body: JSON.stringify({
         username: username,
-        password: password
+        password: password,
       }),
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
     })
-      .then(result => {
-        if (result.status === 200) {
-          console.log("Got!");
-          setAuthTokens(result.data);
-          setLoggedIn(true);
-        } else {
-          setIsError(true);
+      .then((res) => {
+        if (res.status === 200) {
+          // Redirects after successful login
+          loginMessage(username.toUpperCase());
+          setLoginRedirectState(true);
         }
       })
-      .catch(e => {
-        setIsError(true);
+      .catch((err) => {
+        // loginFail();
+        console.error(err);
       });
 
     // Clear input values
-    setUsername('');
-    setPassword('');
+    setUsername("");
+    setPassword("");
   };
 
-  if (isLoggedIn) {
-    return <Redirect to="/"/>;
+  // Redirects to landing page once logged in/out
+  if (loginRedirectState) {
+    window.location.replace('/');
   }
 
+  // Front-end component
   return (
-    <div className="container col-sm-8 shadow box">
+    <div className="container col-sm-8 shadow login-box">
       <Form>
         <FormGroup>
-          <div className="container shadow form-box">
-            <Label className="display-4 login-label">
-              Login
-            </Label>
+          <div className="container shadow login-form-box">
+            <Label className="display-4 login-form-label">Login</Label>
             <InputGroup>
               <InputGroupAddon addonType="prepend">
                 <InputGroupText>
-                  <FaUser className="icon"/>
+                  <FaUser className="login-form-icon" />
                 </InputGroupText>
               </InputGroupAddon>
               <Input
+                className="login-form-input"
                 type="username"
                 name="username"
                 id="Username"
                 placeholder="username"
                 bsSize="lg"
                 value={username}
-                onChange={event => {
+                onChange={(event) => {
                   setUsername(event.target.value);
                 }}
               />
-              <br/>
+              <br />
             </InputGroup>
-            <br/>
+            <br />
             <InputGroup>
               <InputGroupAddon addonType="prepend">
                 <InputGroupText>
-                  <FaLock className="icon"/>
+                  <FaLock className="login-form-icon" />
                 </InputGroupText>
               </InputGroupAddon>
               <Input
+                className="login-form-input"
                 type="password"
                 name="password"
                 id="password"
                 placeholder="password"
                 bsSize="lg"
                 value={password}
-                onChange={event => {
+                onChange={(event) => {
                   setPassword(event.target.value);
                 }}
               />
-              <br/>
+              <br />
             </InputGroup>
-            <br/>
+            <br />
             <Button
+              className="login-btn"
               type="submit"
               size="lg" onClick={PostLogin}>Login</Button>
             <br/>
             <br/>
-            <a href="/signup">Sign-Up</a>
-            <br/>
-            <br/>
-            <Button size="lg">Logout</Button>
+            <Link to={"/password_reset"}>Forgot Password?</Link>
           </div>
         </FormGroup>
       </Form>

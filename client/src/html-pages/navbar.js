@@ -33,6 +33,8 @@ const NavBar = () => {
   }
 
   // Checks whether or not the user is logged in or not, and as an employee or customer
+  // Code was adapted from here:
+  // Source: https://medium.com/@SilentHackz/simple-way-to-secure-react-apps-using-jwt-and-react-router-2b4a05d780a3
   const checkSession = () => {
     const jwt = Cookies.get('token')
     let session;

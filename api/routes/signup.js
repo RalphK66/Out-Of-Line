@@ -4,13 +4,16 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
 
+// POST request that inserts the new user in the database  
 router.post('/', (req, res, next) => {
   const saltAndHashed = saltAndHashPassword(req.body.password);
   const values = [req.body.email, req.body.phoneNumber, req.body.username, saltAndHashed.salt, saltAndHashed.hash];
   values.push( req.body.isEmployee );
   console.log(values);
 
+  // Inserts values into database
   db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], (err, result) => {
+    // Will match with an existing error, and send the corresponding status back
     if (err !== null && err.code === 'ER_DUP_ENTRY') {
       if (!!err.sqlMessage.match(/email/)) {
         res.status(409).send({ errno: 1 });

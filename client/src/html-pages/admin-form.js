@@ -1,7 +1,18 @@
 import React from "react";
-import { Form, FormGroup, Input, Button, Label, Container, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
-import { FaUser, FaPhone, FaEnvelope } from 'react-icons/fa';
+import {
+  Form,
+  FormGroup,
+  Input,
+  Button,
+  Label,
+  Container,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon
+} from 'reactstrap';
+import {FaUser, FaPhone, FaEnvelope} from 'react-icons/fa';
 import "../css/admin-form.css"
+
 // import { adminAddUser, adminRemoveUser, } from "../notifications/toasts";
 
 class Tags extends React.Component {
@@ -37,54 +48,53 @@ class Tags extends React.Component {
         'Accept': 'application/json'
       }
     })
-      .then(response => {
-        console.log(response.json());
+      .then(res => {
+        if (res.ok) {
+          window.location.replace("/admin");
+        }
       })
-      .catch(function (err) {
-        console.error(err);
-      });
-    // adminAddUser()
-    window.location.replace("/admin");
-    
+      .catch(err => console.error(err));
   }
 
 
-
-    render() {
-        return(
-            <Container className="col-sm-8 shadow add-user-box">
-                <Form onSubmit={this.handleSubmission}>
-                    <FormGroup>
-                        <Container className="shadow add-user-form">
-                            <Label className="display-4 add-user-form-label">Add to Queue</Label>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaEnvelope className="add-user-form-icon"/></InputGroupText>
-                                </InputGroupAddon>
-                                <Input className="add-user-form-input" name="email" type="text" onChange={this.handleText} ref={this.emailField} placeholder="Email" bsSize="lg"/> <br />
-                            </InputGroup>
-                            <br/>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaPhone className="add-user-form-icon"/></InputGroupText>
-                                </InputGroupAddon>
-                                <Input className="add-user-form-input" name="phoneNumber" type="text" onChange={this.handleText} ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br />
-                            </InputGroup>
-                            <br/>
-                            <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                                    <InputGroupText><FaUser className="add-user-form-icon"/></InputGroupText>
-                                </InputGroupAddon>
-                                <Input className="add-user-form-input" name="name" type="text" onChange={this.handleText} ref={this.nameField} placeholder="Name" bsSize="lg"/> <br />
-                            </InputGroup>
-                            <br/>
-                            <Button className="add-user-btn" size="lg">Submit</Button>
-                        </Container>
-                    </FormGroup>
-                </Form>
+  render() {
+    return (
+      <Container className="col-sm-8 shadow add-user-box">
+        <Form onSubmit={this.handleSubmission}>
+          <FormGroup>
+            <Container className="shadow add-user-form">
+              <Label className="display-4 add-user-form-label">Add to Queue</Label>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText><FaEnvelope className="add-user-form-icon"/></InputGroupText>
+                </InputGroupAddon>
+                <Input className="add-user-form-input" name="email" type="text" onChange={this.handleText}
+                       ref={this.emailField} placeholder="Email" bsSize="lg"/> <br/>
+              </InputGroup>
+              <br/>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText><FaPhone className="add-user-form-icon"/></InputGroupText>
+                </InputGroupAddon>
+                <Input className="add-user-form-input" name="phoneNumber" type="text" onChange={this.handleText}
+                       ref={this.phoneNumberField} placeholder="Phone Number" bsSize="lg"/> <br/>
+              </InputGroup>
+              <br/>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText><FaUser className="add-user-form-icon"/></InputGroupText>
+                </InputGroupAddon>
+                <Input className="add-user-form-input" name="name" type="text" onChange={this.handleText}
+                       ref={this.nameField} placeholder="Name" bsSize="lg"/> <br/>
+              </InputGroup>
+              <br/>
+              <Button className="add-user-btn" size="lg">Submit</Button>
             </Container>
-            )
-    }
+          </FormGroup>
+        </Form>
+      </Container>
+    )
+  }
 }
 
 export default Tags;

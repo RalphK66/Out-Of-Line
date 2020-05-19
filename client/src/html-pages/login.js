@@ -12,8 +12,8 @@ import {
   InputGroupText,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-
-import { loginMessage } from "../notifications/toasts";
+import Cookies from "js-cookie";
+import { loginMessage, alreadyLoggedIn, loginFail } from "../notifications/toasts";
 
 // Login component
 function Login() {
@@ -24,6 +24,10 @@ function Login() {
   // Handles login event
   const PostLogin = (event) => {
     event.preventDefault();
+
+    if (Cookies.get("token")) {
+      return alreadyLoggedIn();
+    }
 
     // Fetch request to the backend
     fetch(process.env.REACT_APP_API_URL + "/login", {
@@ -43,10 +47,11 @@ function Login() {
           // Redirects after successful login
           loginMessage(username.toUpperCase());
           setLoginRedirectState(true);
+        } else if (res.status === 409) {
+          loginFail();
         }
       })
       .catch((err) => {
-        // loginFail();
         console.error(err);
       });
 

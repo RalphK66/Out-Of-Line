@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Container, Table } from "reactstrap";
 import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-import "../css/toasts.css"
 import { adminRemoveUser, } from "../notifications/toasts";
 
 

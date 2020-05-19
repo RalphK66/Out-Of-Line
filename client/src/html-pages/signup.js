@@ -20,8 +20,7 @@ import {
   AvInput,
   AvFeedback,
 } from "availity-reactstrap-validation-safe";
-import "../css/sign-up.css";
-import "../css/toasts.css"
+
 
 // Sign-up component
 class Signup extends React.Component {

@@ -16,7 +16,6 @@ import {
 import { logoutMessage } from '../notifications/toasts'
 import logo from "../images/logo.png";
 import "../css/navbar.css"
-import "../css/toasts.css"
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = React.useState(false);

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 import "../css/login.css";
-import "../css/toasts.css"
 import {
   Button,
   Label,
@@ -26,7 +25,8 @@ function Login() {
 
   // Handles login event
   const PostLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault()
+    
     if (!username.length > 0 || !password.length > 0) {
       loginFailEmpty();
     } else {

@@ -29,6 +29,6 @@
 /* nabar text displaying the user that is currently logged in */
 
 .navbar-text-user {
-  float: right;
+  float: right !important;
   margin-right: 10px;
 }

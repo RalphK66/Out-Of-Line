@@ -16,9 +16,8 @@ import {
 import { messageSent, emptyFields } from "../notifications/toasts";
 import { FaUser, FaEnvelope, FaCommentAlt } from "react-icons/fa";
 import "../css/contact.css";
-import "../css/toasts.css"
 
-// calss component to manage contat form email sender and responder
+// class component to manage contat form email sender and responder
 class Contact extends Component {
   constructor(props) {
     super(props);

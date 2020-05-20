@@ -99,11 +99,10 @@ class Signup extends React.Component {
               signInFail();
             }
           });
-        } else {
-          // Successful login (status 200)
- 
-          this.setState({ isLoggedIn: true });
-        }
+        } else if (res.status === 200) { // Successful login (status 200)
+          registerMessage()
+          this.setState({isLoggedIn: true});
+        } 
       })
       .catch((err) => {
         console.error(err);

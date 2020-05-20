@@ -30,7 +30,7 @@ const NavBar = () => {
     console.log("Logged out");
     Cookies.remove('token');
     Cookies.remove('id');
-    // localStorage.clear();
+    Cookies.remove('enqueued');
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
     logoutMessage()

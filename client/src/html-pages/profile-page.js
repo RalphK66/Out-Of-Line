@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie';
 
 class InQueue extends React.Component {
     constructor(props) {
@@ -16,6 +17,11 @@ class InQueue extends React.Component {
     // }
     
     render() {
+        if (Cookies.get('enqueued') === undefined) {
+            window.location = '/stores';
+        } else if (Cookies.get('enqueued')) {
+            this.state.isQueued = true;
+        }
         return(
             <div className="container col-sm-8 shadow profile-page">
                 <p>Store Name: {this.state.storeName}</p>

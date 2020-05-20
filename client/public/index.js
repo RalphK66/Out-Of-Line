@@ -1,10 +1,19 @@
+let clicks = 0;
 
-
+function incrementClicks(e) {
+  if (e) {
+    clicks++;
+  }
+  return clicks;
+}
 
 // Trigger to start Covid Easter egg
 function Germ(e) {
-  if (e.detail === 5) {
+  console.log(e)
+
+  if (e.detail === 5 || incrementClicks(e) === 5) {
     trigger();
+    clicks = 0;
     let gif = document.getElementById("covid");
     gif.hidden = false;
     gif.style.animationPlayState = "running";

@@ -16,6 +16,7 @@ import {
 import logo from "../images/logo.png";
 import "../css/navbar.css"
 
+// Navbar component, will display differently depending on authentication and authorization status 
 const NavBar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = React.useState(false);
@@ -27,40 +28,36 @@ const NavBar = () => {
   const Logout = () => {
     console.log("Logged out");
     Cookies.remove('token');
+    Cookies.remove('id');
+    // localStorage.clear();
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
   }
 
+  // Checks whether or not the user is logged in or not, and as an employee or customer
+  // Code was adapted from here:
+  // Source: https://medium.com/@SilentHackz/simple-way-to-secure-react-apps-using-jwt-and-react-router-2b4a05d780a3
   const checkSession = () => {
-    const jwt = Cookies.get('token')
+    const jwt = Cookies.get('token');
     let session;
-  try {
-      if (jwt) {
-        const base64Url = jwt.split('.')[1]
-        const base64 = base64Url.replace('-', '+').replace('_', '/')
-        // what is window.atob ?
-        // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob
-        session = JSON.parse(window.atob(base64))
-        console.log(session);
-      }
+    try {
+      const base64Url = jwt.split('.')[1]
+      const base64 = base64Url.replace('-', '+').replace('_', '/')
+      // what is window.atob ?
+      // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob
+      session = JSON.parse(window.atob(base64))
     } catch (error) {
       console.log(error)
     }
-    if (session !== undefined && session.isEmployee) {
-      return true;
-    } else {
-      return false;
-    }
+
+    return session !== undefined && session.isEmployee;
   }
 
   // Checks whether or not the user is authenticated, and as an employee or customer
   React.useEffect(() => {
-    console.log("Do I get in here?");
     if (checkSession()) {
-      console.log("Do I get in here?");
       setIsEmployeeLoggedIn(true);
     } else {
-      console.log("Do I get in here?");
       console.log(Cookies.get("token"));
       if (Cookies.get("token") !== undefined) {
         console.log(Cookies.get("token"));
@@ -69,9 +66,7 @@ const NavBar = () => {
     }
   }, []);
 
-  console.log(isEmployeeLoggedIn);
-  console.log(isCustomerLoggedIn);  
-
+  // Navbar for customers
   if (isCustomerLoggedIn) {
     return (
       <div>
@@ -104,6 +99,7 @@ const NavBar = () => {
       </div>
     );
   } else if (isEmployeeLoggedIn) {
+    // Navbar for employees
     return (
       <div>
       <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
@@ -138,6 +134,7 @@ const NavBar = () => {
       </div>
     );
   } else {
+    // Navbar for no auth
     return (
       <div>
       <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
@@ -158,7 +155,7 @@ const NavBar = () => {
                 <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">SignUp</NavLink>
+                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">Sign Up</NavLink>
                 </NavItem>
                 <NavItem>
                 <NavLink tag={RRNavLink} exact to="/login" activeClassName="active" className="navbar-navlink">Login</NavLink>

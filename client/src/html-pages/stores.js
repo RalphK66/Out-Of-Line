@@ -2,7 +2,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
 import MapGL from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import "../css/map.css"
+import "../css/map.css";
+import Cookies from "js-cookie";
+
 
 // import Geocoder from 'react-map-gl-geocoder';
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -59,56 +61,37 @@ class Stores extends React.Component {
     });
 
     this.map.on('load', () => {
-      this.loadStores();
+      this.loadStoresFromDatabase().then(() => this.addStoresToMap());
     });
   }
 
-  loadStores() {
-    this.stores = { // load from database
+  async loadStoresFromDatabase() {
+    const features = [];
+    await fetch(process.env.REACT_APP_API_URL + '/load-stores')
+      .then(res => res.json())
+      .then(stores => {
+        stores.forEach(store => {
+          const feature =  {
+            'type': 'Feature',
+            'properties': {
+              'id': `${store.id}`,
+              'brand': `${store.name}`,
+              'address': `${store.address}`,
+              'count': `${store.count}`
+            },
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [store.lon, store.lat]
+            }
+          };
+          features.push(feature);
+        });
+      })
+      .catch(err => console.log(err));
+
+    this.stores = {
       'type': 'FeatureCollection',
-      'features': [
-        {
-          'type': 'Feature',
-          'properties': {
-            'brand': 'Safeway',
-            'people_queued': 10,
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-123.127926, 49.2866144]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'brand': 'Safeway',
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-123.139624, 49.286025]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'brand': 'Costco',
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-123.1095645, 49.278777]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'brand': 'IGA',
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-123.117392, 49.2800345]
-          }
-        },
-      ]
+      'features': features
     };
 
     // Load GeoJSON data
@@ -116,7 +99,9 @@ class Stores extends React.Component {
       type: 'geojson',
       data: this.stores,
     });
+  }
 
+  addStoresToMap() {
     const filterElement = document.getElementById('filter-container');
 
     this.stores.features.forEach(feature => {
@@ -139,34 +124,45 @@ class Stores extends React.Component {
         input.type = 'checkbox';
         input.id = layerID;
         input.checked = true;
-        filterElement.appendChild(input);
 
         const label = document.createElement('label');
         label.setAttribute('for', layerID);
         label.textContent = layerID;
-        filterElement.appendChild(label);
+
+        if (filterElement) {
+          filterElement.appendChild(input);
+          filterElement.appendChild(label);
+        }
 
         // When the checkbox changes, update the visibility of the layer.
         input.addEventListener('change', (e) => {
-          this.map.setLayoutProperty(
-            layerID,
-            'visibility',
+          this.map.setLayoutProperty(layerID, 'visibility',
             e.target.checked ? 'visible' : 'none'
           );
         });
 
         // Add popups
         this.map.on('click', layerID, e => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const brand = e.features[0].properties.brand;
+          const store = e.features[0];
 
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
+          const content = document.createElement('div');
+          const text = document.createElement('p');
+          text.innerHTML = `${store.properties.brand}<br>People in line: ${store.properties.count}`;
+
+          const button = document.createElement('button');
+          button.innerText = 'Enqueue';
+          button.type = 'click';
+          button.addEventListener('click', () => {
+            this.addToStoreQueue(store.properties.id);
+            // this.getPeopleInLine(store.properties.id);
+          });
+
+          content.appendChild(text);
+          content.appendChild(button);
 
           new MapGL.Popup({className: "store-popup"})
-            .setLngLat(coordinates)
-            .setHTML(`${brand}`)
+            .setLngLat(store.geometry.coordinates.slice())
+            .setDOMContent(content)
             .addTo(this.map);
         });
 
@@ -183,13 +179,54 @@ class Stores extends React.Component {
     });
   }
 
+  addToStoreQueue(storeID) {
+    if (Cookies.get('token')) {
+      fetch(process.env.REACT_APP_API_URL + "/queue/add", {
+        method: "POST",
+        body: JSON.stringify({
+          user_id: Cookies.get('id'),
+          store_id: storeID
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+      })
+        .then(res => {
+          if (res.ok) {
+            Cookies.set('enqueued', true);
+            // redirect to profile page
+          }
+        })
+        .catch(err => console.log(err));
+    } else {
+      // redirect to login
+      window.location = '/login';
+    }
+  }
+
+  getPeopleInLine(storeID) {
+    fetch(process.env.REACT_APP_API_URL + "/queue/people-in-line", {
+      method: "POST",
+      body: JSON.stringify({
+        store_id: storeID
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
-      <div >
+      <div>
         <div ref={this.mapRef} className="map-container"/>
         <div id="filter-container" className="filter-group"/>
       </div>
-      
     );
   }
 };

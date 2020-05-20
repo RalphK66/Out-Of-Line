@@ -133,6 +133,8 @@ export function passwordChanged() {
 }
 
 export default {
+  alreadyLoggedIn,
+  signInFail,
   loginMessage,
   logoutMessage,
   loginFailEmpty,

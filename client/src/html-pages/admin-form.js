@@ -109,16 +109,8 @@ class Tags extends React.Component {
                     <FaUser className="add-user-form-icon" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input
-                  className="add-user-form-input"
-                  name="name"
-                  type="text"
-                  onChange={this.handleText}
-                  ref={this.nameField}
-                  placeholder="Name"
-                  bsSize="lg"
-                />{" "}
-                <br />
+                <Input className="add-user-form-input" name="name" type="text" onChange={this.handleText}
+                       ref={this.nameField} placeholder="Name" bsSize="lg" required/> <br/>
               </InputGroup>
               <br />
               <Button className="add-user-btn" size="lg">

@@ -30,6 +30,8 @@ const NavBar = () => {
   const Logout = () => {
     console.log("Logged out");
     Cookies.remove('token');
+    Cookies.remove('id');
+    // localStorage.clear();
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
     logoutMessage()
@@ -39,16 +41,14 @@ const NavBar = () => {
   // Code was adapted from here:
   // Source: https://medium.com/@SilentHackz/simple-way-to-secure-react-apps-using-jwt-and-react-router-2b4a05d780a3
   const checkSession = () => {
-    const jwt = Cookies.get('token')
+    const jwt = Cookies.get('token');
     let session;
-  try {
-      if (jwt) {
-        const base64Url = jwt.split('.')[1]
-        const base64 = base64Url.replace('-', '+').replace('_', '/')
-        // what is window.atob ?
-        // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob
-        session = JSON.parse(window.atob(base64))
-      }
+    try {
+      const base64Url = jwt.split('.')[1]
+      const base64 = base64Url.replace('-', '+').replace('_', '/')
+      // what is window.atob ?
+      // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob
+      session = JSON.parse(window.atob(base64))
     } catch (error) {
       console.log(error)
     }

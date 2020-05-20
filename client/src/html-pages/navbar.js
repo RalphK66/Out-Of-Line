@@ -51,22 +51,29 @@ const NavBar = () => {
     } catch (error) {
       console.log(error)
     }
-    if (session !== undefined && session.isEmployee) {
-      return {state: true, username: session.username, isEmployee: session.isEmployee};
-    } else if (session !== undefined && !session.isEmployee) {
-      return {state: true , username: session.username, isEmployee: session.isEmployee};
+    console.log(session)
+    if (session !== undefined) {
+      if (session.isEmployee) {
+        return {state: true, username: session.username, isEmployee: session.isEmployee};
+      }
+      if (!session.isEmployee) {
+        return {state: true, username: session.username, isEmployee: session.isEmployee};
+      }
     } else return {state: false}
   }
 
   // Checks whether or not the user is authenticated, and as an employee or customer
   React.useEffect(() => {
     let info = checkSession()
-    if (info.state && info.isEmployee) {
-      setIsEmployeeLoggedIn(true);
-      setUsername(info.username)
-    } else if (info.state && !info.isEmployee) {
+    if (info.state) {
+      if (info.isEmployee) {
+        setIsEmployeeLoggedIn(true);
+        setUsername(info.username)
+      }
+      if (!info.isEmployee) {
         setIsCustomerLoggedIn(true);
         setUsername(info.username)
+      }
     }
   }, []);
 

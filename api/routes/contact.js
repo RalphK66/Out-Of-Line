@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const nodemailer = require("nodemailer");
+const router = express.Router();
 
 const transport = {
   host: "smtp.gmail.com", // Gmail SMTP server
@@ -21,17 +21,17 @@ transporter.verify((error, success) => {
   }
 });
     // send email with contact form content
-router.post("/send", (req, res, next) => {
+router.post("/", (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message;
   const content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-    // content of messge to be sent
+    // content and address of message to be sent
   const mail = {
     from: name,
-    to: "out.of.line.inc@gmail.com", // Where we will receive messages
-    subject: "New Message from Contact Form",
+    to: "out.of.line.inc@gmail.com",
+    subject: "Contact Form Message",
     text: content,
   };
     // send mail from Nodemailer SMTP to gmail SMTP
@@ -47,10 +47,10 @@ router.post("/send", (req, res, next) => {
         // automatic response
       transporter.sendMail(
         {
-          from: "out.of.line.inc@gmail.com", 
+          from: "Out-of-Line", 
           to: email,
           subject: "Submission was successful",
-          text: `Thank you for contacting us!\n\nForm details\nName: ${name}\n Email: ${email}\n Message: ${message}`,
+          text: `Thank you for contacting us!\nA representative will reach out to you within 2-3 business days.\n\nForm details\nName: ${name}\n Email: ${email}\n Message: ${message}`,
         },
         function (error, info) {
           if (error) {

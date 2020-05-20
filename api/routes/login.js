@@ -7,8 +7,9 @@ const router = express.Router();
 // Sends a token to the backend through post.
 router.post('/', (req, res, next) => {
   // Queries data from the database
-  db.query("SELECT id, password_salt, password_hash, isEmployee FROM users WHERE username = (?)", req.body.username, function (err, result) {
+  db.query("SELECT id, password_salt, password_hash, is_employee FROM users WHERE username = (?)", req.body.username, function (err, result) {
     if (err) {
+      console.log(err);
       res.sendStatus(401);
     } else if (Array.isArray(result) && result.length === 0) {
       res.sendStatus(409);
@@ -29,7 +30,7 @@ router.post('/', (req, res, next) => {
   
       // Sends back a JWT token if the password is correct
       if (checkIfValid(req.body.password)) {
-        const payload = {username: req.body.username, password: req.body.password, isEmployee: result[0].isEmployee};
+        const payload = {username: req.body.username, password: req.body.password, is_employee: result[0].is_employee};
   
         const token = jwt.sign(payload, process.env.SECRET_JWT_STRING, {expiresIn: '8h'});
         console.log(token);

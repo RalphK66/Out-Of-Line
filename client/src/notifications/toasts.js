@@ -7,18 +7,21 @@ export function loginMessage(props) {
   toast.success(`Success, ${props}! You are logged in!`, {
     className: "login-message",
     position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
   });
 }
 
 export function logoutMessage() {
   toast.success(`Bye-bye!`, {
     position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
   });
 }
 
 export function loginFailEmpty() {
   toast.warn("Username and Passowrd cannot be empty!", {
     position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
   });
 }
 
@@ -30,6 +33,7 @@ export function loginFailCredentials() {
     </div>,
     {
       position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 2000,
     }
   );
 }
@@ -121,6 +125,13 @@ export function emptyFields() {
   });
 }
 
+export function passwordChanged() {
+  toast.success("Your password has been been changed", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 2000,
+  });
+}
+
 export default {
   loginMessage,
   logoutMessage,
@@ -133,4 +144,5 @@ export default {
   adminRemoveUser,
   messageSent,
   emptyFields,
+  passwordChanged,
 };

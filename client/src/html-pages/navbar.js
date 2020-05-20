@@ -7,13 +7,12 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   Form,
   Input,
   NavbarText
 } from "reactstrap";
 import { logoutMessage } from '../notifications/toasts'
+import { DefaultLinks, AdminLinks, CustomerLinks, NotLoggedIn, } from './navlinks'
 import logo from "../images/logo.png";
 import "../css/navbar.css"
 
@@ -53,27 +52,24 @@ const NavBar = () => {
       console.log(error)
     }
     if (session !== undefined && session.isEmployee) {
-      return {state: true, username: session.username};
+      return {state: true, username: session.username, isEmployee: session.isEmployee};
     } else if (session !== undefined && !session.isEmployee) {
-      return {state: true , username: session.username};
+      return {state: true , username: session.username, isEmployee: session.isEmployee};
     } else return {state: false}
   }
 
   // Checks whether or not the user is authenticated, and as an employee or customer
   React.useEffect(() => {
     let info = checkSession()
-    if (info.state) {
+    if (info.state && info.isEmployee) {
       setIsEmployeeLoggedIn(true);
       setUsername(info.username)
-    } else {
-      if (Cookies.get("token") !== undefined) {
+    } else if (info.state && !info.isEmployee) {
         setIsCustomerLoggedIn(true);
         setUsername(info.username)
-      }
     }
   }, []);
 
-  if (isCustomerLoggedIn) {
     return (
       <div>
       <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
@@ -81,107 +77,20 @@ const NavBar = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar >
           <Nav className="mr-auto" navbar >
-            <NavItem>
-              <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
-            </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
-              </NavItem>
-              <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
-              </NavItem>
-            </Nav>
-            {/* Displays the name of the person that is logged in */}
-            <NavbarText className="navbar-text-user" >Hi, {username}</NavbarText>
-            <Form>
-              <Input type="search" name="search" id="mySearch" placeholder="Search"/>
-            </Form>
-          </Collapse>
-        </Navbar>
+            <DefaultLinks />
+            { isEmployeeLoggedIn ? AdminLinks(Logout) : null }
+            { isCustomerLoggedIn ? CustomerLinks(Logout) : null }
+            { !isEmployeeLoggedIn && !isCustomerLoggedIn ? <NotLoggedIn /> : null }
+          </Nav>
+            {/* Displays the name of the person that is logged in */} 
+            {isCustomerLoggedIn || isEmployeeLoggedIn ? <NavbarText className="navbar-text-user">Hi, {username}</NavbarText> : null}
+          <Form>
+            <Input type="search" name="search" id="mySearch" placeholder="Search"/>
+          </Form>
+        </Collapse>
+      </Navbar>
       </div>
     );
-  } else if (isEmployeeLoggedIn) {
-    // Navbar for employees
-    return (
-      <div>
-      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
-        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar >
-          <Nav className="mr-auto" navbar >
-          <NavItem>
-          <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
-      </NavItem>
-              <NavItem>
-              <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
-              </NavItem>
-              <NavItem>
-              <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
-            </NavItem>
-              <NavItem>
-              <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
-              </NavItem>
-              <NavItem>
-              <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active" className="navbar-navlink">Admin</NavLink>
-              </NavItem>
-              <NavItem>
-                  <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
-              </NavItem>
-            </Nav>
-            {/* Displays the name of the person that is logged in */}
-            <NavbarText>Hi, {username}</NavbarText>
-            <Form>
-              <Input type="search" name="search" id="mySearch" placeholder="Search"/>
-            </Form>
-          </Collapse>
-          
-        </Navbar>
-
-      </div>
-    );
-  } else {
-    // Navbar for no auth
-    return (
-      <div>
-      <Navbar dark expand="md" className="shadow my-navbar" id="navbar" >
-        <NavbarBrand tag={RRNavLink} exact to="/"><img src={logo} alt="logo" className="shadow navbar-logo" ></img></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar >
-          <Nav className="mr-auto" navbar >
-          <NavItem>
-          <NavLink tag={RRNavLink} exact to="/" activeClassName="active" className="navbar-navlink">Home</NavLink>
-      </NavItem>
-                <NavItem>
-                <NavLink tag={RRNavLink} exact to="/about" activeClassName="active" className="navbar-navlink">About</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink tag={RRNavLink} exact to="/contact" activeClassName="active" className="navbar-navlink">Contact</NavLink>
-              </NavItem>
-                <NavItem>
-                <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink tag={RRNavLink} exact to="/signup" activeClassName="active" className="navbar-navlink">Sign Up</NavLink>
-                </NavItem>
-                <NavItem>
-                <NavLink tag={RRNavLink} exact to="/login" activeClassName="active" className="navbar-navlink">Login</NavLink>
-                </NavItem>
-              </Nav>
-              <Form>
-                <Input type="search" name="search" id="mySearch" placeholder="Search"/>
-              </Form>
-            </Collapse>
-          </Navbar>
-        </div>
-      );
-  }
-  
 };
 
 export default NavBar;

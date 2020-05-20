@@ -15,8 +15,8 @@ import {
   AvInput,
   AvFeedback,
 } from "availity-reactstrap-validation-safe";
-import { loginFailCredentials, loginFailEmpty, alreadyLoggedIn, } from "../notifications/toasts";
 import Cookies from "js-cookie";
+import { loginFailCredentials, loginFailEmpty, loginMessage } from "../notifications/toasts";
 
 // Login component
 function Login() {
@@ -64,7 +64,11 @@ function Login() {
 
   // Redirects to landing page once logged in/out
   if (loginRedirectState) {
-    window.location.replace("/");
+    loginMessage(username)
+    setTimeout(() => {
+      window.location.replace("/");
+    }, 2000);
+    
   }
 
   // Front-end component

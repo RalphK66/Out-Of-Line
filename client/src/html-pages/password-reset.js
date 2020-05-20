@@ -12,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { passwordChanged } from '../notifications/toasts'
 
 // Resets the password if the inputted username is correct
 class ResetPassword extends React.Component {
@@ -62,10 +63,13 @@ class ResetPassword extends React.Component {
     }
 
     render() {
-      // Redirects if the user is logged in
-        if (this.state.isLoggedIn) {
-            window.location.replace('/');
-        }
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      passwordChanged()
+      setTimeout(function () {
+      window.location.replace("/");
+    }, 2000);
+    }
 
         return(
         <div className="container col-sm-8 shadow reset-box">

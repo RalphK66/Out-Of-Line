@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 // Sends a token to the backend through post.
+router.post('/', (req, res, next) => {
   if (req.body.username === undefined) {
     res.sendStatus(409);
   } else {
@@ -27,7 +28,8 @@ const router = express.Router();
             console.log("Isn't the same.");
             return false;
           }
-        }    
+        }
+    
         // Sends back a JWT token if the password is correct
         if (checkIfValid(req.body.password)) {
           const payload = {username: req.body.username, password: req.body.password, isEmployee: result[0].isEmployee};

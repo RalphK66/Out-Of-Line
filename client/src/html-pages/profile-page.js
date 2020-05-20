@@ -14,8 +14,35 @@ class InQueue extends React.Component {
         this.displayInQueue = this.displayInQueue.bind(this);
     }
 
+    getQueueNumber() {
+        fetch(process.env.REACT_APP_API_URL + "/queue/get-queue-number", {
+          method: "POST",
+          body: JSON.stringify({
+            user_id: Cookies.get('id')
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+        })
+          .then(res => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              return "Errorrororororororor";
+            }
+          })
+          .then(data => {
+            this.setState({queueNumber: data.queue_number});  
+            console.log(data.queue_number);
+        })
+          .catch(err => console.log(err));
+      }
+    
+
     displayInQueue() {
-        this.state.storeName = Cookies.get("store_id");    
+        this.state.storeName = Cookies.get("store_id");
+        this.getQueueNumber();
     }
     
     render() {

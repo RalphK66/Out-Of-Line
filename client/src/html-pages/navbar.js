@@ -30,6 +30,7 @@ const NavBar = () => {
     Cookies.remove('token');
     Cookies.remove('id');
     Cookies.remove('enqueued');
+    Cookies.remove('store_id');
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
   }

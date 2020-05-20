@@ -7,3 +7,8 @@ INSERT INTO users(email, phone_number, username, is_employee) VALUES('janelle@te
 INSERT INTO users(email, phone_number, username, is_employee) VALUES('kyrill@test.com', '2222', 'kyrill', false);
 INSERT INTO users(email, phone_number, username, is_employee) VALUES('ralph@test.com', '3333', 'ralph', false);
 INSERT INTO users(email, phone_number, username, is_employee) VALUES('david@test.com', '4444', 'david', true);
+
+INSERT INTO queue(store_id, user_id) VALUES(3, 2);
+INSERT INTO queue(store_id, user_id) VALUES(3, 1);
+INSERT INTO queue(store_id, user_id) VALUES(1, 3);
+INSERT INTO queue(store_id, user_id) VALUES(2, 4);

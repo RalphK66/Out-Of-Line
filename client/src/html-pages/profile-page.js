@@ -12,11 +12,40 @@ class InQueue extends React.Component {
             storeName: null,
             waitTime: 0
         }
+
+        this.displayInQueue = this.displayInQueue.bind(this);
     }
 
-    // displayInQueue() {
-        
-    // }
+    getQueueNumber() {
+        fetch(process.env.REACT_APP_API_URL + "/queue/get-queue-number", {
+          method: "POST",
+          body: JSON.stringify({
+            user_id: Cookies.get('id')
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+        })
+          .then(res => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              return "Errorrororororororor";
+            }
+          })
+          .then(data => {
+            this.setState({queueNumber: data.queue_number});  
+            console.log(data.queue_number);
+        })
+          .catch(err => console.log(err));
+      }
+    
+
+    displayInQueue() {
+        this.state.storeName = Cookies.get("store_id");
+        this.getQueueNumber();
+    }
     
     render() {
         if (Cookies.get('enqueued') === undefined) {
@@ -24,6 +53,9 @@ class InQueue extends React.Component {
         } else if (Cookies.get('enqueued')) {
             this.state.isQueued = true;
         }
+
+        this.displayInQueue();
+
         return(
             <Container className="col-sm-8 shadow profile-page">
                 <Row style={{height: "10vh"}}>

@@ -38,7 +38,7 @@ function Login() {
       }),
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
       credentials: "include",
     })

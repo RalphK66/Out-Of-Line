@@ -192,6 +192,7 @@ class Stores extends React.Component {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
+        credentials: 'include'
       })
         .then(res => {
           if (res.ok) {

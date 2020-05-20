@@ -9,9 +9,12 @@ router.post('/add', (req, res, next) => {
       console.log(err);
     } else {
       console.log(result);
+      db.query("SELECT name FROM stores WHERE id = (?)", [req.body.store_id], (err, result) => {
+        console.log(result[0]);
+        res.cookie('store_id', result[0].name, {httpOnly: false});
+        res.send();
+      });
     }
-
-    res.send();
   });
 });
 

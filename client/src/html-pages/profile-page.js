@@ -10,11 +10,13 @@ class InQueue extends React.Component {
             storeName: null,
             waitTime: 0
         }
+
+        this.displayInQueue = this.displayInQueue.bind(this);
     }
 
-    // displayInQueue() {
-        
-    // }
+    displayInQueue() {
+        this.state.storeName = Cookies.get("store_id");    
+    }
     
     render() {
         if (Cookies.get('enqueued') === undefined) {
@@ -22,6 +24,9 @@ class InQueue extends React.Component {
         } else if (Cookies.get('enqueued')) {
             this.state.isQueued = true;
         }
+
+        this.displayInQueue();
+
         return(
             <div className="container col-sm-8 shadow profile-page">
                 <p>Store Name: {this.state.storeName}</p>

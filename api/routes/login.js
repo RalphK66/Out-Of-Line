@@ -7,7 +7,7 @@ const router = express.Router();
 // Sends a token to the backend through post.
 router.post('/', (req, res, next) => {
   // Queries data from the database
-  db.query("SELECT id, password_salt, password_hash, isEmployee FROM users WHERE username = (?)", req.body.username, function (err, result) {
+  db.query("SELECT id, password_salt, password_hash, is_employee FROM users WHERE username = (?)", req.body.username, function (err, result) {
     if (err) {
       res.sendStatus(401);
     } else if (Array.isArray(result) && result.length === 0) {

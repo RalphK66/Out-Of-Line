@@ -12,7 +12,7 @@ router.post('/', (req, res, next) => {
   console.log(values);
 
   // Inserts values into database
-  db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, isEmployee) VALUES (?)", [values], (err, result) => {
+  db.query("INSERT INTO users(email, phone_number, username, password_salt, password_hash, is_employee) VALUES (?)", [values], (err, result) => {
     // Will match with an existing error, and send the corresponding status back
     if (err !== null && err.code === 'ER_DUP_ENTRY') {
       if (!!err.sqlMessage.match(/email/)) {

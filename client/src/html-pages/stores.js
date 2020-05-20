@@ -153,8 +153,8 @@ class Stores extends React.Component {
           button.innerText = 'Enqueue';
           button.type = 'click';
           button.addEventListener('click', () => {
-            // this.addToStoreQueue(store.properties.id);
-            this.getPeopleInLine(store.properties.id);
+            this.addToStoreQueue(store.properties.id);
+            // this.getPeopleInLine(store.properties.id);
           });
 
           content.appendChild(text);
@@ -194,6 +194,7 @@ class Stores extends React.Component {
       })
         .then(res => {
           if (res.ok) {
+            Cookies.set('enqueued', true);
             // redirect to profile page
           }
         })

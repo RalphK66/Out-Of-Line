@@ -25,8 +25,8 @@ CREATE TABLE users (
 CREATE TABLE temp_users (
     id integer PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL
+    phone_number VARCHAR(255),
+    email VARCHAR(255)
 );
 
 CREATE TABLE queue(

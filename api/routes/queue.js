@@ -11,7 +11,6 @@ router.post('/add', (req, res, next) => {
       console.log(result);
     }
 
-    res.cookie('enqueued', true);
     res.send();
   });
 });

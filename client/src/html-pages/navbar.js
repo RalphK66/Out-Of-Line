@@ -29,7 +29,7 @@ const NavBar = () => {
     console.log("Logged out");
     Cookies.remove('token');
     Cookies.remove('id');
-    // localStorage.clear();
+    Cookies.remove('enqueued');
     setIsEmployeeLoggedIn(false);
     setIsCustomerLoggedIn(false);
   }
@@ -88,6 +88,9 @@ const NavBar = () => {
                 <NavLink tag={RRNavLink} exact to="/stores" activeClassName="active" className="navbar-navlink">Stores</NavLink>
               </NavItem>
               <NavItem>
+                <NavLink tag={RRNavLink} exact to="/profile_page" activeClassName="active" className="navbar-navlink">Queue Profile</NavLink>
+              </NavItem>
+              <NavItem>
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>
               </NavItem>
             </Nav>
@@ -121,6 +124,9 @@ const NavBar = () => {
               </NavItem>
               <NavItem>
               <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active" className="navbar-navlink">Admin</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} exact to="/profile_page" activeClassName="active" className="navbar-navlink">Queue Profile</NavLink>
               </NavItem>
               <NavItem>
                   <NavLink tag={RRNavLink} exact to="/" onClick={Logout} activeClassName="active" className="navbar-navlink">Logout</NavLink>

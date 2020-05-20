@@ -154,8 +154,9 @@ class Stores extends React.Component {
           button.innerText = 'Enqueue';
           button.type = 'click';
           button.addEventListener('click', () => {
-            this.addToStoreQueue(store.properties.id);
+            // this.addToStoreQueue(store.properties.id);
             // this.getPeopleInLine(store.properties.id);
+            this.getQueueNumber();
           });
 
           content.appendChild(text);
@@ -208,7 +209,7 @@ class Stores extends React.Component {
   }
 
   getPeopleInLine(storeID) {
-    fetch(process.env.REACT_APP_API_URL + "/queue/people-in-line", {
+    fetch(process.env.REACT_APP_API_URL + "/queue/get-people-enqueued", {
       method: "POST",
       body: JSON.stringify({
         store_id: storeID
@@ -219,6 +220,28 @@ class Stores extends React.Component {
       },
     })
       .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
+  getQueueNumber() {
+    fetch(process.env.REACT_APP_API_URL + "/queue/get-queue-number", {
+      method: "POST",
+      body: JSON.stringify({
+        user_id: Cookies.get('id')
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return "Errorrororororororor";
+        }
+      })
       .then(data => console.log(data))
       .catch(err => console.log(err));
   }

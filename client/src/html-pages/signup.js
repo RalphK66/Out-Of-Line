@@ -6,6 +6,7 @@ import { registerMessage } from "../notifications/toasts";
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation-safe';
 import '../css/sign-up.css'
 import { signInFail, alreadyLoggedIn } from "../notifications/toasts";
+import Cookies from 'js-cookie';
 
 // Sign-up component 
 class Signup extends React.Component {

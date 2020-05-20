@@ -9,19 +9,36 @@ router.post('/add', (req, res, next) => {
       console.log(err);
     } else {
       console.log(result);
+      db.query("SELECT name FROM stores WHERE id = (?)", [req.body.store_id], (err, result) => {
+        console.log(result[0]);
+        res.cookie('store_id', result[0].name, {httpOnly: false});
+        res.send();
+      });
     }
-
-    res.send();
   });
 });
 
-router.post('/people-in-line', (req, res, next) => {
-  db.query("SELECT COUNT(*) AS count FROM queue WHERE store_id=(?)", req.body.store_id, (err, result) => {
+router.post('/get-people-enqueued', (req, res, next) => {
+  db.query("SELECT count FROM stores WHERE store_id=(?)", req.body.store_id, (err, result) => {
     if (err) {
       console.log(err);
     } else {
       console.log(result);
       res.json({ count: result[0].count });
+    }
+  });
+});
+
+router.post('/get-queue-number', (req, res, next) => {
+  db.query("CALL get_current_queue(?)", [req.body.user_id], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      result[0].forEach(row => {
+        if (row.user_id === parseInt(req.body.user_id)) {
+          res.json({ queue_number: row.queue_number });
+        }
+      });
     }
   });
 });

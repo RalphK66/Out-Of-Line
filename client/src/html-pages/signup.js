@@ -13,6 +13,7 @@ import { FaUser, FaLock, FaPhone, FaEnvelope } from "react-icons/fa";
 import {
   usernameTakenMessage,
   emailAlreadyInUse,
+  registerMessage,
 } from "../notifications/toasts";
 import {
   AvForm,
@@ -93,6 +94,7 @@ class Signup extends React.Component {
           });
         } else {
           // Successful login (status 200)
+ 
           this.setState({ isLoggedIn: true });
         }
       })
@@ -105,8 +107,14 @@ class Signup extends React.Component {
   render() {
     // Will redirect once successfully signed up
     if (this.state.isLoggedIn) {
+      registerMessage()
+      setTimeout(function () {
       window.location.replace("/");
+    }, 2000);
     }
+  
+
+ 
 
     return (
       <div className="container col-sm-8 shadow signup-box">

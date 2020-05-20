@@ -12,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { passwordChanged } from '../notifications/toasts'
 
 class ResetPassword extends React.Component {
     constructor(props) {
@@ -60,9 +61,13 @@ class ResetPassword extends React.Component {
     }
 
     render() {
-        if (this.state.isLoggedIn) {
-            window.location.replace('/');
-        }
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      passwordChanged()
+      setTimeout(function () {
+      window.location.replace("/");
+    }, 2000);
+    }
 
         return(
         <div className="container col-sm-8 shadow reset-box">

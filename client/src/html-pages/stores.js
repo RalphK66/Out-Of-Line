@@ -4,6 +4,7 @@ import MapGL from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "../css/map.css";
 import Cookies from "js-cookie";
+import { Redirect } from 'react-router-dom';
 
 
 // import Geocoder from 'react-map-gl-geocoder';
@@ -192,11 +193,12 @@ class Stores extends React.Component {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
+        credentials: 'include'
       })
         .then(res => {
           if (res.ok) {
             Cookies.set('enqueued', true);
-            // redirect to profile page
+            window.location = '/profile_page';
           }
         })
         .catch(err => console.log(err));

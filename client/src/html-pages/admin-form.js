@@ -47,15 +47,12 @@ class Tags extends React.Component {
         Accept: "application/json",
       },
     })
-      .then((res) => {
-        if (res.ok) {
+
           adminAddUser(this.state.name);
           setTimeout(() => {
             window.location.replace("/admin");
           }, 2000);
-        }
-      })
-      .catch((err) => console.error(err));
+
   }
 
   render() {

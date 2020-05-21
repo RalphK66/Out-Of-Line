@@ -67,7 +67,7 @@ class Tags extends React.Component {
                 </Container>
               </td>
               <td className="remove">
-                <form action="/adminRemove" method="POST">
+                <form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST">
                   <Button
                     className="del-customer-btn"
                     name="id"

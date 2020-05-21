@@ -26,7 +26,7 @@
 <body>
 
   <!-- gifs for easter egg -->
-  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" />
+  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" style="display: none;" />
   <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="covid" style="display: none;"/>
 
   <!-- audio for easter eggs -->
@@ -39,7 +39,10 @@
   
   
   <footer class="footer">
-    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Queue%20with%20Out-of-Line!&url=http://ec2-54-153-81-0.us-west-1.compute.amazonaws.com/" data-size="large">Tweet about our site here!</a>
+    <div class="container twitter-box">
+      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Queue%20with%20Out-of-Line!&url=http://ec2-54-153-81-0.us-west-1.compute.amazonaws.com/" data-size="large">
+        <img src="./images/twitter-icon.png" class="twitter-icon" /></a>
+      </div>
     <div id="trigger" class="container" onclick="Germ(event)" style="cursor: pointer">
       <span class="text-muted">© 2020 Copyright: out-of-line.ca</span>
     </div>

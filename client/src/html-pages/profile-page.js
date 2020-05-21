@@ -13,6 +13,9 @@ class InQueue extends React.Component {
       storeName: null,
       waitTime: 0,
     };
+
+    this.getQueueNumber = this.getQueueNumber.bind(this);
+    this.displayInQueue = this.displayInQueue.bind(this);
   }
 
   getQueueNumber() {
@@ -50,9 +53,7 @@ class InQueue extends React.Component {
   }
 
   render() {
-    if (Cookies.get("enqueued") === undefined) {
-      window.location = "/stores";
-    } else if (Cookies.get("enqueued")) {
+    if (Cookies.get("enqueued")) {
       if (!this.state.isQueued) {
         this.setState({ isQueued: true });
         this.displayInQueue();

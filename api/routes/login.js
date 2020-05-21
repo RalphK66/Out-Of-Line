@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
     
         // Sends back a JWT token if the password is correct
         if (checkIfValid(req.body.password)) {
-          const payload = {username: req.body.username, password: req.body.password, isEmployee: result[0].isEmployee};
+          const payload = {username: req.body.username, password: req.body.password, isEmployee: result[0].is_employee};
     
           const token = jwt.sign(payload, process.env.SECRET_JWT_STRING, {expiresIn: '8h'});
           console.log(token);

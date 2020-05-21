@@ -1,7 +1,7 @@
 import React from "react";
 import {FaUser} from "react-icons/fa";
 import {FaLock} from "react-icons/fa";
-import '../css/login.css'
+import '../css/password-reset.css'
 import {
   Form,
   FormGroup,
@@ -12,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
+import { passwordChanged } from '../notifications/toasts'
 
 // Resets the password if the inputted username is correct
 class ResetPassword extends React.Component {
@@ -62,36 +63,39 @@ class ResetPassword extends React.Component {
     }
 
     render() {
-      // Redirects if the user is logged in
-        if (this.state.isLoggedIn) {
-            window.location.replace('/');
-        }
+    // Will redirect once successfully signed up
+    if (this.state.isLoggedIn) {
+      passwordChanged()
+      setTimeout(function () {
+      window.location.replace("/");
+    }, 2000);
+    }
 
         return(
-        <div className="container col-sm-8 shadow box">
+        <div className="container col-sm-8 shadow reset-box">
         <Form onSubmit={this.handleSubmission}>
           <FormGroup>
-            <div className="container shadow form-box">
-              <Label className="display-4 form-label">Please enter your username and a new password</Label>
+            <div className="container shadow reset-form-box">
+              <Label className="display-4 reset-form-label">Reset Password</Label>
               <br/>
               <br/>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaUser/></InputGroupText>
+                  <InputGroupText><FaUser className="reset-form-icon"/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="username" type="text" onChange={this.handleText} ref={this.usernameField}
+                <Input className="reset-form-input" name="username" type="text" onChange={this.handleText} ref={this.usernameField}
                        placeholder="Username" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText><FaLock/></InputGroupText>
+                  <InputGroupText><FaLock className="reset-form-icon"/></InputGroupText>
                 </InputGroupAddon>
-                <Input name="newPass" type="password" onChange={this.handleText} ref={this.newPassField}
+                <Input className="reset-form-input" name="newPass" type="password" onChange={this.handleText} ref={this.newPassField}
                        placeholder="New Password" bsSize="lg"/> <br/>
               </InputGroup>
               <br/>
-              <Button size="lg">Change Password</Button>
+              <Button size="lg" className="reset-btn">Change Password</Button>
             </div>
           </FormGroup>
         </Form>

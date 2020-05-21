@@ -43,4 +43,10 @@ router.post('/get-queue-number', (req, res, next) => {
   });
 });
 
+// Sets ids to -1.  Should be removed when used.
+router.post('/update-queue', (req, res, next) => {
+  db.query("DELETE from queue where id = 0")
+  .then(db.query("UPDATE queue SET id = (id - 1) where id > 0"))
+});
+
 module.exports = router;

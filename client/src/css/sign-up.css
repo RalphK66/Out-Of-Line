@@ -1,31 +1,53 @@
+/* - - - - - - - - - - - - - SIGNUP PAGE STYLES - - - - - - - - - - - - - */
+
+/* container */
+
 .signup-box {
     margin-top: 50px;
-    border: 20px solid #AAD2A9; 
+    border: 20px solid #AAD2A9;
     border-radius: 10px;
     padding: 20px;
 }
+
+/* form container */
+
 .signup-form-box {
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
+
+/* form label / title */
+
 .signup-form-label {
     color: #6A6A6A;
     margin-bottom: 20px;
 }
+
+/* sign up / submit button */
+
 .signup-btn {
     background-color: #AADAFF !important;
     font-weight: bolder;
     border: none !important;
     width: 150px !important;
 }
+
+/* checkbox to register as a store representative */
+
 .employee-checkbox {
     color: #6A6A6A !important;
     font-weight: bolder;
 }
+
+/* email address, phone number, username and password form inputs */
+
 .signup-input {
     color: #6A6A6A !important;
 }
+
+/* input icons */
+
 .signup-form-icons {
     color: #6A6A6A;
 }

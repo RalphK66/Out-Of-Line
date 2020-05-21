@@ -1,22 +1,25 @@
 import React from "react";
-import {Button, Container, Table} from "reactstrap";
-import {FaUser, FaPhone, FaEnvelope} from "react-icons/fa";
+import { Button, Container, Table, Col, Row } from "reactstrap";
+import { FaUser, FaPhone, FaEnvelope } from "react-icons/fa";
 import "../css/admin.css";
-
-import { adminRemoveUser, } from "../notifications/toasts";
+import { adminRemoveUser } from "../notifications/toasts";
 
 class Tags extends React.Component {
   constructor(props) {
     super(props);
     this.displayQueue = this.displayQueue.bind(this);
     this.refresh = this.refresh.bind(this);
+    this.updateQueue = this.updateQueue.bind(this);
 
     this.state = {
       loading: true,
       result: null,
+      disabled: false,
     };
     this.displayQueue();
   }
+
+  refresh = function () {
 
 
   refresh() {
@@ -24,9 +27,27 @@ class Tags extends React.Component {
     setTimeout(function () {
       window.location.replace("/admin");
 
-    }, 100);
-    // }, 4000);
+    console.log(this.state.disabled);
 
+    this.setState({ disabled: true }, () => {
+      
+      console.log(this.state.disabled);
+      this.updateQueue();
+      adminRemoveUser();
+      setTimeout(() => {
+        document.getElementById('removal').innerHTML = '<form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST"><p>Deleting...</p></form>';
+      })
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
+  };
+
+  // When this is called, it lowers everyone's ID by 1
+  updateQueue = function () {
+    fetch(process.env.REACT_APP_API_URL + "/queue/update-queue", {
+      method: "POST",
+    })
   }
 
   displayQueue(event) {
@@ -40,40 +61,40 @@ class Tags extends React.Component {
           tags.push(
             <tr key={data[i].id}>
               <td>
-                <Table borderless className="sub-table">
-                  <tbody>
-                  <tr>
-                    <td className="icon">
-                      <FaUser/>
-                    </td>
-                    <td className="customer">
+                <Container className="sub-table">
+                  <Row xs="2">
+                    <Col className="icon" xs="1">
+                      <FaUser />
+                    </Col>
+                    <Col className="customer">
                       <strong>{data[i].name} </strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="icon">
-                      <FaEnvelope/>
-                    </td>
-                    <td className="customer">{data[i].email}</td>
-                  </tr>
-                  <tr>
-                    <td className="icon">
-                      <FaPhone/>
-                    </td>
-                    <td className="customer">{data[i].phone_number}</td>
-                  </tr>
-                  </tbody>
-                </Table>
+                    </Col>
+                  </Row>
+                  <Row xs="2">
+                    <Col className="icon" xs="1">
+                      <FaEnvelope />
+                    </Col>
+                    <Col className="customer">{data[i].email}</Col>
+                  </Row>
+                  <Row xs="2">
+                    <Col className="icon" xs="1">
+                      <FaPhone />
+                    </Col>
+                    <Col className="customer">{data[i].phone_number}</Col>
+                  </Row>
+                </Container>
               </td>
               <td className="remove">
-                <form action= {process.env.REACT_APP_API_URL + "/adminRemove"} method="POST">
+                <form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST" id="removal">
                   <Button
                     className="del-customer-btn"
+                    id="removeButton"
                     name="id"
                     type="submit"
                     value={data[i].id}
                     onClick={() => this.refresh}
                     size="sm"
+                    // disabled={this.state.disabled}
                   >
                     DELETE
                   </Button>
@@ -97,7 +118,9 @@ class Tags extends React.Component {
     return (
       <Container className="container col-sm-8 shadow admin">
         <a href="/adduser">
-          <Button className="add-to-queue-btn" size="lg">Add to queue</Button>
+          <Button className="add-to-queue-btn" size="lg">
+            Add to queue
+          </Button>
         </a>
         <br/>
         <br/>

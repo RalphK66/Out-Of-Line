@@ -29,6 +29,9 @@ class Tags extends React.Component {
       this.updateQueue();
       adminRemoveUser();
       setTimeout(() => {
+        document.getElementById('removal').innerHTML = '<form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST"><p>Deleting...</p></form>';
+      })
+      setTimeout(() => {
         window.location.reload();
       }, 2000);
     });
@@ -76,9 +79,10 @@ class Tags extends React.Component {
                 </Container>
               </td>
               <td className="remove">
-                <form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST">
+                <form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST" id="removal">
                   <Button
                     className="del-customer-btn"
+                    id="removeButton"
                     name="id"
                     type="submit"
                     value={data[i].id}

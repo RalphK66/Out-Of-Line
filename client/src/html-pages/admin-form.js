@@ -18,10 +18,6 @@ class Tags extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      addedUser: false
-    }
-
     this.handleText = this.handleText.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
 
@@ -51,21 +47,11 @@ class Tags extends React.Component {
         Accept: "application/json",
       },
     })
-      .then(res => {
-        console.log(res.status);
-
-        if (res.status) {
-          this.setState({addedUser: true});
-        }
-      })
-      .catch(err => console.error(err));
+    adminAddUser(this.state.name);
+    window.location.replace("/admin");
   }
 
   render() {
-    if (this.state.addedUser) {
-      window.location.replace("/admin");
-    }
-
     return (
       <Container className="col-sm-8 shadow add-user-box">
         <Form onSubmit={this.handleSubmission}>

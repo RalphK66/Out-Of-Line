@@ -6,12 +6,13 @@ import '../css/profile-page.css'
 class InQueue extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             isQueued: false,
             queueNumber: null,
             storeName: null,
             waitTime: 0
-        }
+        };
 
         this.displayInQueue = this.displayInQueue.bind(this);
     }
@@ -35,27 +36,32 @@ class InQueue extends React.Component {
             }
           })
           .then(data => {
-            this.setState({queueNumber: data.queue_number});  
-            console.log(data.queue_number);
+            if (!this.state.queueNumber) {
+              this.setState({queueNumber: data.queue_number});  
+              console.log(data.queue_number);
+            }         
         })
           .catch(err => console.log(err));
       }
     
 
     displayInQueue() {
-        this.state.storeName = Cookies.get("store_id");
+      if (!this.state.storeName) {
+        this.setState({storeName: Cookies.get("store_id")});
         this.getQueueNumber();
+      }
     }
     
     render() {
         if (Cookies.get('enqueued') === undefined) {
             window.location = '/stores';
         } else if (Cookies.get('enqueued')) {
-            this.state.isQueued = true;
+          if (!this.state.isQueued) {
+            this.setState({isQueued: true});
+            this.displayInQueue();
+          }
+
         }
-
-        this.displayInQueue();
-
         return(
             <Container className="col-sm-8 shadow profile-page">
                 <Row style={{height: "10vh"}}>

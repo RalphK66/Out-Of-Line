@@ -10,6 +10,8 @@ router.post('/', (req, res, next) => {
 
   db.query("INSERT INTO temp_users(email, phone_number, name) VALUES (?)", [values], (err, result) => {
     if(err) throw err;
+  
+    res.sendStatus(200);
   });
 });
 

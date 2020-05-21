@@ -29,7 +29,7 @@ class App extends React.Component {
           <Route path="/contact"><Contact /></Route>
           <Route path="/signup"><Signup /></Route>
           <Route path="/password_reset"><ResetPassword /></Route>
-          <PrivateRoute path="/profile_page"><InQueue /></PrivateRoute>
+          <Route path="/profile_page"><InQueue /></Route>
         </Switch>
       </Router>
     );

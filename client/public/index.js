@@ -16,11 +16,11 @@ function Germ(e) {
     trigger();
     clicks = 0;
     let gif = document.getElementById("covid");
-    gif.style.visibility = "visible";
+    gif.style.display = "inline";
     gif.style.animationPlayState = "running";
     GermAudio();
     setTimeout(() => {
-      gif.style.visibility = "hidden";
+      gif.style.display = "none";
       gif.style.animationPlayState = "paused";
       stopGermAudio();
       resetGif();
@@ -46,7 +46,7 @@ function explode() {
   gif.style.animationPlayState = "paused";
   gif.src = "https://media.giphy.com/media/yr6EicFQYkbgk/source.gif";
   setTimeout(() => {
-    gif.style.visibility = "hidden";
+    gif.style.display = "none";
     toiletRoll();
   }, 1000);
 }
@@ -59,13 +59,13 @@ function resetGif() {
 // toilet roll gif annimation
 function toiletRoll() {
   let roll = document.getElementById("roll");
-  roll.style.visibility = "visible";
+  roll.style.display = "inline";
   roll.style.animationPlayState = "running";
   toiletRollAudio();
   // pause and hide animation
   setTimeout(() => {
     roll.style.animationPlayState = "paused";
-    roll.style.visibility = "hidden";
+    roll.style.display = "none"
   }, 3000);
 }
 

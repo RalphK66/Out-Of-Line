@@ -17,6 +17,12 @@ import { messageSent, emptyFields } from "../notifications/toasts";
 import { FaUser, FaEnvelope, FaCommentAlt } from "react-icons/fa";
 import "../css/contact.css";
 
+// code for SMTP email component was adapted from : 
+// Aleksander Varnin's article "Building Contact Form and Handling Emails with Reac"
+// from Oct 1, 2019 on
+// https://blog.mailtrap.io/react-contact-form/
+
+
 // class component to manage contat form email sender and responder
 class Contact extends Component {
   constructor(props) {

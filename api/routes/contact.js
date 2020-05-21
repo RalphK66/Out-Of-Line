@@ -2,6 +2,12 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const router = express.Router();
 
+// code for SMTP email component was adapted from : 
+// Aleksander Varnin's article "Building Contact Form and Handling Emails with Reac"
+// from Oct 1, 2019 on
+// https://blog.mailtrap.io/react-contact-form/
+
+
 const transport = {
   host: "smtp.gmail.com", // Gmail SMTP server
   port: 465, 

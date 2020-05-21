@@ -4,13 +4,13 @@ import Cookies from 'js-cookie';
 class InQueue extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             isQueued: false,
             queueNumber: null,
             storeName: null,
-            waitTime: 0,
-            setStateOnce: 0
-        }
+            waitTime: 0
+        };
 
         this.displayInQueue = this.displayInQueue.bind(this);
     }
@@ -34,36 +34,32 @@ class InQueue extends React.Component {
             }
           })
           .then(data => {
-            if (this.state.setStateOnce === 0) {
+            if (!this.state.queueNumber) {
               this.setState({queueNumber: data.queue_number});  
               console.log(data.queue_number);
-              this.state.setStateOnce = 1;
-              console.log(this.state.setStateOnce);
-            }
+            }         
         })
           .catch(err => console.log(err));
       }
     
 
     displayInQueue() {
-        this.state.storeName = Cookies.get("store_id");
+      if (!this.state.storeName) {
+        this.setState({storeName: Cookies.get("store_id")});
         this.getQueueNumber();
+      }
     }
     
     render() {
-      let renderedOnce = 0;
-
-      if (renderedOnce === 0) {
-        this.displayInQueue();
-      }
-
         if (Cookies.get('enqueued') === undefined) {
             window.location = '/stores';
         } else if (Cookies.get('enqueued')) {
-            this.state.isQueued = true;
-            renderedOnce = 1;
+          if (!this.state.isQueued) {
+            this.setState({isQueued: true});
+            this.displayInQueue();
+          }
+
         }
-        
         return(
             <div className="container col-sm-8 shadow profile-page">
                 <p>Store Name: {this.state.storeName}</p>

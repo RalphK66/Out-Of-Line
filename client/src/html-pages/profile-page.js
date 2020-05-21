@@ -2,6 +2,7 @@ import React from "react";
 import Cookies from "js-cookie";
 import { Container } from "reactstrap";
 import "../css/profile-page.css";
+import { timeToShop } from '../notifications/toasts'
 
 
 class InQueue extends React.Component {
@@ -36,7 +37,11 @@ class InQueue extends React.Component {
         }
       })
       .then((data) => {
+        console.log(data)
         this.setState({ queueNumber: data.queue_number });
+        if (this.state.queueNumber === 0) {
+          timeToShop()
+        }
         console.log(data.queue_number);
       })
       .catch((err) => console.log(err));
@@ -67,7 +72,7 @@ class InQueue extends React.Component {
             <h1 className="profile-store-name"> {this.state.storeName} </h1>
           </Container>
           <Container className="profile-number shadow">
-            <h1 className="profile-queue"> 1{this.state.queueNumber}</h1>
+            <h1 className="profile-queue"> {this.state.queueNumber}</h1>
           </Container>
           <Container>
             <h3> Wait Time: </h3>

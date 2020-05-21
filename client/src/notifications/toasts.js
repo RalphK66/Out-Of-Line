@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "../index.css";
-import { FaExclamation, FaCheckDouble } from "react-icons/fa";
+import { FaExclamation, FaCheck, FaShoppingBasket } from "react-icons/fa";
 
 export function loginMessage(props) {
   toast.success(`Success, ${props}! You are logged in!`, {
@@ -49,13 +49,10 @@ export function signInFail() {
 }
 
 export function alreadyLoggedIn() {
-  toast.warn(
-    `You're already logged in!`,
-    {
-      className: "already-logged-in-message",
-      position: toast.POSITION.BOTTOM_RIGHT,
-    }
-  );
+  toast.warn(`You're already logged in!`, {
+    className: "already-logged-in-message",
+    position: toast.POSITION.BOTTOM_RIGHT,
+  });
 }
 
 export function registerMessage(props) {
@@ -109,7 +106,7 @@ export function adminRemoveUser(props) {
 export function messageSent(props) {
   toast.success(
     <div>
-      <FaCheckDouble /> {props}, your messge was sent
+      <FaCheck /> {props}, your messge was sent
     </div>,
     {
       position: toast.POSITION.BOTTOM_RIGHT,
@@ -132,6 +129,22 @@ export function passwordChanged() {
   });
 }
 
+export function timeToShop(props) {
+  toast.success(
+    <div>
+      <FaShoppingBasket />
+      {props}, 
+      <br />
+      it's time to shop!!!
+    </div>,
+    {
+      className: "shopping-time",
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2000,
+    }
+  );
+}
+
 export default {
   alreadyLoggedIn,
   signInFail,
@@ -147,4 +160,5 @@ export default {
   messageSent,
   emptyFields,
   passwordChanged,
+  timeToShop,
 };

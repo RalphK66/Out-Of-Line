@@ -21,6 +21,12 @@ class Tags extends React.Component {
 
   refresh = function () {
 
+
+  refresh() {
+    adminRemoveUser()
+    setTimeout(function () {
+      window.location.replace("/admin");
+
     console.log(this.state.disabled);
 
     this.setState({ disabled: true }, () => {
@@ -86,7 +92,7 @@ class Tags extends React.Component {
                     name="id"
                     type="submit"
                     value={data[i].id}
-                    onClick={this.refresh}
+                    onClick={() => this.refresh}
                     size="sm"
                     // disabled={this.state.disabled}
                   >

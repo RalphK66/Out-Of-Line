@@ -34,6 +34,7 @@ body {
   min-width: 120px;
   min-height: 120px;
   animation-play-state: paused;
+  visibility: hidden;
 }
 
 #covid {
@@ -88,13 +89,19 @@ body {
   }
 }
 
+#trigger {
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* Twitter icon */
 
-.twitter-icon {
+/* .twitter-icon {
   height: 50px;
   width: 50px;
-}
+} */
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

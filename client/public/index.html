@@ -8,13 +8,14 @@
   <meta property="og:title" content="__OG_TITLE__" />
   <meta property="og:description" content="__OG_DESCRIPTION__" />
 
-  <!-- I converted our url_logo to a .ico file and renamed it favicon to try and get rid of a 404 error -->
+  <!-- favicons -->
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
-/>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
   <!-- MapBox -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
@@ -26,41 +27,50 @@
 <body>
 
   <!-- gifs for easter egg -->
-  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" style="display: none;" />
-  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="covid" style="display: none;"/>
+  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" style="visibility: hidden;"/>
+  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="roll" style="visibility: hidden;"/>
 
   <!-- audio for easter eggs -->
-  <audio  id="run" src="./media/run.wav" type="audio/wav"></audio>
-  <audio  id="tongue"  src="./media/tongue.wav" type="audio/wav"></audio>
-  <audio  id="explode"  src="./media/explode.wav" type="audio/wav"></audio>
+  <audio id="run" src="./media/run.wav" type="audio/wav"></audio>
+  <audio id="tongue" src="./media/tongue.wav" type="audio/wav"></audio>
+  <audio id="explode" src="./media/explode.wav" type="audio/wav"></audio>
 
-  
-    <div id="root"></div>
-  
-  
-  <footer class="footer">
+  <!-- Div inwhich pages are rendered -->
+  <div id="root"></div>
+
+  <!-- Footer containing Twitter share icon and copyright -->
+  <!-- <footer class="footer">
     <div class="container twitter-box">
-      <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Queue%20with%20Out-of-Line!&url=http://ec2-54-153-81-0.us-west-1.compute.amazonaws.com/" data-size="large">
-        <img src="./images/twitter-icon.png" class="twitter-icon" /></a>
-      </div>
-    <div id="trigger" class="container" onclick="Germ(event)" style="cursor: pointer">
-      <span class="text-muted">© 2020 Copyright: out-of-line.ca</span>
+      <a class="twitter-share-button"
+        href="https://twitter.com/intent/tweet?text=Queue%20with%20Out-of-Line!&url=http://ec2-54-153-81-0.us-west-1.compute.amazonaws.com/"
+        data-size="large">
+        <img src="./images/twitter-icon.png" class="twitter-icon" alt="twitter" /></a>
+    </div> -->
+    <!-- Trigger for Easter Egg -->
+    <div id="trigger" class="container" onclick="Germ(event)">
+      <span class="text-muted">© 2020 Copyright: outofline.store</span>
     </div>
   </footer>
 
-
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <!-- Bootstrap dependency -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- Bootstrap javascript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
 
   <!-- MapBox -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-  <link
-    rel="stylesheet"
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js">
+  </script>
+  <link rel="stylesheet"
     href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
-    type="text/css"
-  />
+    type="text/css" />
 </body>
 
 </html>

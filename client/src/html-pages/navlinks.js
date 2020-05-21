@@ -31,6 +31,9 @@ export const AdminLinks = (props) => {
             <NavLink tag={RRNavLink} exact to="/admin" activeClassName="active" className="navbar-navlink">Admin</NavLink>
         </NavItem>
         <NavItem>
+            <NavLink tag={RRNavLink} exact to="/profile_page" activeClassName="active" className="navbar-navlink">Queue</NavLink>
+        </NavItem>
+        <NavItem>
             <NavLink tag={RRNavLink} exact to="/" onClick={props} activeClassName="active" className="navbar-navlink">Logout</NavLink>
         </NavItem>
     </React.Fragment>
@@ -39,9 +42,14 @@ export const AdminLinks = (props) => {
 
 export const CustomerLinks = (props) => {
     return (
-    <NavItem>
-        <NavLink tag={RRNavLink} exact to="/" onClick={props} activeClassName="active" className="navbar-navlink">Logout</NavLink>
-    </NavItem> 
+    <React.Fragment>
+        <NavItem>
+            <NavLink tag={RRNavLink} exact to="/profile_page" activeClassName="active" className="navbar-navlink">Queue</NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink tag={RRNavLink} exact to="/" onClick={props} activeClassName="active" className="navbar-navlink">Logout</NavLink>
+        </NavItem>
+    </React.Fragment> 
     )
 }
 

@@ -1,5 +1,7 @@
+// click counter
 let clicks = 0;
 
+//  click counter handler
 function incrementClicks(e) {
   if (e) {
     clicks++;
@@ -9,17 +11,16 @@ function incrementClicks(e) {
 
 // Trigger to start Covid Easter egg
 function Germ(e) {
-  console.log(e)
-
+  console.log(e);
   if (e.detail === 5 || incrementClicks(e) === 5) {
     trigger();
     clicks = 0;
     let gif = document.getElementById("covid");
-    gif.hidden = false;
+    gif.style.visibility = "visible";
     gif.style.animationPlayState = "running";
     GermAudio();
     setTimeout(() => {
-      gif.hidden = true;
+      gif.style.visibility = "hidden";
       gif.style.animationPlayState = "paused";
       stopGermAudio();
       resetGif();
@@ -45,7 +46,7 @@ function explode() {
   gif.style.animationPlayState = "paused";
   gif.src = "https://media.giphy.com/media/yr6EicFQYkbgk/source.gif";
   setTimeout(() => {
-    gif.hidden = true;
+    gif.style.visibility = "hidden";
     toiletRoll();
   }, 1000);
 }
@@ -58,17 +59,17 @@ function resetGif() {
 // toilet roll gif annimation
 function toiletRoll() {
   let roll = document.getElementById("roll");
-  roll.style.display = "inline";
+  roll.style.visibility = "visible";
   roll.style.animationPlayState = "running";
   toiletRollAudio();
   // pause and hide animation
   setTimeout(() => {
     roll.style.animationPlayState = "paused";
-    roll.style.display = "none";
+    roll.style.visibility = "hidden";
   }, 3000);
 }
 
-// toilet roll gif sound - NOT WORKING
+// toilet roll gif sound
 function toiletRollAudio() {
   let aaaah = document.getElementById("run");
   // aaaah.play();
@@ -88,7 +89,7 @@ function toiletRollAudio() {
       });
   }
 }
-
+// Germ gif sound
 function GermAudio() {
   let tongue = document.getElementById("tongue");
   tongue.loop = true;
@@ -107,13 +108,13 @@ function GermAudio() {
       });
   }
 }
-
+// stop germ audion on click
 function stopGermAudio() {
-  let tongueSOund = document.getElementById("tongue");
-  tongueSOund.pause();
-  tongueSOund.currentTime = 0;
+  let tongueSound = document.getElementById("tongue");
+  tongueSound.pause();
+  tongueSound.currentTime = 0;
 }
-
+// exlosion audio
 function explosionAudio() {
   let explosion = document.getElementById("explode");
   let playPromise = explosion.play();

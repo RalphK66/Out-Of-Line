@@ -113,7 +113,6 @@ class Signup extends React.Component {
   render() {
     // Will redirect once successfully signed up
     if (this.state.isLoggedIn) {
-      registerMessage()
       setTimeout(function () {
       window.location.replace("/");
     }, 2000);

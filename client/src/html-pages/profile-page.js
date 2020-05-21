@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { Container } from "reactstrap";
 import "../css/profile-page.css";
 
+
 class InQueue extends React.Component {
   constructor(props) {
     super(props);
@@ -55,23 +56,28 @@ class InQueue extends React.Component {
 
     this.displayInQueue();
 
+
+
     return (
-      <Container className="col-sm-8 shadow profile-box">
-        <Container>
-          <h3> You're now in queue for: </h3>
-          <br />
-          <h1 className="profile-store-name"> {this.state.storeName} </h1>
+      <div>
+        <Container className="col-sm-8 shadow profile-box">
+          <Container>
+            <h3> You're now in queue for: </h3>
+            <br />
+            <h1 className="profile-store-name"> {this.state.storeName} </h1>
+          </Container>
+          <Container className="profile-number shadow">
+            <h1 className="profile-queue"> 1{this.state.queueNumber}</h1>
+          </Container>
+          <Container>
+            <h3> Wait Time: </h3>
+            <br />
+            <h1 className="profile-waiting-time"> {this.state.waitTime} </h1>
+            <br />
+          </Container>
         </Container>
-        <Container className="profile-number shadow">
-          <h1 className="profile-queue"> 1{this.state.queueNumber}</h1>
-        </Container>
-        <Container>
-          <h3> Wait Time: </h3>
-          <br />
-          <h1 className="profile-waiting-time"> {this.state.waitTime} </h1>
-          <br />
-        </Container>
-      </Container>
+
+      </div>
     );
   }
 }

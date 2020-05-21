@@ -25,11 +25,12 @@
 </head>
 
 <body>
-
+  <!-- gifs from giphy.com -->
   <!-- gifs for easter egg -->
-  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" style="visibility: hidden;"/>
-  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="roll" style="visibility: hidden;"/>
+  <img id="covid" src='https://media.giphy.com/media/d55y3M7J6ECPh3zGD9/source.gif' alt="covid" onclick="explode()" style="display: none;"/>
+  <img id="roll" src='https://media.giphy.com/media/ibY4FzSEVSG0nGe0Z3/source.gif' alt="roll" style="display: none;"/>
 
+  <!-- sounds form freesoundeffects.com -->
   <!-- audio for easter eggs -->
   <audio id="run" src="./media/run.wav" type="audio/wav"></audio>
   <audio id="tongue" src="./media/tongue.wav" type="audio/wav"></audio>
@@ -39,8 +40,8 @@
   <div id="root"></div>
 
     <!-- Trigger for Easter Egg -->
-    <div id="trigger" class="container" onclick="Germ(event)">
-      <span class="text-muted">© 2020 Copyright: outofline.store</span>
+    <div id="trigger" class="footer" onclick="Germ(event)">
+      <div class="text-muted">© 2020 Copyright: outofline.store</div>
     </div>
   </footer>
 

@@ -10,6 +10,7 @@ import {
   WhatsappIcon,
   TwitterIcon,
 } from "react-share";
+import "../css/social.css";
 
 //URL from current page
 const url = "http://www.outofline.store";
@@ -21,9 +22,9 @@ const whatsappUrl = `https://wa.me/whatsappphonenumber/?text=urlencodedtext`;
 
 const Social = () => {
   return (
-    <Container style={{ textAlign: "center", width:"200px", marginTop: "20px" }}>
+    <Container className="social-media-box">
       <Row>
-        <Col style={{width: "fit-content"}}>
+        <Col className="social-media-columns">
           <TwitterShareButton
             url={twitterUrl}
             title="Out-of-Line"
@@ -32,15 +33,12 @@ const Social = () => {
             <TwitterIcon size={40} borderRadius="10" />
           </TwitterShareButton>
         </Col>
-        <Col style={{width: "fit-content"}}>
-        <FacebookShareButton 
-        url={facebookUrl} 
-        hashtag="#OutOfLine"
-        >
-          <FacebookIcon size={40} borderRadius="10" />
-        </FacebookShareButton>
+        <Col className="social-media-columns">
+          <FacebookShareButton url={facebookUrl} hashtag="#OutOfLine">
+            <FacebookIcon size={40} borderRadius="10" />
+          </FacebookShareButton>
         </Col>
-        <Col style={{width: "fit-content"}}>
+        <Col className="social-media-columns">
           <LinkedinShareButton
             url={linkedinUrl}
             title="Out-of-Line"
@@ -50,7 +48,7 @@ const Social = () => {
             <LinkedinIcon size={40} borderRadius="10" />
           </LinkedinShareButton>
         </Col>
-        <Col style={{width: "fit-content"}}>
+        <Col className="social-media-columns">
           <WhatsappShareButton
             url={whatsappUrl}
             title="Out-of-Line"

@@ -21,12 +21,6 @@ class Tags extends React.Component {
 
   refresh = function () {
 
-
-  refresh() {
-    adminRemoveUser()
-    setTimeout(function () {
-      window.location.replace("/admin");
-
     console.log(this.state.disabled);
 
     this.setState({ disabled: true }, () => {

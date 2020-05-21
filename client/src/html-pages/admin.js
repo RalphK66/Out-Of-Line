@@ -18,14 +18,14 @@ class Tags extends React.Component {
     this.displayQueue();
   }
 
-  refresh = function (props) {
+  refresh = function () {
 
     console.log(this.state.disabled);
 
     this.setState({ disabled: true }, () => {
       
       console.log(this.state.disabled);
-      adminRemoveUser(props);
+      adminRemoveUser();
       setTimeout(() => {
         window.location.reload();
       }, 2000);
@@ -67,17 +67,15 @@ class Tags extends React.Component {
                 </Container>
               </td>
               <td className="remove">
-                <form action="/adminRemove" method="POST">
+                <form action={process.env.REACT_APP_API_URL + "/adminRemove"} method="POST">
                   <Button
                     className="del-customer-btn"
                     name="id"
                     type="submit"
                     value={data[i].id}
-                    onClick={() => {
-                      this.refresh(data[i].name);
-                    }}
+                    onClick={this.refresh}
                     size="sm"
-                    disabled={this.state.disabled}
+                    // disabled={this.state.disabled}
                   >
                     DELETE
                   </Button>

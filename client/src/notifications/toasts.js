@@ -101,7 +101,7 @@ export function adminAddUser(props) {
 }
 
 export function adminRemoveUser(props) {
-  toast.info(`Removing ${props} from queue!`, {
+  toast.info(`Removing customer from queue!`, {
     position: toast.POSITION.BOTTOM_RIGHT,
     autoClose: 2000,
   });

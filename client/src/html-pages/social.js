@@ -12,8 +12,7 @@ import {
 } from "react-share";
 
 //URL from current page
-// const url = "http://www.outofline.store";  *** change to this once domain name is functioning
-const url = window.location.href;
+const url = "http://www.outofline.store";
 // Social Media URL's
 const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
 const twitterUrl = `https://twitter.com/intent/tweet?url=${url}`;
@@ -22,7 +21,7 @@ const whatsappUrl = `https://wa.me/whatsappphonenumber/?text=urlencodedtext`;
 
 const Social = () => {
   return (
-    <Container style={{ textAlign: "center", width:"200px", marginTop: "20px"}}>
+    <Container style={{ textAlign: "center", width:"200px", marginTop: "20px" }}>
       <Row>
         <Col style={{width: "fit-content"}}>
           <TwitterShareButton

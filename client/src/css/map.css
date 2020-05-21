@@ -4,7 +4,7 @@
 
 .map-container {
     position: absolute !important;
-    top: 100px;
+    top: 160px;
     bottom: 0;
     width: 100vw;
     border: 20px solid #AAD2A9;
@@ -20,7 +20,7 @@
     font: .8em 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: 600;
     position: absolute;
-    top: 110px;
+    top: 170px;
     left: 10px;
     border-radius: 3px;
     width: 120px;

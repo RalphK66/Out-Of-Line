@@ -67,7 +67,7 @@ class InQueue extends React.Component {
             <h1 className="profile-store-name"> {this.state.storeName} </h1>
           </Container>
           <Container className="profile-number shadow">
-            <h1 className="profile-queue"> {this.state.queueNumber}</h1>
+            <h1 className="profile-queue"> { this.state.queueNumber ? this.state.queueNumber : "?" }</h1>
           </Container>
           <Container>
             <h3> Wait Time: </h3>

@@ -4,9 +4,6 @@ import MapGL from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "../css/map.css";
 import Cookies from "js-cookie";
-import { Redirect } from 'react-router-dom';
-
-
 // import Geocoder from 'react-map-gl-geocoder';
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 

@@ -1,57 +1,107 @@
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - - INDEX PAGE STYLING - - - - - - - - - - - - - - - */
+
 /* Sticky footer */
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .footer {
-    margin: 20px;
-    text-align: center;
+  margin: 20px;
+  text-align: center;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Easter Egg Gifs and Animations */
+
+#covid, #roll {
+  z-index: 999;
+  position: fixed;
+  width: 20vw;
+  height: 20vw;
+  min-width: 120px;
+  min-height: 120px;
+  animation-play-state: paused;
+  visibility: hidden;
+}
+
+#covid {
+  animation-name: covid;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+}
+
+@keyframes covid {
+  0% {
+    left: 40vw;
+    bottom: -45vh
   }
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-  /* Easter Egg Gifs and Animations */
-  #covid, #roll {
-    z-index: 999;
-    position: fixed;
-    width: 20vw;
-    height: 20vw;
-    min-width: 120px;
-    min-height: 120px;
-    animation-play-state: paused;
+  20% {
+    left: 60vw;
+    bottom: 0vh
   }
-  #covid {
-    animation-name: covid;
-    animation-duration: 4s;
-    animation-iteration-count: 2;
+  40% {
+    left: 20vw;
+    bottom: 25vh
   }
-  @keyframes covid {
-    0% {left: 40vw; bottom: -45vh}
-    20% {left: 60vw; bottom: 0vh}
-    40% {left: 20vw; bottom: 25vh}
-    60% {left: 60vw; bottom: 50vh}
-    80% {left: 20vw; bottom: 75vh}    
-    100% {left: 60vw; bottom: 100vh};
+  60% {
+    left: 60vw;
+    bottom: 50vh
   }
-  #roll {
-    animation-name: roll;
-    animation-duration: 3s;
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
+  80% {
+    left: 20vw;
+    bottom: 75vh
   }
-  @keyframes roll {
-    from {right: -45vw; top: 65vh}
-    to {right: 120vw; top: 65vh}
+  100% {
+    left: 60vw;
+    bottom: 100vh
   }
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+  ;
+}
+
+#roll {
+  animation-name: roll;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes roll {
+  from {
+    right: -45vw;
+    top: 65vh
+  }
+  to {
+    right: 120vw;
+    top: 65vh
+  }
+}
+
+#trigger {
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Twitter icon */
+
+/* .twitter-icon {
+  height: 50px;
+  width: 50px;
+} */
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

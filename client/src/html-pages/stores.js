@@ -147,12 +147,15 @@ class Stores extends React.Component {
           const store = e.features[0];
 
           const content = document.createElement('div');
+          content.className="popup-content-box"
           const text = document.createElement('p');
-          text.innerHTML = `${store.properties.brand}<br>People in line: ${store.properties.count}`;
+          text.className="popup-info"
+          text.innerHTML = `<span class="popup-store-name">${store.properties.brand}</span><br/>People in line: <br/><span class="number">${store.properties.count}</span>`;
 
           const button = document.createElement('button');
           button.innerText = 'Enqueue';
           button.type = 'click';
+          button.className = "enqueue-btn"
           button.addEventListener('click', () => {
             this.addToStoreQueue(store.properties.id);
             // this.getPeopleInLine(store.properties.id);

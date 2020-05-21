@@ -13,6 +13,9 @@ class InQueue extends React.Component {
       storeName: null,
       waitTime: 0,
     };
+
+    this.getQueueNumber = this.getQueueNumber.bind(this);
+    this.displayInQueue = this.displayInQueue.bind(this);
   }
 
   getQueueNumber() {

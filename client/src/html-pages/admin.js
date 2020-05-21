@@ -9,6 +9,7 @@ class Tags extends React.Component {
     super(props);
     this.displayQueue = this.displayQueue.bind(this);
     this.refresh = this.refresh.bind(this);
+    this.updateQueue = this.updateQueue.bind(this);
 
     this.state = {
       loading: true,
@@ -25,12 +26,20 @@ class Tags extends React.Component {
     this.setState({ disabled: true }, () => {
       
       console.log(this.state.disabled);
+      this.updateQueue();
       adminRemoveUser();
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     });
   };
+
+  // When this is called, it lowers everyone's ID by 1
+  updateQueue = function () {
+    fetch(process.env.REACT_APP_API_URL + "/queue/update-queue", {
+      method: "POST",
+    })
+  }
 
   displayQueue(event) {
     fetch(process.env.REACT_APP_API_URL + "/tempUsers", {

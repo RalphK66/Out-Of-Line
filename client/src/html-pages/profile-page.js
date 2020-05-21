@@ -8,7 +8,8 @@ class InQueue extends React.Component {
             isQueued: false,
             queueNumber: null,
             storeName: null,
-            waitTime: 0
+            waitTime: 0,
+            setStateOnce: 0
         }
 
         this.displayInQueue = this.displayInQueue.bind(this);
@@ -33,8 +34,12 @@ class InQueue extends React.Component {
             }
           })
           .then(data => {
-            this.setState({queueNumber: data.queue_number});  
-            console.log(data.queue_number);
+            if (this.state.setStateOnce === 0) {
+              this.setState({queueNumber: data.queue_number});  
+              console.log(data.queue_number);
+              this.state.setStateOnce = 1;
+              console.log(this.state.setStateOnce);
+            }
         })
           .catch(err => console.log(err));
       }
@@ -46,14 +51,19 @@ class InQueue extends React.Component {
     }
     
     render() {
+      let renderedOnce = 0;
+
+      if (renderedOnce === 0) {
+        this.displayInQueue();
+      }
+
         if (Cookies.get('enqueued') === undefined) {
             window.location = '/stores';
         } else if (Cookies.get('enqueued')) {
             this.state.isQueued = true;
+            renderedOnce = 1;
         }
-
-        this.displayInQueue();
-
+        
         return(
             <div className="container col-sm-8 shadow profile-page">
                 <p>Store Name: {this.state.storeName}</p>

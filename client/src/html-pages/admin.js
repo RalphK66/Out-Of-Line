@@ -3,7 +3,7 @@ import {Button, Container, Table} from "reactstrap";
 import {FaUser, FaPhone, FaEnvelope} from "react-icons/fa";
 import "../css/admin.css";
 
-// import { adminRemoveUser, } from "../notifications/toasts";
+import { adminRemoveUser, } from "../notifications/toasts";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -20,9 +20,9 @@ class Tags extends React.Component {
 
 
   refresh() {
-    // adminRemoveUser()
+    adminRemoveUser()
     setTimeout(function () {
-      window.location.reload();
+      window.location.replace("/admin");
 
     }, 100);
     // }, 4000);
@@ -66,13 +66,13 @@ class Tags extends React.Component {
                 </Table>
               </td>
               <td className="remove">
-                <form action="/adminRemove" method="POST">
+                <form action= {process.env.REACT_APP_API_URL + "/adminRemove"} method="POST">
                   <Button
                     className="del-customer-btn"
                     name="id"
                     type="submit"
                     value={data[i].id}
-                    onClick={this.refresh}
+                    onClick={() => this.refresh}
                     size="sm"
                   >
                     DELETE

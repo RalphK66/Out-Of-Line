@@ -1,17 +1,29 @@
+/* - - - - - - - - - - - - - ABOUT PAGE STYLES - - - - - - - - - - - - - - */
+
+/* Container */
+
 .about-box {
     margin-top: 35px;
     border: 20px solid #AAD2A9;
     border-radius: 10px;
     padding: 20px;
-
-
 }
 
-.crew-image  {
+/* Images */
+
+.crew-image {
     display: block;
     width: 100%;
     height: auto;
 }
+
+/* container with for image, text and overlay */
+
+.container-1:hover .overlay {
+    opacity: 1;
+}
+
+/* overlay div */
 
 .overlay {
     position: absolute;
@@ -27,14 +39,12 @@
     border-radius: 30px
 }
 
-.container-1:hover .overlay {
-    opacity: 1;
-}
+/* text div */
 
 .text {
     color: white;
     position: absolute;
-    font-size: 30px; 
+    font-size: 30px;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -43,19 +53,23 @@
     text-align: center;
 }
 
+/* overlay text styling for smaller screens */
+
 @media (max-width: 425px) {
     .text {
         font-size: 5vw;
     }
 }
 
-@media (min-width:426px) and (max-width:768px)  {
-    .text {
+/* overlay text styling for medium screens */
 
+@media (min-width:426px) and (max-width:768px) {
+    .text {
         font-size: 3vw;
     }
 }
 
+/* page header title */
 
 .about-header-title {
     color: #6A6A6A;
@@ -64,7 +78,7 @@
     font-weight: bolder;
 }
 
-
+/* page header title styling for medium screen sand larger */
 
 @media (max-width:768px) {
     .about-header-title {
@@ -75,15 +89,18 @@
     }
 }
 
+/* page header text content / description */
+
 .about-header-text {
     color: #6A6A6A;
     text-align: center;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
-.OoF {
-    color: #AADAFF;
+/* All instaces of styled "out-of-line" text inside page header text */
+
+.Out-of-Line {
+    color: #AAD2A9;
     font-size: 20px;
     font-weight: bolder;
 }
-

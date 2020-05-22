@@ -1,0 +1,15 @@
+/* - - - - - - - - - - - - - SOCIAL MEDIA LINK STYLES - - - - - - - - - - - - - */
+
+/* social media icons container */
+
+.social-media-box {
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+}
+
+/* social media icon columns */
+
+.social-media-columns {
+    width: fit-content;
+}

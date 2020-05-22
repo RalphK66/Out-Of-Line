@@ -11,13 +11,15 @@ import PrivateRoute from './routes/private-route';
 import AddUser from "./html-pages/admin-form";
 import Contact from "./html-pages/contact";
 import ResetPassword from "./html-pages/password-reset";
+import InQueue from "./html-pages/profile-page";
+import Social from "./html-pages/social"
 
 class App extends React.Component {
   render() {
     return (
       
       <Router>
-        <NavBar/>
+        <NavBar />
         <Switch>
           <Route path="/login"><Login/></Route>
           <Route path="/stores"><Stores/></Route>
@@ -28,7 +30,9 @@ class App extends React.Component {
           <Route path="/contact"><Contact /></Route>
           <Route path="/signup"><Signup /></Route>
           <Route path="/password_reset"><ResetPassword /></Route>
+          <Route path="/profile_page"><InQueue /></Route>
         </Switch>
+        <Social />
       </Router>
     );
   }

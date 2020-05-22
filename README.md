@@ -1,68 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Out-of-Line
 
-## Available Scripts
+This is the repository of the web application **Out-of-Line**. Here you will find our code for the application, alongside other various assets. This README file contains all the necessary information to set up a local environment and run it on your machine.
 
-In the project directory, you can run:
+This project was constructed by group **DTC-05** or Out-of-Line. This group consisted of David Han, Ralph Killian, Kyrill Metalnikov and Janelle Kwok. 
 
-### `npm start`
+The production version of this application is hosted on **AWS** using an **NGINX** server. You may choose a different way to host this application.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Languages, IDEs and Frameworks Needed to Run the Application:
+- Node.js
+- React
+- Bootstrap (Reactstrap)
+- JQuery
+- Popper.js
+- MySQL and MySQL Workbench
+- Mapbox API
+- Microsoft Visual Studio Code and/or JetBrains Webstorm
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+For dependencies, run `npm install` in both the `client` and `api` folders. For both, the `package.json` and `package-lock.json` files will show a full list of the project's dependencies.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## .env File Values
+#### API
+- DB_ADMIN_USERNAME
+- DB_ADMIN_PASSWORD
+- DB_NAME
+- SECRET_JWT_STRING
 
-### `npm run build`
+#### Client
+- REACT_APP_MAPBOX_API_ACCESS_TOKEN
+- REACT_APP_API_URL
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ensure that your `.env` files for these folders are configured to have these variables.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### API Key
+- Mapbox
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To use the Mapbox API, an API access token must be generated and added to the `.env` file in `client` folder. 
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Order of Installation
+There is no direct order of installation, but certain things must be installed before another.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Phase One
+- Microsoft Visual Studio Code/ Webstorm
+- Node.js
+- MySQL
+- JQuery
+- Popper.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Phase Two
+- **React** (Install React first in this phase.)
+- Bootstrap (Reactstrap)
+- Mapbox API (configure your local machine's version of Mapbox)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Testing Plan
+Our testing plan for our application can be viewed here: https://docs.google.com/spreadsheets/d/1FG3ayaQWjqGr23QBUJt0q_kSF3hqLMbjlWxxjH3nIaI/edit?usp=sharing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+--- 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Repository Structure 
 
-### Code Splitting
+Our repository has its back-end and front-end components split up into different folders. The back-end is labelled `api` and the front-end is labelled `client`. The `client` folder holds all of the React components, front-end logic and the images/assets. It is the `view` in `model, view, controller`. The `api` folder holds all of back-end and server logic. It also provides a connection to the database. It is the `controller` in `model, view, controller`.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+In `client` there are the `public` and `src` folders. The `public` folder contains the `index.html` and `index.js` files that provide the base framework for the rest of the React application. The `src` folder contains the various React components and CSS styling pages. The assets for the site are found here as well. You can run the React application by running the command `npm start` in this directory.
 
-### Analyzing the Bundle Size
+In `api` there are the `bin`, `node_modules`, `routes` and `views` folders. Alongside those, there is the `app.js` which is the main server file, the `db.js` which provides a connection to the database and `schema.sql` and `seeds.sql` which both create tables/procedures/functions in the database and populates the tables respectively. The `bin` folder contains information specific for running an instance of the backend, including which url it runs on. The `routes` folder contains the back-end information for querying from the database and manipulating that data. You can run the server by running the command `npm start` in this directory.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### Out-of-Line
 
-### Making a Progressive Web App
+*Italicized* folders/files are prevented from being pushed to GitHub using the .gitignore file.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- #### api
+    - bin
+    - *node_modules*
+    - routes
+    - views
+    - app.js
+    - db.js
+    - *.env*
+    - package-lock.json
+    - package.json
+    - schema.sql
+    - seeds.sql
 
-### Advanced Configuration
+- #### client
+    - *node_modules*
+    - public
+    - src
+        - auth
+        - css
+        - html-pages
+        - images
+        - notifications
+        - routes
+        - App.js
+        - App.test.js
+        - index.css
+        - index.js
+        - serviceWorker.js
+        - setupTests.js
+    - *.env*
+    - *.gitignore*
+    - package-lock.json
+    - package.json
+    - README.md
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- .gitignore
+- README.md
